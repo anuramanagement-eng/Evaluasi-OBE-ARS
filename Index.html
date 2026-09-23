@@ -233,12 +233,12 @@ const APP_VERSION = "1.0.0";
 /* Daftar dosen & admin awal — dipakai untuk mengenali akun saat login (mode Supabase).
    Email HARUS sama persis dengan akun di Supabase Authentication. */
 SEED.dosen = [
-  { id: "D01", nidn: "", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "lianafitrianahasymi@gmail.com", role: "dosen" },
-  { id: "D02", nidn: "", nama: "Hj. Eny Hastuti, S.KM., M.Pd., M.PH", email: "enyhastuti@gmail.com", role: "dosen" },
-  { id: "D03", nidn: "", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "aan.nur.rahman@gmail.com", role: "dosen" },
-  { id: "D04", nidn: "", nama: "Abdurrahman Sidiq, SKM., MARS", email: "abdurrahmansidiq@gmail.com", role: "dosen" },
-  { id: "D05", nidn: "", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandisuharsono@gmail.com", role: "dosen" },
-  { id: "A01", nidn: "", nama: "Admin Prodi S1 ARS", email: "anura.management@gmail.com", role: "admin" }
+  { id: "D01", NUPTK: "", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "lianafitrianahasymi@gmail.com", role: "dosen" },
+  { id: "D02", NUPTK: "", nama: "Hj. Eny Hastuti, S.KM., M.Pd., M.PH", email: "enyhastuti@gmail.com", role: "dosen" },
+  { id: "D03", NUPTK: "", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "aan.nur.rahman@gmail.com", role: "dosen" },
+  { id: "D04", NUPTK: "", nama: "Abdurrahman Sidiq, SKM., MARS", email: "abdurrahmansidiq@gmail.com", role: "dosen" },
+  { id: "D05", NUPTK: "", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandisuharsono@gmail.com", role: "dosen" },
+  { id: "A01", NUPTK: "", nama: "Admin Prodi S1 ARS", email: "anura.management@gmail.com", role: "admin" }
 ];
 /* ---------- utilitas ---------- */
 const $ = (s, el = document) => el.querySelector(s);
@@ -808,17 +808,17 @@ function importMhs() {
 
 /* ---------- Dosen ---------- */
 VIEWS.dosen = () => head("Dosen & akun", "Email di sini dipakai untuk mengenali pengguna saat membuka aplikasi Apps Script. Dosen hanya melihat dan mengisi nilai kelas yang ia ampu.", `<button class="btn primary" data-act="editDosen">Tambah dosen</button>`)
-  + `<section class="panel"><div class="scroll"><table><thead><tr><th>NIDN</th><th>Nama & gelar</th><th>Email login</th><th>Peran</th><th class="n">Kelas ${esc(PER().smt)} ${esc(PER().ta)}</th><th></th></tr></thead><tbody>
-    ${all("dosen").map(d => `<tr><td>${esc(d.nidn || "–")}</td><td>${esc(d.nama)}</td><td class="muted">${esc(d.email)}</td><td><span class="tag ${d.role === "admin" ? "" : "plain"}">${d.role === "admin" ? "Admin prodi" : "Dosen"}</span></td><td class="n">${all("kelas").filter(k => k.dosen === d.id && inPeriod(k)).length}</td><td><button class="btn ghost" data-act="editDosen" data-id="${esc(d.id)}">Ubah</button></td></tr>`).join("")}</tbody></table></div></section>`;
+  + `<section class="panel"><div class="scroll"><table><thead><tr><th>NUPTK</th><th>Nama & gelar</th><th>Email login</th><th>Peran</th><th class="n">Kelas ${esc(PER().smt)} ${esc(PER().ta)}</th><th></th></tr></thead><tbody>
+    ${all("dosen").map(d => `<tr><td>${esc(d.NUPTK || "–")}</td><td>${esc(d.nama)}</td><td class="muted">${esc(d.email)}</td><td><span class="tag ${d.role === "admin" ? "" : "plain"}">${d.role === "admin" ? "Admin prodi" : "Dosen"}</span></td><td class="n">${all("kelas").filter(k => k.dosen === d.id && inPeriod(k)).length}</td><td><button class="btn ghost" data-act="editDosen" data-id="${esc(d.id)}">Ubah</button></td></tr>`).join("")}</tbody></table></div></section>`;
 function editDosen(id) {
-  const d = id ? DB.dosen.get(id) : { id: "", nidn: "", nama: "", email: "", role: "dosen" };
+  const d = id ? DB.dosen.get(id) : { id: "", NUPTK: "", nama: "", email: "", role: "dosen" };
   openDialog(id ? "Ubah dosen" : "Tambah dosen", `
     <label class="field"><span>Nama & gelar</span><input type="text" name="nama" value="${esc(d.nama)}" required></label>
-    <div class="grid2"><label class="field"><span>NIDN/NUPTK</span><input type="text" name="nidn" value="${esc(d.nidn)}"></label>
+    <div class="grid2"><label class="field"><span>NUPTK/NUPTK</span><input type="text" name="NUPTK" value="${esc(d.NUPTK)}"></label>
     <label class="field"><span>Peran</span><select name="role"><option value="dosen" ${d.role === "dosen" ? "selected" : ""}>Dosen</option><option value="admin" ${d.role === "admin" ? "selected" : ""}>Admin prodi</option></select></label></div>
     <label class="field"><span>Email login (akun Google)</span><input type="email" name="email" value="${esc(d.email)}" required></label>`,
     async fd => {
-      const rec = { id: d.id || uid("D"), nama: fd.get("nama").trim(), nidn: fd.get("nidn").trim(), email: fd.get("email").trim().toLowerCase(), role: fd.get("role") };
+      const rec = { id: d.id || uid("D"), nama: fd.get("nama").trim(), NUPTK: fd.get("NUPTK").trim(), email: fd.get("email").trim().toLowerCase(), role: fd.get("role") };
       if (all("dosen").some(x => x.email === rec.email && x.id !== rec.id)) { toast("Email sudah dipakai dosen lain.", true); return false; }
       await guard(() => Store.save("dosen", rec), "Data dosen disimpan.");
     });
@@ -1215,12 +1215,12 @@ window.addEventListener("beforeunload", e => { if (UI.edit && UI.edit.dirty) { e
 function demoData() {
   let seed = 20260917; const rnd = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
   const dosen = [
-    { id: "D01", nidn: "1101019001", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "andri.nurrahman@unbl.ac.id", role: "dosen" },
-    { id: "D02", nidn: "1101019002", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "liana.fitriani@unbl.ac.id", role: "dosen" },
-    { id: "D03", nidn: "1101019003", nama: "Abdrurrahman Sidiq, SKM., MARS", email: "abdrurrahman.sidiq@unbl.ac.id", role: "dosen" },
-    { id: "D04", nidn: "1101019004", nama: "Hj. Eny Hastuti, SKM., M.Pd., MPH", email: "eny.hastuti@unbl.ac.id", role: "dosen" },
-    { id: "D05", nidn: "1101019005", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandi.suharsono@unbl.ac.id", role: "dosen" },
-    { id: "A01", nidn: "", nama: "Admin Prodi S1 ARS", email: "admin.ars@unbl.ac.id", role: "admin" }
+    { id: "D01", NUPTK: "1101019001", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "andri.nurrahman@unbl.ac.id", role: "dosen" },
+    { id: "D02", NUPTK: "1101019002", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "liana.fitriani@unbl.ac.id", role: "dosen" },
+    { id: "D03", NUPTK: "1101019003", nama: "Abdrurrahman Sidiq, SKM., MARS", email: "abdrurrahman.sidiq@unbl.ac.id", role: "dosen" },
+    { id: "D04", NUPTK: "1101019004", nama: "Hj. Eny Hastuti, SKM., M.Pd., MPH", email: "eny.hastuti@unbl.ac.id", role: "dosen" },
+    { id: "D05", NUPTK: "1101019005", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandi.suharsono@unbl.ac.id", role: "dosen" },
+    { id: "A01", NUPTK: "", nama: "Admin Prodi S1 ARS", email: "admin.ars@unbl.ac.id", role: "admin" }
   ];
   const n26 = ["Muhammad Rizky Ananda", "Nor Aulia Rahmah", "Ahmad Fadillah", "Dina Maharani", "Rizal Firmansyah", "Aulia Safitri", "Gusti Rahman Hakim", "Fitri Amelia"];
   const n25 = ["Nabila Zahra", "Hendra Saputra", "Laila Husna", "Yusuf Alfarizi", "Maya Dewi Lestari", "Rahmi Annisa", "Bayu Pratama", "Salsabila Putri"];
