@@ -11,12 +11,12 @@
 <style>
 :root{
   --ink:#171c26; --ink-2:#4b5563; --ink-3:#7b8695;
-  --paper:#f6f8fa; --surface:#ffffff; --line:#e4e8ee; --line-2:#eef1f5;
-  --indigo:#27406b; --indigo-2:#33538a; --indigo-tint:#eaeff7;
+  --paper:#fbf2ea; --surface:#ffffff; --line:#f0dccd; --line-2:#f6e7dc;
+  --indigo:#c26236; --indigo-2:#a94f28; --indigo-tint:#ffe6d6;
   --kunyit:#c98a12; --kunyit-tint:#fdf3e0;
   --ok:#2c7a56; --ok-tint:#e6f3ec; --bad:#a93f2c; --bad-tint:#fae9e4; --mid:#8a6a14;
-  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:Arial,Helvetica,"Segoe UI",system-ui,sans-serif;
+  --serif:Arial,Helvetica,"Segoe UI",system-ui,sans-serif;
   --r-sm:8px; --r-md:12px;
   --sh:0 1px 2px rgba(17,24,39,.05);
 }
@@ -193,7 +193,7 @@ dialog footer{padding:14px 22px;border-top:1px solid var(--line-2);display:flex;
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 @media print{
   body{background:#fff;font-size:11px;color:#000}
-  .rail,.topbar,.actions,.toolbar,.tabs,.pipe,.legend,.noprint,#toast{display:none!important}
+  .rail,.topbar,.appbar,.actions,.toolbar,.tabs,.pipe,.legend,.noprint,#toast{display:none!important}
   .app{display:block}
   .page{max-width:none;padding:0}
   .panel{border:1px solid #ccc;box-shadow:none;margin-bottom:12px;break-inside:avoid}
@@ -202,6 +202,65 @@ dialog footer{padding:14px 22px;border-top:1px solid var(--line-2);display:flex;
   .stats{box-shadow:none}
   th,td{padding:4px 6px}
   .scroll{overflow:visible}
+}
+
+/* ============ Tema Peach + tampilan 3D + bilah atas (v1.2) ============ */
+:root{
+  --sh:0 1px 2px rgba(150,90,55,.10);
+  --sh-md:0 6px 18px rgba(150,90,55,.14);
+  --sh-lg:0 16px 40px rgba(150,90,55,.18);
+}
+body{
+  background:
+    radial-gradient(1100px 460px at 100% -8%, #ffe2cf 0%, rgba(255,226,207,0) 60%),
+    radial-gradient(900px 460px at -6% 4%, #ffefe3 0%, rgba(255,239,227,0) 55%),
+    var(--paper);
+  background-attachment:fixed;
+}
+/* Bilah atas: info akun + tombol di pojok kanan */
+.appbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:14px;
+  padding:12px 26px;background:linear-gradient(180deg,#ffffff,#fff4ec);
+  border-bottom:1px solid #f0d6c5;box-shadow:0 4px 14px rgba(150,90,55,.10)}
+.appbar-title{font-weight:700;color:var(--indigo);letter-spacing:-.2px;font-size:15px}
+.appbar .menu-btn{display:none}
+.acct{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.acct-info{text-align:right;line-height:1.18;max-width:240px}
+.acct-info strong{display:block;font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acct-info small{display:block;font-size:11.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acct-sel{max-width:220px}
+/* Kartu & panel tampak terangkat (3D) */
+.panel,.stats,.pipe{box-shadow:var(--sh-md);border-color:#f2ddce}
+.panel{background:linear-gradient(180deg,#ffffff,#fffaf6)}
+.stat{background:linear-gradient(180deg,#ffffff,#fff6ef)}
+.rail{box-shadow:3px 0 16px rgba(150,90,55,.07);background:linear-gradient(180deg,#fffdfb,#fff5ee)}
+.brand .ver{box-shadow:0 2px 6px rgba(194,98,54,.28)}
+dialog{box-shadow:0 30px 70px rgba(120,60,30,.30)}
+/* Tombol 3D + umpan balik klik */
+.btn{background:linear-gradient(180deg,#ffffff,#f7e9df);border-color:#eccdba;
+  box-shadow:0 2px 0 #ecceba,0 5px 12px rgba(150,90,55,.14)}
+.btn:hover{background:linear-gradient(180deg,#ffffff,#f3e0d3);border-color:#e3b79c}
+.btn:active{transform:translateY(2px);box-shadow:inset 0 3px 8px rgba(150,90,55,.22)}
+.btn:focus-visible{outline:none;box-shadow:0 0 0 3px var(--indigo-tint),0 2px 0 #ecceba}
+.btn.primary{background:linear-gradient(180deg,#e07a4a,#c25d34);border-color:#b4531f;color:#fff;
+  text-shadow:0 1px 1px rgba(120,50,20,.35);box-shadow:0 2px 0 #a94f28,0 8px 18px rgba(210,105,55,.38)}
+.btn.primary:hover{background:linear-gradient(180deg,#e9865a,#cd6539)}
+.btn.primary:active{transform:translateY(2px);box-shadow:inset 0 3px 9px rgba(120,50,20,.40)}
+.btn.danger{background:linear-gradient(180deg,#ffffff,#fbeae5)}
+.btn.ghost{box-shadow:none;background:none;border-color:transparent}
+.btn.ghost:hover{background:var(--indigo-tint)}
+.btn.ghost:active{transform:translateY(1px);background:#ffd9c4}
+/* Tanda tombol/menu yang sedang aktif atau baru diklik */
+.btn.active,.btn[aria-pressed="true"]{background:linear-gradient(180deg,#e07a4a,#c25d34)!important;border-color:#b4531f!important;color:#fff!important;text-shadow:0 1px 1px rgba(120,50,20,.35)}
+.nav button{transition:background .12s,color .12s,box-shadow .12s,transform .06s}
+.nav button:active{transform:translateY(1px)}
+.nav button[aria-current="page"]{background:linear-gradient(180deg,#ffd7c0,#ffe9db);color:#a94f28;font-weight:700;
+  box-shadow:0 3px 10px rgba(194,98,54,.22),inset 0 0 0 1px #ffcdb0}
+.pipe button[aria-current="step"]{box-shadow:inset 0 -3px 0 var(--indigo),0 6px 16px rgba(194,98,54,.18)}
+@media (max-width:980px){
+  .appbar{padding:10px 14px;gap:10px}
+  .appbar .menu-btn{display:inline-flex}
+  .appbar-title{display:none}
+  .acct-info{max-width:150px}
 }
 </style>
 <!-- Konfigurasi Supabase — isi tiga nilai ini setelah membuat proyek Supabase -->
@@ -229,7 +288,7 @@ const SEED = {"cpl":[{"id":"CPL-01","r":"","d":"Bertakwa kepada Tuhan Yang Maha 
 <script>
 "use strict";
 /* Versi aplikasi — ubah angka ini setiap ada pembaruan (mis. "1.1.0") */
-const APP_VERSION = "1.1.0";
+const APP_VERSION = "1.2.0";
 /* Daftar dosen & admin awal — dipakai untuk mengenali akun saat login (mode Supabase).
    Email HARUS sama persis dengan akun di Supabase Authentication. */
 SEED.dosen = [
@@ -535,13 +594,13 @@ function renderShell(inner) {
     return (g.g ? `<h6>${g.g}</h6>` : "") + items.map(i =>
       `<button data-act="nav" data-v="${i[0]}" ${UI.view === i[0] || (i[0] === "kelas" && UI.view === "ruang") ? 'aria-current="page"' : ""}>${icon(i[0])}<span>${esc(i[1])}</span></button>`).join("");
   }).join("");
-  const whoInfo = `<strong>${esc(USER.nama || USER.email)}</strong><small>${isAdmin() ? "Admin prodi" : "Dosen pengampu"} – ${esc(USER.email)}</small>`;
-  const who = MODE === "supabase"
-    ? `${whoInfo}<div style="display:flex;gap:6px;margin-top:10px"><button class="btn sm" data-act="refresh" style="flex:1">Segarkan</button><button class="btn sm" data-act="signout" style="flex:1">Keluar</button></div>`
+  const acctInfo = `<div class="acct-info" title="${esc(USER.email)}"><strong>${esc(USER.nama || USER.email)}</strong><small>${isAdmin() ? "Admin prodi" : "Dosen pengampu"}</small></div>`;
+  const acct = MODE === "supabase"
+    ? `${acctInfo}<button class="btn sm" data-act="refresh">Segarkan</button><button class="btn sm" data-act="signout">Keluar</button>`
     : MODE === "gas"
-    ? `${whoInfo}<button class="btn sm" data-act="refresh" style="width:100%;margin-top:10px">Segarkan</button>`
-    : `<label class="small muted" for="asUser">Mode demo, masuk sebagai</label>
-       <select id="asUser" data-in="asUser" style="width:100%;margin-top:4px">
+    ? `${acctInfo}<button class="btn sm" data-act="refresh">Segarkan</button>`
+    : `<div class="acct-info"><strong>Mode demo</strong><small>masuk sebagai</small></div>
+       <select class="acct-sel" data-in="asUser" aria-label="Masuk sebagai">
          <option value="admin" ${isAdmin() ? "selected" : ""}>Admin prodi</option>
          ${all("dosen").filter(d => d.role !== "admin").map(d => `<option value="${esc(d.id)}" ${USER.dosenId === d.id ? "selected" : ""}>${esc(d.nama)}</option>`).join("")}
        </select>`;
@@ -555,10 +614,13 @@ function renderShell(inner) {
         <select aria-label="Semester" data-in="periodSmt">${["Ganjil", "Genap", "Antara"].map(t => `<option ${t === S.smt ? "selected" : ""}>${t}</option>`).join("")}</select>
       </div>
       <nav class="nav">${nav}</nav>
-      <div class="who">${who}</div>
     </aside>
     <div class="main">
-      <div class="topbar"><button class="btn sm" data-act="toggleNav" aria-label="Buka menu">Menu</button><b>Evaluasi OBE S1 ARS</b></div>
+      <header class="appbar">
+        <button class="btn sm menu-btn" data-act="toggleNav" aria-label="Buka menu">Menu</button>
+        <div class="appbar-title">Evaluasi OBE — S1 ARS</div>
+        <div class="acct">${acct}</div>
+      </header>
       <div class="page">${inner}</div>
     </div>
   </div>`;
