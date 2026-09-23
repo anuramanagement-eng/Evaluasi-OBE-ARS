@@ -46,27 +46,38 @@ drop policy if exists "baca semua" on public.records;
 create policy "baca semua" on public.records
   for select to authenticated using (true);
 
--- 6b) Data master (kurikulum, dosen, mahasiswa, kelas, pengaturan):
+-- 6b) Data master administratif (dosen, mahasiswa, kelas, pengaturan):
 --     hanya admin prodi yang boleh menulis.
 drop policy if exists "tulis master (admin)" on public.records;
 create policy "tulis master (admin)" on public.records
   for all to authenticated
-  using      (coll in ('mk','cpmk','dosen','mhs','kelas','setting') and public.is_admin())
-  with check (coll in ('mk','cpmk','dosen','mhs','kelas','setting') and public.is_admin());
+  using      (coll in ('dosen','mhs','kelas','setting') and public.is_admin())
+  with check (coll in ('dosen','mhs','kelas','setting') and public.is_admin());
 
--- 6c) Rencana asesmen & nilai: semua pengguna login boleh menulis.
---     (Pembatasan "hanya dosen pengampu" + kunci nilai final ditegakkan di
---     aplikasi. Lihat blok OPSIONAL di bawah untuk penegakan di level database.)
+-- 6c) Kurikulum (mk, cpmk) + rencana asesmen & nilai:
+--     semua pengguna login (admin & dosen) boleh menulis, sehingga dosen dapat
+--     mengubah CPL/CPMK mata kuliah. Kunci nilai final ditegakkan di aplikasi.
 drop policy if exists "tulis nilai (login)" on public.records;
-create policy "tulis nilai (login)" on public.records
+drop policy if exists "tulis kurikulum & nilai (login)" on public.records;
+create policy "tulis kurikulum & nilai (login)" on public.records
   for all to authenticated
-  using      (coll in ('asesmen','nilai'))
-  with check (coll in ('asesmen','nilai'));
+  using      (coll in ('mk','cpmk','asesmen','nilai'))
+  with check (coll in ('mk','cpmk','asesmen','nilai'));
 
 -- 6d) Tabel admins boleh dibaca pengguna login (opsional, untuk transparansi).
 drop policy if exists "baca admins" on public.admins;
 create policy "baca admins" on public.admins
   for select to authenticated using (true);
+
+-- 6e) Real-time: perubahan langsung tersinkron ke semua akun yang sedang membuka.
+do $$
+begin
+  if not exists (select 1 from pg_publication_tables
+                 where pubname = 'supabase_realtime'
+                   and schemaname = 'public' and tablename = 'records') then
+    alter publication supabase_realtime add table public.records;
+  end if;
+end $$;
 
 -- 7) Daftarkan admin prodi pertama. GANTI dengan email admin sebenarnya,
 --    dan gunakan email yang sama di window.ADMIN_EMAILS pada index.html.

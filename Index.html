@@ -206,9 +206,9 @@ dialog footer{padding:14px 22px;border-top:1px solid var(--line-2);display:flex;
 </style>
 <!-- Konfigurasi Supabase — isi tiga nilai ini setelah membuat proyek Supabase -->
 <script>
-window.SUPABASE_URL = "https://jsdgfeaonmvyklewvwcj.supabase.co/rest/v1/";
-window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzZGdmZWFvbm12eWtsZXd2d2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMjU0NzAsImV4cCI6MjEwNTcwMTQ3MH0.ZGFz5UBZIgxj85kH7bj6KZWwu6xaA84dHhhRlU7g4gY";
-window.ADMIN_EMAILS = ["anura.management@gmail.com"]; // email admin prodi
+  window.SUPABASE_URL = "";       // contoh: https://xxxxxxxx.supabase.co
+  window.SUPABASE_ANON_KEY = "";  // Project API key "anon public"
+  window.ADMIN_EMAILS = ["anura.management@gmail.com"]; // email admin prodi
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -233,12 +233,12 @@ const APP_VERSION = "1.0.0";
 /* Daftar dosen & admin awal — dipakai untuk mengenali akun saat login (mode Supabase).
    Email HARUS sama persis dengan akun di Supabase Authentication. */
 SEED.dosen = [
-  { id: "D01", NUPTK: "", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "lianafitrianahasymi@gmail.com", role: "dosen" },
-  { id: "D02", NUPTK: "", nama: "Hj. Eny Hastuti, S.KM., M.Pd., M.PH", email: "enyhastuti@gmail.com", role: "dosen" },
-  { id: "D03", NUPTK: "", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "aan.nur.rahman@gmail.com", role: "dosen" },
-  { id: "D04", NUPTK: "", nama: "Abdurrahman Sidiq, SKM., MARS", email: "abdurrahmansidiq@gmail.com", role: "dosen" },
-  { id: "D05", NUPTK: "", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandisuharsono@gmail.com", role: "dosen" },
-  { id: "A01", NUPTK: "", nama: "Admin Prodi S1 ARS", email: "anura.management@gmail.com", role: "admin" }
+  { id: "D01", nidn: "", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "lianafitrianahasymi@gmail.com", role: "dosen" },
+  { id: "D02", nidn: "", nama: "Hj. Eny Hastuti, S.KM., M.Pd., M.PH", email: "enyhastuti@gmail.com", role: "dosen" },
+  { id: "D03", nidn: "", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "aan.nur.rahman@gmail.com", role: "dosen" },
+  { id: "D04", nidn: "", nama: "Abdurrahman Sidiq, SKM., MARS", email: "abdurrahmansidiq@gmail.com", role: "dosen" },
+  { id: "D05", nidn: "", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandisuharsono@gmail.com", role: "dosen" },
+  { id: "A01", nidn: "", nama: "Admin Prodi S1 ARS", email: "anura.management@gmail.com", role: "admin" }
 ];
 /* ---------- utilitas ---------- */
 const $ = (s, el = document) => el.querySelector(s);
@@ -386,6 +386,22 @@ const cpmkOf = k => all("cpmk").filter(c => c.mk === k).sort((a, b) => a.no - b.
 const cplList = () => SEED.cpl;
 const dosenName = id => (DB.dosen.get(id) || {}).nama || "–";
 const isAdmin = () => USER.role === "admin";
+const canKur = () => !!USER && (isAdmin() || USER.role === "dosen");
+async function sbRefreshData() {
+  await sbLoadAll();
+  if (!DB.mk.size) SEED.mk.forEach(x => DB.mk.set(x.id, x));
+  if (!DB.cpmk.size) SEED.cpmk.forEach(x => DB.cpmk.set(x.id, x));
+  if (SEED.dosen && !DB.dosen.size) SEED.dosen.forEach(x => DB.dosen.set(x.id, x));
+  if (!DB.setting.get("main")) DB.setting.set("main", clone(DEFAULT_SETTING));
+  CALC.clear();
+}
+async function ensureKurikulumPersisted() {
+  if (MODE !== "supabase" || !DB._seedPending) return;
+  await Store.saveMany("mk", SEED.mk);
+  await Store.saveMany("cpmk", SEED.cpmk);
+  if (isAdmin() && SEED.dosen && SEED.dosen.length) await Store.saveMany("dosen", SEED.dosen);
+  DB._seedPending = false;
+}
 const PER = () => ({ ta: UI.ta || SET().ta, smt: UI.smt || SET().smt });
 const inPeriod = (k, ta = PER().ta, smt = PER().smt) => k.ta === ta && k.smt === smt;
 function kelasVisible() {
@@ -521,9 +537,9 @@ function renderShell(inner) {
   }).join("");
   const whoInfo = `<strong>${esc(USER.nama || USER.email)}</strong><small>${isAdmin() ? "Admin prodi" : "Dosen pengampu"} – ${esc(USER.email)}</small>`;
   const who = MODE === "supabase"
-    ? `${whoInfo}<button class="btn sm" data-act="signout" style="width:100%;margin-top:10px">Keluar</button>`
+    ? `${whoInfo}<div style="display:flex;gap:6px;margin-top:10px"><button class="btn sm" data-act="refresh" style="flex:1">Segarkan</button><button class="btn sm" data-act="signout" style="flex:1">Keluar</button></div>`
     : MODE === "gas"
-    ? whoInfo
+    ? `${whoInfo}<button class="btn sm" data-act="refresh" style="width:100%;margin-top:10px">Segarkan</button>`
     : `<label class="small muted" for="asUser">Mode demo, masuk sebagai</label>
        <select id="asUser" data-in="asUser" style="width:100%;margin-top:4px">
          <option value="admin" ${isAdmin() ? "selected" : ""}>Admin prodi</option>
@@ -671,9 +687,9 @@ VIEWS.mk = () => {
         <select data-in="fsem" aria-label="Semester"><option value="">Semua semester</option>${[1,2,3,4,5,6,7,8].map(s => `<option value="${s}" ${UI.fsem == s ? "selected" : ""}>Semester ${roman(s)}</option>`).join("")}</select>
         <select data-in="fjenis" aria-label="Jenis"><option value="">Semua jenis</option>${["Wajib", "MKWU", "Pilihan"].map(s => `<option ${UI.fjenis === s ? "selected" : ""}>${s}</option>`).join("")}</select>
         <span class="muted small">${list.length} ditampilkan</span></div>`
-    + `<section class="panel"><div class="scroll"><table><thead><tr><th>Kode</th><th>Nama mata kuliah</th><th class="n">Smt</th><th class="n">T</th><th class="n">P</th><th>Jenis</th><th>CPL (Buku)</th><th class="n">CPMK</th>${isAdmin() ? "<th></th>" : ""}</tr></thead>
+    + `<section class="panel"><div class="scroll"><table><thead><tr><th>Kode</th><th>Nama mata kuliah</th><th class="n">Smt</th><th class="n">T</th><th class="n">P</th><th>Jenis</th><th>CPL (Buku)</th><th class="n">CPMK</th>${canKur() ? "<th></th>" : ""}</tr></thead>
       <tbody>${list.map(m => { const n = cpmkOf(m.id).length; return `<tr><td class="code">${esc(m.id)}</td><td>${esc(m.n)}</td><td class="n">${roman(m.s)}</td><td class="n">${m.t}</td><td class="n">${m.p}</td><td>${esc(m.j)}</td><td>${m.cpl.length ? tagCpl(m.cpl) : '<span class="tag warn">tidak ada di Tabel 6</span>'}</td>
-        <td class="n"><button class="btn ghost" data-act="gotoCpmk" data-id="${esc(m.id)}">${n || '<span class="tag bad">0</span>'}</button></td>${isAdmin() ? `<td><button class="btn ghost" data-act="editMk" data-id="${esc(m.id)}">Ubah</button></td>` : ""}</tr>`; }).join("")}</tbody></table></div></section>`;
+        <td class="n"><button class="btn ghost" data-act="gotoCpmk" data-id="${esc(m.id)}">${n || '<span class="tag bad">0</span>'}</button></td>${canKur() ? `<td><button class="btn ghost" data-act="editMk" data-id="${esc(m.id)}">Ubah</button></td>` : ""}</tr>`; }).join("")}</tbody></table></div></section>`;
 };
 function editMk(id) {
   const m = id ? DB.mk.get(id) : { id: "", n: "", s: 1, t: 2, p: 0, j: "Wajib", cpl: [] };
@@ -687,30 +703,31 @@ function editMk(id) {
     async fd => {
       const rec = { id: (fd.get("id") || "").trim().toUpperCase(), n: fd.get("n").trim(), s: +fd.get("s"), t: +fd.get("t"), p: +fd.get("p"), j: fd.get("j"), cpl: fd.getAll("cpl") };
       if (!id && DB.mk.has(rec.id)) { toast("Kode mata kuliah sudah ada.", true); return false; }
-      await guard(() => Store.save("mk", rec), "Mata kuliah disimpan.");
+      await guard(async () => { await ensureKurikulumPersisted(); await Store.save("mk", rec); }, "Mata kuliah disimpan.");
     });
 }
 
 /* ---------- CPMK ---------- */
 VIEWS.cpmk = () => {
   const mks = all("mk").sort((a, b) => a.s - b.s || a.id.localeCompare(b.id));
+  if (!mks.length) return head("CPMK & sub-CPMK", "Belum ada data mata kuliah.") + `<div class="note bad">Data mata kuliah belum tersedia. ${isAdmin() ? `Buka <a href="#" data-act="nav" data-v="ringkasan">Ringkasan</a> lalu klik \"Simpan data kurikulum ke database\".` : "Hubungi admin prodi untuk memuat data kurikulum."}</div>`;
   const mk = mkOf(UI.mkSel) || mks[0]; UI.mkSel = mk.id;
   const cps = cpmkOf(mk.id);
   const opts = [1,2,3,4,5,6,7,8].map(s => `<optgroup label="Semester ${roman(s)}">${mks.filter(m => m.s === s).map(m => `<option value="${esc(m.id)}" ${m.id === mk.id ? "selected" : ""}>${esc(m.id)} – ${esc(m.n)} (${cpmkOf(m.id).length})</option>`).join("")}</optgroup>`).join("");
   const measured = new Set(cps.flatMap(c => c.cpl || []));
   const missing = mk.cpl.filter(c => !measured.has(c));
   const off = [...measured].filter(c => !mk.cpl.includes(c));
-  return head("CPMK & sub-CPMK", "CPMK per mata kuliah sesuai sheet CPL-CPMK pada Excel Simulasi Kurikulum 2024 Revisi 3.1. Pemetaan CPMK ke CPL menentukan ke CPL mana nilai mahasiswa dihitung.", isAdmin() ? `<button class="btn primary" data-act="editCpmk">Tambah CPMK</button>` : "")
+  return head("CPMK & sub-CPMK", "CPMK per mata kuliah sesuai sheet CPL-CPMK pada Excel Simulasi Kurikulum 2024 Revisi 3.1. Pemetaan CPMK ke CPL menentukan ke CPL mana nilai mahasiswa dihitung.", canKur() ? `<button class="btn primary" data-act="editCpmk">Tambah CPMK</button>` : "")
     + `<div class="toolbar"><select data-in="mkSel" aria-label="Pilih mata kuliah" style="max-width:100%">${opts}</select></div>`
     + `<dl class="kv" style="margin:0 0 16px"><dt>Mata kuliah</dt><dd><b>${esc(mk.id)}</b> ${esc(mk.n)}, semester ${roman(mk.s)}, ${sks(mk)} SKS (${mk.t} T / ${mk.p} P)</dd><dt>CPL di Buku Kurikulum</dt><dd>${mk.cpl.length ? tagCpl(mk.cpl) : '<span class="tag warn">tidak tercantum</span>'}</dd></dl>`
     + (missing.length && cps.length ? `<div class="note">CPL ${missing.join(", ")} dibebankan ke MK ini di Buku Kurikulum, tetapi tidak ada CPMK yang dipetakan ke sana.</div>` : "")
     + (off.length ? `<div class="note">CPMK dipetakan ke ${off.join(", ")}, yang tidak tercantum sebagai CPL MK ini di Buku Kurikulum (Tabel 6). Tanda kuning pada tag CPL.</div>` : "")
-    + `<section class="panel">${cps.length ? `<div class="scroll"><table><thead><tr><th>Kode</th><th>Rumusan CPMK dan sub-CPMK</th><th>CPL</th>${isAdmin() ? "<th></th>" : ""}</tr></thead><tbody>
+    + `<section class="panel">${cps.length ? `<div class="scroll"><table><thead><tr><th>Kode</th><th>Rumusan CPMK dan sub-CPMK</th><th>CPL</th>${canKur() ? "<th></th>" : ""}</tr></thead><tbody>
       ${cps.map(c => `<tr><td class="code">CPMK-${c.no}</td><td>${esc(c.d)}${c.flag ? `<div><span class="tag bad">${esc(c.flag)}</span></div>` : ""}
         ${(c.sub || []).length ? `<ol class="small muted" style="margin:6px 0 0;padding-left:18px">${c.sub.map((s, i) => `<li>Sub-CPMK ${c.no}.${i + 1}: ${esc(s)}</li>`).join("")}</ol>` : ""}
         <div class="small muted">${esc(c.src || "")}</div></td>
-        <td>${tagCpl(c.cpl, mk)}</td>${isAdmin() ? `<td><button class="btn ghost" data-act="editCpmk" data-id="${esc(c.id)}">Ubah</button></td>` : ""}</tr>`).join("")}</tbody></table></div>`
-      : `<div class="empty">Mata kuliah ini belum punya CPMK di Excel simulasi. ${isAdmin() ? "Tambahkan CPMK sesuai RPS agar nilainya bisa dihitung ke CPL." : ""}</div>`}</section>`;
+        <td>${tagCpl(c.cpl, mk)}</td>${canKur() ? `<td><button class="btn ghost" data-act="editCpmk" data-id="${esc(c.id)}">Ubah</button></td>` : ""}</tr>`).join("")}</tbody></table></div>`
+      : `<div class="empty">Mata kuliah ini belum punya CPMK di Excel simulasi. ${canKur() ? "Tambahkan CPMK sesuai RPS agar nilainya bisa dihitung ke CPL." : ""}</div>`}</section>`;
 };
 function editCpmk(id) {
   const mk = mkOf(UI.mkSel);
@@ -728,7 +745,7 @@ function editCpmk(id) {
       if (!cpl.length) { toast("Pilih minimal satu CPL.", true); return false; }
       const rec = { ...c, id: c.id || mk.id + "-" + uid("c"), no: +fd.get("no"), d: fd.get("d").trim(), cpl, sub: fd.get("sub").split("\n").map(s => s.trim()).filter(Boolean) };
       delete rec.flag;
-      await guard(() => Store.save("cpmk", rec), "CPMK disimpan.");
+      await guard(async () => { await ensureKurikulumPersisted(); await Store.save("cpmk", rec); }, "CPMK disimpan.");
     });
 }
 
@@ -805,20 +822,55 @@ function importMhs() {
       await guard(() => Store.saveMany("mhs", recs), `${recs.length} mahasiswa disimpan.`);
     }, "Impor");
 }
+function importKelas() {
+  const S = PER();
+  openDialog("Impor kelas dari Excel", `<p class="small muted" style="margin-top:0">Salin dari Excel dengan urutan kolom: <b>Kode MK, Nama Kelas, Email/NIDN Dosen, NIM</b>. Satu baris untuk satu mahasiswa; baris dengan Kode MK dan Nama Kelas sama akan digabung menjadi satu kelas. Kolom dosen boleh dikosongkan. Kelas dibuat untuk periode <b>${esc(S.smt)} ${esc(S.ta)}</b>.</p>
+    <p class="small muted">Contoh: <code>SARS101&#9;A&#9;aan.nur.rahman@gmail.com&#9;2611200001</code></p>
+    <textarea name="raw" style="min-height:220px" placeholder="SARS101&#9;A&#9;aan.nur.rahman@gmail.com&#9;2611200001&#10;SARS101&#9;A&#9;aan.nur.rahman@gmail.com&#9;2611200002"></textarea>`,
+    async fd => {
+      const rows = fd.get("raw").split(/\r?\n/).map(l => l.split(/\t|;/).map(x => x.trim())).filter(r => r[0] && r[3]);
+      if (!rows.length) { toast("Tidak ada baris yang terbaca. Pastikan kolom Kode MK dan NIM terisi.", true); return false; }
+      const findDosen = key => { key = String(key || "").toLowerCase(); const d = all("dosen").find(x => String(x.email || "").toLowerCase() === key || String(x.nidn || "").toLowerCase() === key); return d ? d.id : ""; };
+      const groups = new Map(); const badMk = new Set(); const badNim = new Set(); const badDosen = new Set();
+      rows.forEach(r => {
+        const mkCode = (r[0] || "").toUpperCase(), nama = r[1] || "A", dosenKey = r[2] || "", nim = r[3];
+        if (!mkOf(mkCode)) { badMk.add(mkCode); return; }
+        if (!DB.mhs.get(nim)) badNim.add(nim);
+        const key = mkCode + "||" + nama;
+        if (!groups.has(key)) groups.set(key, { mk: mkCode, nama, dosenKey, peserta: new Set() });
+        groups.get(key).peserta.add(nim);
+        if (dosenKey && !groups.get(key).dosenKey) groups.get(key).dosenKey = dosenKey;
+      });
+      if (!groups.size) { toast("Tidak ada kelas valid. Kode MK tidak dikenal: " + [...badMk].join(", "), true); return false; }
+      const recs = [];
+      groups.forEach(g => {
+        const existing = all("kelas").find(k => k.mk === g.mk && k.nama === g.nama && inPeriod(k, S.ta, S.smt));
+        const base = existing || { id: uid("K"), mk: g.mk, nama: g.nama, dosen: "", ta: S.ta, smt: S.smt, peserta: [] };
+        let dosen = base.dosen;
+        if (g.dosenKey) { const dz = findDosen(g.dosenKey); if (dz) dosen = dz; else badDosen.add(g.dosenKey); }
+        recs.push({ ...base, dosen, peserta: [...new Set([...(base.peserta || []), ...g.peserta])] });
+      });
+      const warn = [];
+      if (badMk.size) warn.push(badMk.size + " kode MK dilewati (" + [...badMk].join(", ") + ")");
+      if (badDosen.size) warn.push(badDosen.size + " email/NIDN dosen tidak dikenal");
+      if (badNim.size) warn.push(badNim.size + " NIM belum terdaftar (tetap dimasukkan)");
+      await guard(() => Store.saveMany("kelas", recs), `${recs.length} kelas disimpan${warn.length ? ". Catatan: " + warn.join("; ") : "."}`);
+    }, "Impor");
+}
 
 /* ---------- Dosen ---------- */
 VIEWS.dosen = () => head("Dosen & akun", "Email di sini dipakai untuk mengenali pengguna saat membuka aplikasi Apps Script. Dosen hanya melihat dan mengisi nilai kelas yang ia ampu.", `<button class="btn primary" data-act="editDosen">Tambah dosen</button>`)
-  + `<section class="panel"><div class="scroll"><table><thead><tr><th>NUPTK</th><th>Nama & gelar</th><th>Email login</th><th>Peran</th><th class="n">Kelas ${esc(PER().smt)} ${esc(PER().ta)}</th><th></th></tr></thead><tbody>
-    ${all("dosen").map(d => `<tr><td>${esc(d.NUPTK || "–")}</td><td>${esc(d.nama)}</td><td class="muted">${esc(d.email)}</td><td><span class="tag ${d.role === "admin" ? "" : "plain"}">${d.role === "admin" ? "Admin prodi" : "Dosen"}</span></td><td class="n">${all("kelas").filter(k => k.dosen === d.id && inPeriod(k)).length}</td><td><button class="btn ghost" data-act="editDosen" data-id="${esc(d.id)}">Ubah</button></td></tr>`).join("")}</tbody></table></div></section>`;
+  + `<section class="panel"><div class="scroll"><table><thead><tr><th>NIDN</th><th>Nama & gelar</th><th>Email login</th><th>Peran</th><th class="n">Kelas ${esc(PER().smt)} ${esc(PER().ta)}</th><th></th></tr></thead><tbody>
+    ${all("dosen").map(d => `<tr><td>${esc(d.nidn || "–")}</td><td>${esc(d.nama)}</td><td class="muted">${esc(d.email)}</td><td><span class="tag ${d.role === "admin" ? "" : "plain"}">${d.role === "admin" ? "Admin prodi" : "Dosen"}</span></td><td class="n">${all("kelas").filter(k => k.dosen === d.id && inPeriod(k)).length}</td><td><button class="btn ghost" data-act="editDosen" data-id="${esc(d.id)}">Ubah</button></td></tr>`).join("")}</tbody></table></div></section>`;
 function editDosen(id) {
-  const d = id ? DB.dosen.get(id) : { id: "", NUPTK: "", nama: "", email: "", role: "dosen" };
+  const d = id ? DB.dosen.get(id) : { id: "", nidn: "", nama: "", email: "", role: "dosen" };
   openDialog(id ? "Ubah dosen" : "Tambah dosen", `
     <label class="field"><span>Nama & gelar</span><input type="text" name="nama" value="${esc(d.nama)}" required></label>
-    <div class="grid2"><label class="field"><span>NUPTK/NUPTK</span><input type="text" name="NUPTK" value="${esc(d.NUPTK)}"></label>
+    <div class="grid2"><label class="field"><span>NIDN/NUPTK</span><input type="text" name="nidn" value="${esc(d.nidn)}"></label>
     <label class="field"><span>Peran</span><select name="role"><option value="dosen" ${d.role === "dosen" ? "selected" : ""}>Dosen</option><option value="admin" ${d.role === "admin" ? "selected" : ""}>Admin prodi</option></select></label></div>
     <label class="field"><span>Email login (akun Google)</span><input type="email" name="email" value="${esc(d.email)}" required></label>`,
     async fd => {
-      const rec = { id: d.id || uid("D"), nama: fd.get("nama").trim(), NUPTK: fd.get("NUPTK").trim(), email: fd.get("email").trim().toLowerCase(), role: fd.get("role") };
+      const rec = { id: d.id || uid("D"), nama: fd.get("nama").trim(), nidn: fd.get("nidn").trim(), email: fd.get("email").trim().toLowerCase(), role: fd.get("role") };
       if (all("dosen").some(x => x.email === rec.email && x.id !== rec.id)) { toast("Email sudah dipakai dosen lain.", true); return false; }
       await guard(() => Store.save("dosen", rec), "Data dosen disimpan.");
     });
@@ -828,7 +880,7 @@ function editDosen(id) {
 VIEWS.kelas = () => {
   const S = PER();
   const ks = kelasVisible().filter(k => inPeriod(k)).sort((a, b) => a.mk.localeCompare(b.mk) || a.nama.localeCompare(b.nama));
-  return head(isAdmin() ? "Kelas & penilaian" : "Kelas saya", `Semester ${esc(S.smt)} ${esc(S.ta)}. Ganti periode di menu kiri.`, isAdmin() ? `<button class="btn primary" data-act="editKelas">Buat kelas</button>` : "")
+  return head(isAdmin() ? "Kelas & penilaian" : "Kelas saya", `Semester ${esc(S.smt)} ${esc(S.ta)}. Ganti periode di menu kiri.`, isAdmin() ? `<button class="btn" data-act="importKelas">Tempel dari Excel</button> <button class="btn primary" data-act="editKelas">Buat kelas</button>` : "")
     + `<section class="panel">${ks.length ? `<div class="scroll"><table><thead><tr><th>Mata kuliah</th><th>Kelas</th><th>Dosen pengampu</th><th class="n">SKS</th><th class="n">Peserta</th><th>Status</th>${isAdmin() ? "<th></th>" : ""}</tr></thead><tbody>
       ${ks.map(k => { const m = mkOf(k.mk) || {}; return `<tr class="click" data-act="openKelas" data-id="${esc(k.id)}"><td><span class="code">${esc(k.mk)}</span> ${esc(m.n)}</td><td>${esc(k.nama)}</td><td>${esc(dosenName(k.dosen))}</td><td class="n">${sks(m)}</td><td class="n">${(k.peserta || []).length}</td><td>${statusTag(kelasStatus(k))}</td>${isAdmin() ? `<td><button class="btn ghost" data-act="editKelas" data-id="${esc(k.id)}">Ubah</button></td>` : ""}</tr>`; }).join("")}</tbody></table></div>`
       : `<div class="empty">Belum ada kelas di periode ini.</div>`}</section>`;
@@ -1108,8 +1160,8 @@ const ACT = {
   gotoCpmk: b => { UI.mkSel = b.dataset.id; go("cpmk"); },
   tab: b => { if (UI.edit && UI.edit.dirty && !confirm("Perubahan nilai belum disimpan. Tinggalkan tab ini?")) return; UI.p.tab = b.dataset.t; UI.edit = null; render(); },
   editMk: b => editMk(b.dataset.id), editCpmk: b => editCpmk(b.dataset.id), editMhs: b => editMhs(b.dataset.id),
-  importMhs: () => importMhs(), editDosen: b => editDosen(b.dataset.id), editKelas: b => editKelas(b.dataset.id),
-  delCpmk: b => { $("#dlg").close(); confirmDlg("Hapus CPMK", "CPMK akan dihapus dari mata kuliah ini.", "Hapus", () => guard(() => Store.remove("cpmk", b.dataset.id), "CPMK dihapus.")); },
+  importMhs: () => importMhs(), importKelas: () => importKelas(), refresh: () => doRefresh(), editDosen: b => editDosen(b.dataset.id), editKelas: b => editKelas(b.dataset.id),
+  delCpmk: b => { $("#dlg").close(); confirmDlg("Hapus CPMK", "CPMK akan dihapus dari mata kuliah ini.", "Hapus", () => guard(async () => { await ensureKurikulumPersisted(); await Store.remove("cpmk", b.dataset.id); }, "CPMK dihapus.")); },
   delKelas: b => { $("#dlg").close(); confirmDlg("Hapus kelas", "Kelas beserta rencana asesmennya akan dihapus.", "Hapus", () => guard(async () => { await Store.remove("kelas", b.dataset.id); if (DB.asesmen.has(b.dataset.id)) await Store.remove("asesmen", b.dataset.id); }, "Kelas dihapus.")); },
   pickAngkatan: b => $$('#dlg input[name="peserta"]').forEach(c => { if (c.dataset.angk === b.dataset.a) c.checked = true; }),
   pickNone: () => $$('#dlg input[name="peserta"]').forEach(c => c.checked = false),
@@ -1215,12 +1267,12 @@ window.addEventListener("beforeunload", e => { if (UI.edit && UI.edit.dirty) { e
 function demoData() {
   let seed = 20260917; const rnd = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
   const dosen = [
-    { id: "D01", NUPTK: "1101019001", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "andri.nurrahman@unbl.ac.id", role: "dosen" },
-    { id: "D02", NUPTK: "1101019002", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "liana.fitriani@unbl.ac.id", role: "dosen" },
-    { id: "D03", NUPTK: "1101019003", nama: "Abdrurrahman Sidiq, SKM., MARS", email: "abdrurrahman.sidiq@unbl.ac.id", role: "dosen" },
-    { id: "D04", NUPTK: "1101019004", nama: "Hj. Eny Hastuti, SKM., M.Pd., MPH", email: "eny.hastuti@unbl.ac.id", role: "dosen" },
-    { id: "D05", NUPTK: "1101019005", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandi.suharsono@unbl.ac.id", role: "dosen" },
-    { id: "A01", NUPTK: "", nama: "Admin Prodi S1 ARS", email: "admin.ars@unbl.ac.id", role: "admin" }
+    { id: "D01", nidn: "1101019001", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "andri.nurrahman@unbl.ac.id", role: "dosen" },
+    { id: "D02", nidn: "1101019002", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "liana.fitriani@unbl.ac.id", role: "dosen" },
+    { id: "D03", nidn: "1101019003", nama: "Abdrurrahman Sidiq, SKM., MARS", email: "abdrurrahman.sidiq@unbl.ac.id", role: "dosen" },
+    { id: "D04", nidn: "1101019004", nama: "Hj. Eny Hastuti, SKM., M.Pd., MPH", email: "eny.hastuti@unbl.ac.id", role: "dosen" },
+    { id: "D05", nidn: "1101019005", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandi.suharsono@unbl.ac.id", role: "dosen" },
+    { id: "A01", nidn: "", nama: "Admin Prodi S1 ARS", email: "admin.ars@unbl.ac.id", role: "admin" }
   ];
   const n26 = ["Muhammad Rizky Ananda", "Nor Aulia Rahmah", "Ahmad Fadillah", "Dina Maharani", "Rizal Firmansyah", "Aulia Safitri", "Gusti Rahman Hakim", "Fitri Amelia"];
   const n25 = ["Nabila Zahra", "Hendra Saputra", "Laila Husna", "Yusuf Alfarizi", "Maya Dewi Lestari", "Rahmi Annisa", "Bayu Pratama", "Salsabila Putri"];
@@ -1281,8 +1333,24 @@ function renderLogin(msg) {
   const f = $("#logEmail"); if (f) f.focus();
 }
 async function afterLogin() {
-  try { await Store.load(); CALC.clear(); UI.view = "ringkasan"; UI.navOpen = false; render(); }
+  try { await Store.load(); CALC.clear(); UI.view = "ringkasan"; UI.navOpen = false; render(); subscribeRealtime(); }
   catch (e) { console.error(e); renderLogin(e && e.message ? e.message : String(e)); }
+}
+let _rtDone = false, _rtTimer = null;
+function subscribeRealtime() {
+  if (_rtDone || MODE !== "supabase") return;
+  _rtDone = true;
+  try { SB.channel("obe-records").on("postgres_changes", { event: "*", schema: "public", table: "records" }, remoteReload).subscribe(); } catch (e) {}
+}
+function remoteReload() {
+  if (document.querySelector("dialog[open]")) return;
+  if (UI.edit && UI.edit.dirty) return;
+  clearTimeout(_rtTimer);
+  _rtTimer = setTimeout(async () => { try { await sbRefreshData(); render(); } catch (e) {} }, 500);
+}
+async function doRefresh() {
+  try { if (MODE === "supabase") await sbRefreshData(); else if (HAS_GAS) { await Store.load(); CALC.clear(); } render(); toast("Data dimuat ulang."); }
+  catch (e) { toast("Gagal memuat ulang: " + (e && e.message ? e.message : e), true); }
 }
 async function boot() {
   if (MODE === "supabase") {
