@@ -1,0 +1,19 @@
+# Konfigurasi Netlify untuk aplikasi Evaluasi OBE (satu halaman, tanpa proses build)
+[build]
+  publish = "."
+  command = ""
+
+# Aplikasi ini satu halaman (index.html). Arahkan semua path ke index.html
+# agar refresh / URL langsung tidak menghasilkan 404.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Header keamanan dasar
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
