@@ -206,9 +206,9 @@ dialog footer{padding:14px 22px;border-top:1px solid var(--line-2);display:flex;
 </style>
 <!-- Konfigurasi Supabase — isi tiga nilai ini setelah membuat proyek Supabase -->
 <script>
-window.SUPABASE_URL = "https://jsdgfeaonmvyklewvwcj.supabase.co/rest/v1/";
-window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzZGdmZWFvbm12eWtsZXd2d2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMjU0NzAsImV4cCI6MjEwNTcwMTQ3MH0.ZGFz5UBZIgxj85kH7bj6KZWwu6xaA84dHhhRlU7g4gY";
-window.ADMIN_EMAILS = ["anura.management@gmail.com"];
+  window.SUPABASE_URL = "";       // contoh: https://xxxxxxxx.supabase.co
+  window.SUPABASE_ANON_KEY = "";  // Project API key "anon public"
+  window.ADMIN_EMAILS = ["anura.management@gmail.com"]; // email admin prodi
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -230,6 +230,16 @@ const SEED = {"cpl":[{"id":"CPL-01","r":"","d":"Bertakwa kepada Tuhan Yang Maha 
 "use strict";
 /* Versi aplikasi — ubah angka ini setiap ada pembaruan (mis. "1.1.0") */
 const APP_VERSION = "1.0.0";
+/* Daftar dosen & admin awal — dipakai untuk mengenali akun saat login (mode Supabase).
+   Email HARUS sama persis dengan akun di Supabase Authentication. */
+SEED.dosen = [
+  { id: "D01", nidn: "", nama: "Hj. Liana Fitriani Hasymi, S.Pi., M.Kes", email: "lianafitrianahasymi@gmail.com", role: "dosen" },
+  { id: "D02", nidn: "", nama: "Hj. Eny Hastuti, S.KM., M.Pd., M.PH", email: "enyhastuti@gmail.com", role: "dosen" },
+  { id: "D03", nidn: "", nama: "Ns. Andri Nur Rahman, S.Kep., MARS", email: "aan.nur.rahman@gmail.com", role: "dosen" },
+  { id: "D04", nidn: "", nama: "Abdurrahman Sidiq, SKM., MARS", email: "abdurrahmansidiq@gmail.com", role: "dosen" },
+  { id: "D05", nidn: "", nama: "Yandi Suharsono, AMK., SKM., MARS", email: "yandisuharsono@gmail.com", role: "dosen" },
+  { id: "A01", nidn: "", nama: "Admin Prodi S1 ARS", email: "anura.management@gmail.com", role: "admin" }
+];
 /* ---------- utilitas ---------- */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
@@ -299,6 +309,7 @@ const Store = {
       await sbLoadAll();
       if (!DB.mk.size) { SEED.mk.forEach(x => DB.mk.set(x.id, x)); DB._seedPending = true; }
       if (!DB.cpmk.size) { SEED.cpmk.forEach(x => DB.cpmk.set(x.id, x)); DB._seedPending = true; }
+      if (SEED.dosen && !DB.dosen.size) { SEED.dosen.forEach(x => DB.dosen.set(x.id, x)); DB._seedPending = true; }
       const email = String(user.email || "").toLowerCase();
       const d = all("dosen").find(x => String(x.email || "").toLowerCase() === email);
       if ((d && d.role === "admin") || BOOTSTRAP_ADMINS.includes(email)) USER = { role: "admin", dosenId: d ? d.id : null, email, nama: d ? d.nama : email };
@@ -1131,7 +1142,7 @@ const ACT = {
   login: async () => { const email = ($("#logEmail").value || "").trim().toLowerCase(), pass = $("#logPass").value || ""; if (!email || !pass) { $("#loginMsg").innerHTML = `<div class="note bad">Isi email dan kata sandi.</div>`; return; } const { error } = await SB.auth.signInWithPassword({ email, password: pass }); if (error) { $("#loginMsg").innerHTML = `<div class="note bad">${esc(error.message)}</div>`; return; } await afterLogin(); },
   magiclink: async () => { const email = ($("#logEmail").value || "").trim().toLowerCase(); if (!email) { $("#loginMsg").innerHTML = `<div class="note bad">Isi email dulu.</div>`; return; } const { error } = await SB.auth.signInWithOtp({ email, options: { emailRedirectTo: location.href } }); $("#loginMsg").innerHTML = error ? `<div class="note bad">${esc(error.message)}</div>` : `<div class="note info">Tautan masuk sudah dikirim ke ${esc(email)}. Buka email lalu klik tautannya.</div>`; },
   signout: async () => { try { await SB.auth.signOut(); } catch (e) {} renderLogin(); },
-  saveSeed: () => guard(async () => { await Store.saveMany("mk", SEED.mk); await Store.saveMany("cpmk", SEED.cpmk); DB._seedPending = false; }, "Data kurikulum tersimpan."),
+  saveSeed: () => guard(async () => { await Store.saveMany("mk", SEED.mk); await Store.saveMany("cpmk", SEED.cpmk); if (SEED.dosen && SEED.dosen.length) await Store.saveMany("dosen", SEED.dosen); DB._seedPending = false; }, "Data kurikulum dan daftar dosen tersimpan."),
   resetDemo: () => confirmDlg("Kembalikan data demo", "Semua perubahan di mode demo akan hilang.", "Kembalikan", async () => { try { localStorage.removeItem(DEMO_KEY); } catch (e) {} await Store.load(); CALC.clear(); go("ringkasan"); }),
   csvRekap: () => { const k = DB.kelas.get(UI.p.id), R = calcKelas(k); downloadCSV(`rekap_${k.mk}_${k.nama}.csv`, [["No", "NIM", "Nama", ...R.P.a.komp.map(x => x.nama), "Nilai akhir", "Huruf"], ...R.rows.map((r, i) => [i + 1, r.nim, r.m.nama, ...R.P.a.komp.map(x => r.sc[x.id] ?? ""), r.NA == null ? "" : r.NA.toFixed(2).replace(".", ","), r.H ? r.H.h : ""])]); },
   csvCpmk: () => { const k = DB.kelas.get(UI.p.id), R = calcKelas(k); downloadCSV(`cpmk_${k.mk}_${k.nama}.csv`, [["NIM", "Nama", ...R.P.cp.map(c => `CPMK-${c.no} (${(c.cpl || []).join("/")})`), "NA"], ...R.rows.map(r => [r.nim, r.m.nama, ...R.P.cp.map(c => r.NC[c.id] == null ? "" : r.NC[c.id].toFixed(2).replace(".", ",")), r.NA == null ? "" : r.NA.toFixed(2).replace(".", ",")])]); },
