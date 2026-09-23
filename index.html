@@ -203,6 +203,13 @@ dialog footer{padding:14px 22px;border-top:1px solid var(--line-2);display:flex;
   .scroll{overflow:visible}
 }
 </style>
+<!-- Konfigurasi Supabase — isi tiga nilai ini setelah membuat proyek Supabase -->
+<script>
+  window.SUPABASE_URL = "https://jsdgfeaonmvyklewvwcj.supabase.co/rest/v1/";
+window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpzZGdmZWFvbm12eWtsZXd2d2NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAxMjU0NzAsImV4cCI6MjEwNTcwMTQ3MH0.ZGFz5UBZIgxj85kH7bj6KZWwu6xaA84dHhhRlU7g4gY";
+window.ADMIN_EMAILS = ["anura.management@gmail.com"];
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div id="app" class="loading">Memuat data…</div>
@@ -238,6 +245,27 @@ function toast(msg, err) {
 const COLLS = ["mk", "cpmk", "dosen", "mhs", "kelas", "asesmen", "nilai", "setting"];
 const HAS_GAS = typeof google !== "undefined" && google.script && google.script.run;
 const DEMO_KEY = "obe-ars-unbl-demo-v2";
+const SB = (window.SUPABASE_URL && window.SUPABASE_ANON_KEY && window.supabase)
+  ? window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY)
+  : null;
+const MODE = HAS_GAS ? "gas" : (SB ? "supabase" : "demo");
+const BOOTSTRAP_ADMINS = (window.ADMIN_EMAILS || []).map(x => String(x).toLowerCase());
+async function sbLoadAll() {
+  COLLS.forEach(c => DB[c] = new Map());
+  let from = 0;
+  for (;;) {
+    const { data, error } = await SB.from("records").select("coll,id,data").range(from, from + 999);
+    if (error) throw new Error(error.message);
+    (data || []).forEach(r => { if (DB[r.coll]) DB[r.coll].set(r.id, r.data); });
+    if (!data || data.length < 1000) break;
+    from += 1000;
+  }
+}
+async function sbSave(coll, recs) {
+  const rows = recs.map(r => ({ coll, id: String(r.id), data: r, updated_by: USER.email || "", updated_at: new Date().toISOString() }));
+  const { error } = await SB.from("records").upsert(rows, { onConflict: "coll,id" });
+  if (error) throw new Error(error.message);
+}
 let DB = {};                         // coll -> Map(id -> record)
 let USER = { role: "admin", dosenId: null, email: "", nama: "" };
 const all = c => [...DB[c].values()];
@@ -253,6 +281,17 @@ const Store = {
       COLLS.forEach(c => DB[c] = new Map((r.data[c] || []).map(x => [x.id, x])));
       if (!DB.mk.size) { SEED.mk.forEach(x => DB.mk.set(x.id, x)); DB._seedPending = true; }
       if (!DB.cpmk.size) { SEED.cpmk.forEach(x => DB.cpmk.set(x.id, x)); DB._seedPending = true; }
+    } else if (MODE === "supabase") {
+      const { data: { user } } = await SB.auth.getUser();
+      if (!user) throw new Error("Sesi tidak ditemukan. Silakan masuk kembali.");
+      await sbLoadAll();
+      if (!DB.mk.size) { SEED.mk.forEach(x => DB.mk.set(x.id, x)); DB._seedPending = true; }
+      if (!DB.cpmk.size) { SEED.cpmk.forEach(x => DB.cpmk.set(x.id, x)); DB._seedPending = true; }
+      const email = String(user.email || "").toLowerCase();
+      const d = all("dosen").find(x => String(x.email || "").toLowerCase() === email);
+      if ((d && d.role === "admin") || BOOTSTRAP_ADMINS.includes(email)) USER = { role: "admin", dosenId: d ? d.id : null, email, nama: d ? d.nama : email };
+      else if (d) USER = { role: "dosen", dosenId: d.id, email, nama: d.nama };
+      else { await SB.auth.signOut(); throw new Error("Akun " + email + " belum terdaftar sebagai dosen atau admin. Hubungi admin prodi."); }
     } else {
       let raw = null;
       try { raw = localStorage.getItem(DEMO_KEY); } catch (e) {}
@@ -263,21 +302,24 @@ const Store = {
     if (!DB.setting.get("main")) DB.setting.set("main", clone(DEFAULT_SETTING));
   },
   persistDemo() {
-    if (HAS_GAS) return;
+    if (MODE !== "demo") return;
     const out = { _user: USER };
     COLLS.forEach(c => out[c] = all(c));
     try { localStorage.setItem(DEMO_KEY, JSON.stringify(out)); } catch (e) {}
   },
   async save(coll, rec) {
-    if (HAS_GAS) await gas("save", { coll, rec });
+    if (MODE === "supabase") await sbSave(coll, [rec]);
+    else if (HAS_GAS) await gas("save", { coll, rec });
     DB[coll].set(rec.id, rec); CALC.clear(); this.persistDemo();
   },
   async saveMany(coll, recs) {
-    if (HAS_GAS) await gas("saveMany", { coll, recs });
+    if (MODE === "supabase") await sbSave(coll, recs);
+    else if (HAS_GAS) await gas("saveMany", { coll, recs });
     recs.forEach(r => DB[coll].set(r.id, r)); CALC.clear(); this.persistDemo();
   },
   async remove(coll, id) {
-    if (HAS_GAS) await gas("remove", { coll, id });
+    if (MODE === "supabase") { const { error } = await SB.from("records").delete().eq("coll", coll).eq("id", String(id)); if (error) throw new Error(error.message); }
+    else if (HAS_GAS) await gas("remove", { coll, id });
     DB[coll].delete(id); CALC.clear(); this.persistDemo();
   }
 };
@@ -454,8 +496,11 @@ function renderShell(inner) {
     return (g.g ? `<h6>${g.g}</h6>` : "") + items.map(i =>
       `<button data-act="nav" data-v="${i[0]}" ${UI.view === i[0] || (i[0] === "kelas" && UI.view === "ruang") ? 'aria-current="page"' : ""}>${icon(i[0])}<span>${esc(i[1])}</span></button>`).join("");
   }).join("");
-  const who = HAS_GAS
-    ? `<strong>${esc(USER.nama || USER.email)}</strong><small>${isAdmin() ? "Admin prodi" : "Dosen pengampu"} – ${esc(USER.email)}</small>`
+  const whoInfo = `<strong>${esc(USER.nama || USER.email)}</strong><small>${isAdmin() ? "Admin prodi" : "Dosen pengampu"} – ${esc(USER.email)}</small>`;
+  const who = MODE === "supabase"
+    ? `${whoInfo}<button class="btn sm" data-act="signout" style="width:100%;margin-top:10px">Keluar</button>`
+    : MODE === "gas"
+    ? whoInfo
     : `<label class="small muted" for="asUser">Mode demo, masuk sebagai</label>
        <select id="asUser" data-in="asUser" style="width:100%;margin-top:4px">
          <option value="admin" ${isAdmin() ? "selected" : ""}>Admin prodi</option>
@@ -530,8 +575,9 @@ VIEWS.ringkasan = () => {
   const st = ks.map(k => ({ k, s: kelasStatus(k), R: calcKelas(k) }));
   const nFinal = st.filter(x => x.s.lv === "ok").length;
   const nBad = st.filter(x => x.s.lv === "bad").length;
-  const seedNote = DB._seedPending && isAdmin() ? `<div class="note bad">Data mata kuliah dan CPMK belum tersimpan di spreadsheet. Aplikasi sedang memakai data awal dari Buku Kurikulum dan Excel simulasi. <button class="btn sm primary" data-act="saveSeed">Simpan data kurikulum ke spreadsheet</button></div>` : "";
-  const demoNote = !HAS_GAS ? `<div class="note info">Ini mode demo dengan data mahasiswa dan nilai contoh. Setelah dideploy ke Google Apps Script, data dibaca dan disimpan ke spreadsheet.</div>` : "";
+  const tempat = MODE === "gas" ? "spreadsheet" : "database";
+  const seedNote = DB._seedPending && isAdmin() ? `<div class="note bad">Data mata kuliah dan CPMK belum tersimpan ke ${tempat}. Aplikasi sedang memakai data awal dari Buku Kurikulum dan Excel simulasi. <button class="btn sm primary" data-act="saveSeed">Simpan data kurikulum ke ${tempat}</button></div>` : "";
+  const demoNote = MODE === "demo" ? `<div class="note info">Ini mode demo dengan data contoh, tersimpan di peramban ini saja. Untuk penggunaan bersama antar-dosen, sambungkan Supabase (lihat README) atau Google Apps Script.</div>` : "";
   // CPL prodi periode ini (hanya kelas final)
   const nims = new Set(); ks.forEach(k => (k.peserta || []).forEach(n => nims.add(n)));
   const perM = [...nims].map(n => cplMahasiswa(n, S, false));
@@ -1020,7 +1066,8 @@ VIEWS.pengaturan = () => {
        <div class="note" style="margin-top:12px">Pedoman tidak mengatur rentang 55,00–59,99. Dengan batas bawah D = 50, rentang itu mendapat D.</div>
        <button class="btn primary" type="submit">Simpan pengaturan</button></form></div></section>
        <section class="panel"><header><h2>Data</h2></header><div class="body">
-       ${HAS_GAS ? `<p>Data tersimpan di spreadsheet Google yang terhubung dengan skrip.</p>${DB._seedPending ? `<button class="btn primary" data-act="saveSeed">Simpan data kurikulum awal ke spreadsheet</button>` : ""}`
+       ${MODE === "gas" ? `<p>Data tersimpan di spreadsheet Google yang terhubung dengan skrip.</p>${DB._seedPending ? `<button class="btn primary" data-act="saveSeed">Simpan data kurikulum awal ke spreadsheet</button>` : ""}`
+         : MODE === "supabase" ? `<p>Data tersimpan di database Supabase. Setiap pengguna masuk dengan akun email masing-masing (${esc(USER.email)}).</p>${DB._seedPending ? `<button class="btn primary" data-act="saveSeed">Simpan data kurikulum awal ke database</button>` : ""}`
          : `<p>Mode demo menyimpan perubahan di peramban ini saja.</p><button class="btn danger" data-act="resetDemo">Kembalikan data demo</button>`}
        <h3 style="font-size:15px;margin:18px 0 8px">Cara hitung</h3>
        <dl class="kv"><dt>Nilai akhir</dt><dd>Σ skor komponen × bobot komponen</dd><dt>Capaian CPMK</dt><dd>Σ skor × bobot sel ÷ Σ bobot sel pada kolom CPMK</dd><dt>Capaian CPL</dt><dd>Σ (capaian CPMK × bobot CPMK × SKS) ÷ Σ (bobot CPMK × SKS), untuk CPMK yang dipetakan ke CPL itu, dari kelas final</dd><dt>IPS</dt><dd>Σ (SKS × bobot mutu) ÷ Σ SKS</dd></dl>
@@ -1069,7 +1116,10 @@ const ACT = {
       guard(() => Store.save("nilai", { ...nilaiDoc(k), status: "draft", unlockedBy: USER.nama || USER.email, unlockedAt: new Date().toLocaleString("id-ID") }), "Kunci dibuka."));
   },
   print: () => window.print(),
-  saveSeed: () => guard(async () => { await Store.saveMany("mk", SEED.mk); await Store.saveMany("cpmk", SEED.cpmk); DB._seedPending = false; }, "Data kurikulum tersimpan di spreadsheet."),
+  login: async () => { const email = ($("#logEmail").value || "").trim().toLowerCase(), pass = $("#logPass").value || ""; if (!email || !pass) { $("#loginMsg").innerHTML = `<div class="note bad">Isi email dan kata sandi.</div>`; return; } const { error } = await SB.auth.signInWithPassword({ email, password: pass }); if (error) { $("#loginMsg").innerHTML = `<div class="note bad">${esc(error.message)}</div>`; return; } await afterLogin(); },
+  magiclink: async () => { const email = ($("#logEmail").value || "").trim().toLowerCase(); if (!email) { $("#loginMsg").innerHTML = `<div class="note bad">Isi email dulu.</div>`; return; } const { error } = await SB.auth.signInWithOtp({ email, options: { emailRedirectTo: location.href } }); $("#loginMsg").innerHTML = error ? `<div class="note bad">${esc(error.message)}</div>` : `<div class="note info">Tautan masuk sudah dikirim ke ${esc(email)}. Buka email lalu klik tautannya.</div>`; },
+  signout: async () => { try { await SB.auth.signOut(); } catch (e) {} renderLogin(); },
+  saveSeed: () => guard(async () => { await Store.saveMany("mk", SEED.mk); await Store.saveMany("cpmk", SEED.cpmk); DB._seedPending = false; }, "Data kurikulum tersimpan."),
   resetDemo: () => confirmDlg("Kembalikan data demo", "Semua perubahan di mode demo akan hilang.", "Kembalikan", async () => { try { localStorage.removeItem(DEMO_KEY); } catch (e) {} await Store.load(); CALC.clear(); go("ringkasan"); }),
   csvRekap: () => { const k = DB.kelas.get(UI.p.id), R = calcKelas(k); downloadCSV(`rekap_${k.mk}_${k.nama}.csv`, [["No", "NIM", "Nama", ...R.P.a.komp.map(x => x.nama), "Nilai akhir", "Huruf"], ...R.rows.map((r, i) => [i + 1, r.nim, r.m.nama, ...R.P.a.komp.map(x => r.sc[x.id] ?? ""), r.NA == null ? "" : r.NA.toFixed(2).replace(".", ","), r.H ? r.H.h : ""])]); },
   csvCpmk: () => { const k = DB.kelas.get(UI.p.id), R = calcKelas(k); downloadCSV(`cpmk_${k.mk}_${k.nama}.csv`, [["NIM", "Nama", ...R.P.cp.map(c => `CPMK-${c.no} (${(c.cpl || []).join("/")})`), "NA"], ...R.rows.map(r => [r.nim, r.m.nama, ...R.P.cp.map(c => r.NC[c.id] == null ? "" : r.NC[c.id].toFixed(2).replace(".", ",")), r.NA == null ? "" : r.NA.toFixed(2).replace(".", ",")])]); },
@@ -1185,11 +1235,46 @@ function demoData() {
   return { mk: SEED.mk, cpmk: SEED.cpmk, dosen, mhs, kelas, asesmen, nilai, setting: [clone(DEFAULT_SETTING)] };
 }
 
-/* ---------- mulai ---------- */
-Store.load().then(() => { CALC.clear(); render(); }).catch(e => {
-  console.error(e);
-  $("#app").innerHTML = `<div class="page"><h1 style="font-family:var(--serif)">Aplikasi tidak dapat dimuat</h1><p>${esc(e && e.message ? e.message : e)}</p><p>Pastikan akun Anda terdaftar di menu Dosen & akun, atau hubungi admin prodi.</p></div>`;
-});
+/* ---------- layar masuk (mode Supabase) ---------- */
+function renderLogin(msg) {
+  $("#app").className = "";
+  $("#app").innerHTML = `<div style="min-height:100vh;display:grid;place-items:center;padding:24px">
+    <div class="panel" style="max-width:400px;width:100%;margin:0">
+      <div class="body">
+        <div style="text-align:center;margin-bottom:8px">
+          <div style="font-family:var(--serif);font-weight:600;font-size:22px;color:var(--indigo)">Evaluasi OBE</div>
+          <div class="small muted">S1 Administrasi Rumah Sakit — Universitas Borneo Lestari</div>
+        </div>
+        <div id="loginMsg">${msg ? `<div class="note bad">${esc(msg)}</div>` : ""}</div>
+        <label class="field"><span>Email</span><input type="email" id="logEmail" placeholder="nama@unbl.ac.id" autocomplete="username"></label>
+        <label class="field"><span>Kata sandi</span><input type="password" id="logPass" autocomplete="current-password"></label>
+        <button class="btn primary" data-act="login" style="width:100%">Masuk</button>
+        <div style="text-align:center;margin:14px 0;color:var(--ink-3);font-size:13px">atau</div>
+        <button class="btn" data-act="magiclink" style="width:100%">Kirim tautan masuk ke email</button>
+        <p class="small muted" style="margin:16px 0 0">Hanya email yang terdaftar sebagai dosen atau admin prodi yang dapat masuk. Bila belum terdaftar, hubungi admin prodi.</p>
+      </div>
+    </div></div>`;
+  const f = $("#logEmail"); if (f) f.focus();
+}
+async function afterLogin() {
+  try { await Store.load(); CALC.clear(); UI.view = "ringkasan"; UI.navOpen = false; render(); }
+  catch (e) { console.error(e); renderLogin(e && e.message ? e.message : String(e)); }
+}
+async function boot() {
+  if (MODE === "supabase") {
+    SB.auth.onAuthStateChange((ev) => { if (ev === "SIGNED_OUT") renderLogin(); });
+    let session = null;
+    try { session = (await SB.auth.getSession()).data.session; } catch (e) {}
+    if (!session) { renderLogin(); return; }
+    await afterLogin();
+    return;
+  }
+  Store.load().then(() => { CALC.clear(); render(); }).catch(e => {
+    console.error(e);
+    $("#app").innerHTML = `<div class="page"><h1 style="font-family:var(--serif)">Aplikasi tidak dapat dimuat</h1><p>${esc(e && e.message ? e.message : e)}</p><p>Pastikan akun Anda terdaftar di menu Dosen & akun, atau hubungi admin prodi.</p></div>`;
+  });
+}
+boot();
 </script>
 </body>
 </html>
