@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)file:///C:/Users/LENOVO/Downloads/sevima%20kw5.html -->
+<html lang="id"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--<base target="_top">--><base href="." target="_top">
+<title>Evaluasi OBE – S1 Administrasi Rumah Sakit UNBL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Evaluasi OBE – S1 Administrasi Rumah Sakit UNBL 2nd_files/css2" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2433; --ink-2:#4a5568; --ink-3:#6b7686;
+  --paper:#f3f5f8; --surface:#ffffff; --line:#d9dee6; --line-2:#e9edf2;
+  --indigo:#27406b; --indigo-2:#344f80; --indigo-tint:#e6ebf4;
+  --kunyit:#d99a1e; --kunyit-tint:#fbf1dc;
+  --ok:#2d7555; --ok-tint:#e3f1ea; --bad:#b0442f; --bad-tint:#f8e6e1; --mid:#8a6a14;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --r-sm:5px; --r-md:9px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--sans);font-size:14.5px;line-height:1.5;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+.num,td.n,th.n{font-variant-numeric:tabular-nums;text-align:right}
+a{color:var(--indigo)}
+:focus-visible{outline:2px solid var(--kunyit);outline-offset:2px}
+
+/* Shell */
+.app{display:grid;grid-template-columns:258px 1fr;min-height:100vh}
+.rail{background:var(--surface);border-right:1px solid var(--line);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow:auto}
+.brand{padding:20px 20px 14px;border-bottom:1px solid var(--line-2)}
+.brand b{display:block;font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.2;color:var(--indigo)}
+.brand span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:4px}
+.period{padding:12px 20px;border-bottom:1px solid var(--line-2);display:grid;grid-template-columns:1fr 92px;gap:6px}
+.period select{padding:6px 4px}
+.period label{grid-column:1/-1;font-size:12px;color:var(--ink-3)}
+.nav{padding:10px 10px 20px;flex:1}
+.nav h6{margin:16px 10px 4px;font-size:12px;font-weight:600;color:var(--ink-3)}
+.nav button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;padding:7px 10px;border-radius:var(--r-sm);cursor:pointer;color:var(--ink-2)}
+.nav button:hover{background:var(--paper);color:var(--ink)}
+.nav button[aria-current="page"]{background:var(--indigo-tint);color:var(--indigo);font-weight:600}
+.nav .step{width:18px;height:18px;border-radius:50%;border:1px solid currentColor;font-size:11px;display:grid;place-items:center;flex:none;opacity:.8}
+.who{padding:14px 20px;border-top:1px solid var(--line-2);font-size:13px}
+.who strong{display:block}
+.who small{color:var(--ink-3)}
+.main{min-width:0}
+.topbar{display:none}
+.page{max-width:1180px;padding:28px 36px 60px}
+.pagehead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.pagehead h1{font-family:var(--serif);font-weight:600;font-size:30px;line-height:1.15;margin:0;letter-spacing:-.2px}
+.pagehead p{margin:6px 0 0;color:var(--ink-2);max-width:68ch}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+/* Controls */
+.btn{border:1px solid var(--line);background:var(--surface);padding:7px 13px;border-radius:var(--r-sm);cursor:pointer;font-weight:500;white-space:nowrap}
+.btn:hover{border-color:var(--ink-3)}
+.btn.primary{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.btn.primary:hover{background:var(--indigo-2)}
+.btn.danger{color:var(--bad);border-color:#e2bfb6}
+.btn.ghost{border-color:transparent;background:none;color:var(--indigo);padding:4px 6px}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.sm{padding:4px 9px;font-size:13px}
+input[type=text],input[type=number],input[type=email],select,textarea{border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;padding:6px 9px;min-width:0}
+textarea{width:100%;min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--indigo-tint);border-color:var(--indigo)}
+.field{display:grid;gap:4px;margin-bottom:12px}
+.field>span{font-size:13px;color:var(--ink-2);font-weight:500}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.toolbar input[type=text]{width:260px}
+.checks{display:flex;flex-wrap:wrap;gap:6px 14px}
+.checks label{display:flex;gap:6px;align-items:center;font-size:13.5px}
+
+/* Surfaces */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:22px}
+.panel>header{padding:14px 18px;border-bottom:1px solid var(--line-2);display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.panel>header h2{font-size:16px;margin:0;font-weight:600}
+.panel>header p{margin:2px 0 0;font-size:13px;color:var(--ink-3)}
+.panel .body{padding:16px 18px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 12px;border-bottom:1px solid var(--line-2);vertical-align:top;text-align:left}
+th{font-size:12.5px;font-weight:600;color:var(--ink-2);background:#fafbfc;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tbody tr.click{cursor:pointer}
+tbody tr.click:hover td{background:#f7f9fc}
+td.code{font-weight:600;white-space:nowrap}
+.muted{color:var(--ink-3)}
+.small{font-size:13px}
+.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tag{display:inline-block;padding:1px 7px;border-radius:20px;font-size:12px;font-weight:600;background:var(--indigo-tint);color:var(--indigo);margin:1px 2px 1px 0;white-space:nowrap}
+.tag.warn{background:var(--kunyit-tint);color:var(--mid)}
+.tag.bad{background:var(--bad-tint);color:var(--bad)}
+.tag.ok{background:var(--ok-tint);color:var(--ok)}
+.tag.plain{background:var(--paper);color:var(--ink-2)}
+.note{border-left:3px solid var(--kunyit);background:var(--kunyit-tint);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:0 0 16px;font-size:13.5px}
+.note.bad{border-color:var(--bad);background:var(--bad-tint)}
+.note.info{border-color:var(--indigo);background:var(--indigo-tint)}
+.empty{padding:28px 18px;text-align:center;color:var(--ink-2)}
+.lead{font-size:15.5px;margin:0 0 18px;max-width:75ch}
+
+/* Pipeline */
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);margin-bottom:18px;overflow:hidden}
+.pipe button{border:0;background:none;text-align:left;padding:12px 16px;cursor:pointer;border-right:1px solid var(--line-2);position:relative}
+.pipe button:last-child{border-right:0}
+.pipe button:hover{background:var(--paper)}
+.pipe b{display:flex;align-items:center;gap:8px;font-size:13.5px}
+.pipe small{display:block;color:var(--ink-3);font-size:12.5px;margin-top:2px}
+.pipe .dot{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:var(--paper);color:var(--ink-3);border:1px solid var(--line)}
+.pipe .done .dot{background:var(--ok);color:#fff;border-color:var(--ok)}
+.pipe .warn .dot{background:var(--kunyit);color:#fff;border-color:var(--kunyit)}
+.pipe .bad .dot{background:var(--bad);color:#fff;border-color:var(--bad)}
+.pipe button[aria-current="step"]{box-shadow:inset 0 -3px 0 var(--indigo)}
+
+/* Bars */
+.bars{display:grid;gap:10px}
+.barrow{display:grid;grid-template-columns:78px 1fr 104px;gap:12px;align-items:center}
+.barrow .num{white-space:nowrap}
+.minibar{display:grid;grid-template-columns:1fr 44px;gap:10px;align-items:center;min-width:170px}
+.barrow .lbl{font-weight:600;font-size:13px}
+.bar{height:14px;background:var(--line-2);border-radius:3px;position:relative}
+.bar>span{position:absolute;inset:0 auto 0 0;background:var(--indigo);border-radius:3px}
+.bar>span.low{background:var(--bad)}
+.bar>i{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--kunyit)}
+.bar.na{background:repeating-linear-gradient(45deg,var(--line-2),var(--line-2) 4px,#f7f8fa 4px,#f7f8fa 8px)}
+
+/* Grade grid */
+.gridin{width:68px;text-align:right;padding:4px 6px}
+.gridin.err{border-color:var(--bad);background:var(--bad-tint)}
+.sticky1{position:sticky;left:0;background:#fff;z-index:1;min-width:210px}
+th.sticky1{background:#fafbfc}
+.sum{font-weight:600}
+.sum.bad{color:var(--bad)}
+.sum.ok{color:var(--ok)}
+.matrix td,.matrix th{text-align:center}
+.matrix td:first-child,.matrix th:first-child{text-align:left}
+.matin{width:78px;text-align:right;padding:4px 6px}
+.matin::-webkit-outer-spin-button,.matin::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.matin{-moz-appearance:textfield}
+
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:18px;overflow-x:auto}
+.tabs button{border:0;background:none;padding:9px 14px;cursor:pointer;color:var(--ink-2);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--indigo);border-color:var(--indigo);font-weight:600}
+
+.twocol{display:grid;grid-template-columns:340px 1fr;gap:22px;align-items:start}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:13.5px}
+.kv dt{color:var(--ink-3)}
+.kv dd{margin:0}
+details summary{cursor:pointer;color:var(--indigo);font-size:13px}
+
+dialog{border:0;border-radius:var(--r-md);padding:0;width:min(640px,94vw);box-shadow:0 18px 50px rgba(28,36,51,.25)}
+dialog::backdrop{background:rgba(28,36,51,.45)}
+dialog header{padding:16px 20px;border-bottom:1px solid var(--line-2)}
+dialog header h3{margin:0;font-size:17px}
+dialog .dbody{padding:16px 20px;max-height:66vh;overflow:auto}
+dialog footer{padding:12px 20px;border-top:1px solid var(--line-2);display:flex;justify-content:flex-end;gap:8px}
+
+#toast{position:fixed;right:20px;bottom:20px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:var(--r-sm);font-size:14px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;z-index:50;max-width:380px}
+#toast.show{opacity:1;transform:none}
+#toast.err{background:var(--bad)}
+.loading{display:grid;place-items:center;height:100vh;color:var(--ink-3)}
+
+.report .panel>header h2{font-family:var(--serif);font-weight:600;font-size:19px}
+
+@media (max-width:900px){
+  .app{grid-template-columns:1fr}
+  .rail{position:fixed;inset:0 auto 0 0;width:270px;z-index:40;transform:translateX(-100%);transition:transform .2s;box-shadow:0 0 40px rgba(0,0,0,.2)}
+  .rail.open{transform:none}
+  .topbar{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+  .page{padding:20px 16px 60px}
+  .twocol,.grid2{grid-template-columns:1fr}
+  .pipe{grid-template-columns:1fr 1fr}
+  .pipe button:nth-child(2){border-right:0}
+  .pipe button:nth-child(-n+2){border-bottom:1px solid var(--line-2)}
+  .toolbar input[type=text]{width:100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{
+  body{background:#fff;font-size:11.5px}
+  .rail,.topbar,.actions,.toolbar,.tabs,.pipe,.noprint,#toast{display:none!important}
+  .app{display:block}
+  .page{max-width:none;padding:0}
+  .panel{border:0;margin-bottom:10px;break-inside:avoid}
+  .panel>header{padding:4px 0}
+  .panel .body{padding:4px 0}
+  th,td{padding:4px 6px}
+  .scroll{overflow:visible}
+}
+</style>
+</head>
+<body>
+<div id="app" class="">
+  <div class="app">
+    <aside class="rail " aria-label="Menu utama">
+      <div class="brand"><b>Evaluasi OBE</b><span>S1 Administrasi Rumah Sakit<br>Universitas Borneo Lestari</span></div>
+      <div class="period">
+        <label for="pTa">Periode akademik</label>
+        <select id="pTa" data-in="periodTa"><option>2024/2025</option><option>2025/2026</option><option selected="">2026/2027</option><option>2027/2028</option><option>2028/2029</option></select>
+        <select aria-label="Semester" data-in="periodSmt"><option selected="">Ganjil</option><option>Genap</option><option>Antara</option></select>
+      </div>
+      <nav class="nav"><button data-act="nav" data-v="ringkasan">Ringkasan</button><h6>Kurikulum 2024</h6><button data-act="nav" data-v="cpl">CPL &amp; profil lulusan</button><button data-act="nav" data-v="mk">Mata kuliah</button><button data-act="nav" data-v="cpmk">CPMK &amp; sub-CPMK</button><button data-act="nav" data-v="audit" aria-current="page">Audit keselarasan</button><h6>Perkuliahan semester</h6><button data-act="nav" data-v="kelas">Kelas &amp; penilaian</button><button data-act="nav" data-v="mhs">Mahasiswa</button><button data-act="nav" data-v="dosen">Dosen &amp; akun</button><h6>Capaian &amp; laporan</h6><button data-act="nav" data-v="capaian">Capaian CPL mahasiswa</button><button data-act="nav" data-v="laporan">Laporan semester</button><button data-act="nav" data-v="pengaturan">Pengaturan penilaian</button></nav>
+      <div class="who"><label class="small muted" for="asUser">Mode demo, masuk sebagai</label>
+       <select id="asUser" data-in="asUser" style="width:100%;margin-top:4px">
+         <option value="admin" selected="">Admin prodi</option>
+         <option value="D01">Nurul Hidayah, S.KM., M.Kes.</option><option value="D02">Rahmat Fauzi, S.E., M.M.</option><option value="D03">Maulida Sari, S.Kom., M.Kom.</option>
+       </select></div>
+    </aside>
+    <div class="main">
+      <div class="topbar"><button class="btn sm" data-act="toggleNav" aria-label="Buka menu">Menu</button><b>Evaluasi OBE S1 ARS</b></div>
+      <div class="page"><div class="pagehead"><div><h1>Audit keselarasan kurikulum</h1><p>Pemeriksaan otomatis antara Buku Kurikulum 2024, CPMK dari Excel, dan data yang tersimpan di aplikasi. Daftar ini ikut berubah setiap kali data MK atau CPMK diubah.</p></div><div class="actions"></div></div><section class="panel"><header><div><h2>Sebaran CPMK per CPL</h2><p>CPL tanpa CPMK tidak bisa dilaporkan capaiannya.</p></div></header><div class="body"><div class="checks"><span class="tag ok">CPL-01: 6 CPMK</span><span class="tag ok">CPL-02: 3 CPMK</span><span class="tag ok">CPL-03: 3 CPMK</span><span class="tag ok">CPL-04: 3 CPMK</span><span class="tag ok">CPL-05: 15 CPMK</span><span class="tag ok">CPL-06: 122 CPMK</span><span class="tag ok">CPL-07: 41 CPMK</span></div></div></section><section class="panel"><header><div><h2>Mata kuliah bermasalah</h2><p>11 temuan dari 84 mata kuliah.</p></div><button class="btn sm" data-act="csvAudit">Unduh CSV</button></header>
+      <div class="scroll"><table><thead><tr><th>Kode</th><th>Mata kuliah</th><th>Temuan</th><th>Keterangan</th></tr></thead><tbody>
+      <tr class="click" data-act="gotoCpmk" data-id="SARS405"><td class="code">SARS405</td><td>Praktik Manajemen Keuangan</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS412"><td class="code">SARS412</td><td>Pelayanan Publik</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS413"><td class="code">SARS413</td><td>Manajemen Mitigasi Bencana</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS502"><td class="code">SARS502</td><td>Praktik Manajemen Jaminan Mutu Kesehatan</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS511"><td class="code">SARS511</td><td>Sistem Asuransi Kesehatan</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS513"><td class="code">SARS513</td><td>Perpajakan Rumah Sakit</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS611"><td class="code">SARS611</td><td>Standar &amp; Akreditasi RS</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS612"><td class="code">SARS612</td><td>Program Pengendalian Infeksi</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS613"><td class="code">SARS613</td><td>Corporate Governance</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS614"><td class="code">SARS614</td><td>Hospital Engineering</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr><tr class="click" data-act="gotoCpmk" data-id="SARS707"><td class="code">SARS707</td><td>e-Hospital</td><td><span class="tag bad">Belum ada CPMK</span></td><td class="small">Nilai MK ini tidak bisa dihitung ke CPL.</td></tr></tbody></table></div></section><section class="panel"><header><div><h2>CPMK dengan rumusan identik di MK berbeda</h2><p>10 kelompok.</p></div></header><div class="scroll"><table><thead><tr><th>Mata kuliah</th><th>Rumusan</th></tr></thead><tbody>
+      <tr><td><span class="tag plain">UNBL24003 CPMK-1</span><span class="tag plain">SARS201 CPMK-1</span></td><td class="small">Mampu memahami dan menggunakan kosakata serta ungkapan dasar Bahasa Inggris dalam konteks pelayanan kesehatan dasar di rumah sakit.</td></tr><tr><td><span class="tag plain">UNBL24003 CPMK-2</span><span class="tag plain">SARS201 CPMK-2</span></td><td class="small">mampu menyusun dan menyampaikan pesan tertulis dan lisan sederhana dalam Bahasa Inggris, serta mampu beradaptasi dalam situasi komunikasi digital dan layanan kesehatan berbasis teknologi.</td></tr><tr><td><span class="tag plain">SARS210 CPMK-1</span><span class="tag plain">SARS305 CPMK-1</span></td><td class="small">Mampu menggunakan dan mempraktikkan fitur dalam aplikasi Ms. Word &amp; Excel dengan lebih canggih/ advance</td></tr><tr><td><span class="tag plain">SARS302 CPMK-1</span><span class="tag plain">SARS309 CPMK-1</span></td><td class="small">Mampu mengoperasikan modul-modul utama alur kerja Aplikasi SIMRS (pendaftaran, rekam medis elektronik, farmasi, kasir, dan penunjang).</td></tr><tr><td><span class="tag plain">SARS302 CPMK-2</span><span class="tag plain">SARS309 CPMK-2</span></td><td class="small">Mampu mensimulasikan tata kelola input data, validasi, dan penyusunan laporan operasional medis/manajerial secara akurat.</td></tr><tr><td><span class="tag plain">SARS302 CPMK-3</span><span class="tag plain">SARS309 CPMK-3</span></td><td class="small">Mampu mengidentifikasi dan memecahkan kendala teknis operasional (troubleshooting) tingkat dasar dalam penggunaan SIMRS.</td></tr><tr><td><span class="tag plain">SARS407 CPMK-1</span><span class="tag plain">SARS702 CPMK-1</span></td><td class="small">Mampu menerapkan dan mempraktikkan tupoksi pada unit perencanaan di RS pada kasus nyata di lapangan</td></tr><tr><td><span class="tag plain">SARS510 CPMK-1</span><span class="tag plain">SARS802 CPMK-1</span></td><td class="small">Mampu mengidentifikasi masalah unit dan memberikan ide / solusi berdasarkan evidenbase/ penelitian terkini yang sesuai malasah pada unit manajerial di RS</td></tr><tr><td><span class="tag plain">SARS510 CPMK-2</span><span class="tag plain">SARS802 CPMK-2</span></td><td class="small">Mengidentifikasi dan menganalisis job description masing-masing unit manajerial rumah sakit</td></tr><tr><td><span class="tag plain">SARS705 CPMK-1</span><span class="tag plain">SARS801 CPMK-1</span></td><td class="small">Mampu berfikir sistematis, etis dan kritis pada permasalahan yang ditemukan dengan cara yang objektif</td></tr></tbody></table></div></section><section class="panel"><header><div><h2>Catatan sumber dokumen</h2><p>Ditemukan saat menyusun data awal; perlu keputusan prodi.</p></div></header><div class="scroll"><table><thead><tr><th>Sumber</th><th>Catatan</th></tr></thead><tbody>
+      <tr><td><span class="tag plain">Excel</span></td><td class="small">Tiga CPMK pertama Praktik Penyuluhan Kesehatan RS (SARS309) identik dengan CPMK Praktik SIMRS (SARS302). Perlu dirumuskan ulang.</td></tr><tr><td><span class="tag plain">Excel</span></td><td class="small">Excel memuat CPMK untuk "Praktik Manajemen Pemasaran RS" dan "Praktik Manajemen Komplain dan Customer Service", tetapi kedua MK itu tidak ada di Buku Kurikulum. CPMK-nya tidak diimpor.</td></tr><tr><td><span class="tag plain">Excel</span></td><td class="small">"Praktik Aplikasi Komputer I &amp; II" ditulis dalam satu baris. CPMK yang sama dipasang ke SARS210 dan SARS305; sebaiknya dibedakan jenjangnya.</td></tr><tr><td><span class="tag plain">Excel</span></td><td class="small">CPMK Bahasa Inggris (UNBL24003) dan Bahasa Inggris Profesi (SARS201) identik, begitu juga PBL I dan PBL II, serta Final Project I dan II (sebagian).</td></tr><tr><td><span class="tag plain">Nama</span></td><td class="small">Excel memakai nama lama: Statistika Rumah Sakit → Biostatistik &amp; Statistika Kesehatan (SARS609); Final Project I/II → Skripsi I/II (SARS705/SARS801); Casemix dan Remunerasi → Sistem Casemix dan Remunerasi (SARS706).</td></tr><tr><td><span class="tag plain">Excel</span></td><td class="small">Sheet Distribusi MK di Excel memakai kode dan semester versi lama (mis. SARS209 = Manajemen Logistik). Aplikasi mengikuti kode Buku Kurikulum Tabel 8.</td></tr><tr><td><span class="tag plain">Buku</span></td><td class="small">Pengantar Kearifan Lokal Kalimantan tertulis 1 SKS di Tabel 8 dan Tabel 12, tetapi 2 SKS di Tabel 9. Aplikasi memakai 1 SKS.</td></tr><tr><td><span class="tag plain">Buku</span></td><td class="small">Praktik Akuntansi Biaya (SARS304) tidak tercantum di Tabel 6 (matriks CPL–MK). Manajemen Mitigasi Bencana (SARS413) di Tabel 6 kosong, sedangkan Tabel 7 menulis CPL-05; CPL-06.</td></tr><tr><td><span class="tag plain">Buku</span></td><td class="small">Jumlah SKS Semester VI di Tabel 15 tertulis 117 (salah ketik).</td></tr><tr><td><span class="tag plain">Pedoman</span></td><td class="small">Skala huruf mutu di Pedoman Penilaian melompat dari D (50–54,99) ke C (60–64,99); rentang 55,00–59,99 tidak diatur. Aplikasi sementara memasukkannya ke D.</td></tr><tr><td><span class="tag plain">Pedoman</span></td><td class="small">Kolom "Persentase" pada contoh tabel CPL di Pedoman adalah proporsi skor terhadap total semua CPL (mis. 560/6480 = 8,64%), bukan tingkat capaian. Tingkat capaian = skor diperoleh ÷ skor maksimal (560/600 = 93,3%). Aplikasi menampilkan keduanya secara terpisah.</td></tr><tr><td><span class="tag plain">Pedoman</span></td><td class="small">Contoh tabel CPL di Pedoman memakai kode MK Farmasi (VFAR) dan 11 CPL. Front end lama menyalin contoh ini apa adanya.</td></tr></tbody></table></div></section></div>
+    </div>
+  </div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="dlg"></dialog>
+
+<script>
+/* =====================================================================
+   Data kurikulum awal
+   - CPL, Profil Lulusan, Mata Kuliah (kode, semester, SKS, CPL MK):
+     Buku Kurikulum Prodi S1 ARS UNBL 2024 v4.0 (Tabel 2, 1, 8, 6, 7)
+   - CPMK & Sub-CPMK: Simulasi Kurikulum 2024 Revisi 3.1, sheet "CPL-CPMK"
+   ===================================================================== */
+const SEED = {"cpl":[{"id":"CPL-01","r":"","d":"Bertakwa kepada Tuhan Yang Maha Esa, menjunjung tinggi nilai kemanusiaan, moral, dan etika akademik, serta berkontribusi dalam peningkatan mutu kehidupan bermasyarakat, berbangsa, bernegara, dan kemajuan peradaban berdasarkan Pancasila."},{"id":"CPL-02","r":"","d":"Mampu melakukan komunikasi efektif secara verbal dan nonverbal untuk membangun hubungan interpersonal di bidang keahliannya dengan memperhatikan dan menerapkan nilai humaniora berdasarkan kaidah, tata cara dan etika ilmiah."},{"id":"CPL-03","r":"","d":"Menguasai pengetahuan kearifan lokal, serta upaya pemanfaatan dan pelestariannya melalui pengenalan ilmu pengetahuan, teknologi dan seni Kalimantan."},{"id":"CPL-04","r":"","d":"Lulusan Program Studi Sarjana Administrasi Rumah Sakit diharapkan menunjukkan integritas, etika akademik, serta kejujuran ilmiah dalam melaksanakan penelitian dan publikasi. Dalam setiap proses penelitian, lulusan juga dituntut untuk mampu menghargai serta mengakomodasi nilai-nilai kearifan lokal yang berkembang di masyarakat, khususnya dalam konteks kesehatan dan manajemen rumah sakit. Lulusan memiliki kemampuan memahami perkembangan mutakhir penelitian di bidang manajemen rumah sakit, pelayanan kesehatan, dan kebijakan kesehatan, termasuk penelitian yang berbasis kearifan lokal. Kemampuan tersebut diwujudkan melalui keterampilan dalam mengelola, menganalisis, dan menyajikan data penelitian secara sistematis dengan dukungan teknologi informasi. Lulusan juga diharapkan mampu mengintegrasikan hasil penelitian ke dalam bentuk rekomendasi kebijakan, inovasi manajerial, maupun model pengembangan rumah sakit yang aplikatif."},{"id":"CPL-05","r":"Afektif","d":"Lulusan mampu menilai suatu fenomena baik atau buruk bagi sesama dan terbuka terhadap pengetahuan dengan mengubah pendapat dan perilaku jika ada bukti yang tidak mendukung pendapatnya."},{"id":"CPL-06","r":"Kognitif","d":"Lulusan mampu menilai, menyimpulkan, mengevaluasi informasi termasuk di dalamnya melakukan pembuatan keputusan dan kebijakan dengan objektif dalam manajemen layanan kesehatan."},{"id":"CPL-07","r":"Psikomotor","d":"Lulusan mampu meniru, merancang, mendemonstrasikan, untuk menerapkan konsep dalam manajemen layanan kesehatan."}],"pl":[["PL-01","Leader"],["PL-02","Middle Level Manager"],["PL-03","Educator"],["PL-04","Researcher"],["PL-05","Data Engineer"],["PL-06","Entrepreneur"]],"mk":[{"id":"UNBL24001","n":"Pendidikan Agama","s":1,"t":2,"p":0,"j":"MKWU","cpl":["CPL-01","CPL-05"]},{"id":"UNBL24004","n":"Pancasila","s":1,"t":2,"p":0,"j":"MKWU","cpl":["CPL-05"]},{"id":"UNBL24003","n":"Bahasa Inggris","s":1,"t":1,"p":0,"j":"MKWU","cpl":["CPL-06"]},{"id":"UNBL24002","n":"Bahasa Indonesia","s":1,"t":2,"p":0,"j":"MKWU","cpl":["CPL-01"]},{"id":"SARS101","n":"Epidemiologi Klinis","s":1,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS102","n":"Matematika","s":1,"t":2,"p":0,"j":"Wajib","cpl":["CPL-01"]},{"id":"SARS103","n":"Dasar-dasar Akuntansi","s":1,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS104","n":"PSKL (Product & Service Knowledge)","s":1,"t":2,"p":0,"j":"Wajib","cpl":["CPL-02"]},{"id":"SARS105","n":"Dasar-dasar Komunikasi","s":1,"t":2,"p":0,"j":"Wajib","cpl":["CPL-02","CPL-06"]},{"id":"SARS106","n":"Pengantar Ilmu Sosial Dasar","s":1,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"UNBL24005","n":"Kewarganegaraan","s":2,"t":2,"p":0,"j":"MKWU","cpl":["CPL-05"]},{"id":"SARS201","n":"Bahasa Inggris (Profesi)","s":2,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS202","n":"Pendidikan dan Budaya Anti Korupsi","s":2,"t":1,"p":0,"j":"Wajib","cpl":["CPL-05"]},{"id":"SARS203","n":"Antropologi Kesehatan","s":2,"t":2,"p":0,"j":"Wajib","cpl":["CPL-01","CPL-05"]},{"id":"SARS204","n":"Ekonomi Kesehatan","s":2,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS205","n":"Ilmu Kesehatan Masyarakat","s":2,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS206","n":"Administrasi Rumah Sakit","s":2,"t":3,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS207","n":"Etika Profesi dan Hukum Kesehatan","s":2,"t":2,"p":0,"j":"Wajib","cpl":["CPL-01","CPL-05"]},{"id":"SARS208","n":"Manajemen Perilaku Organisasi","s":2,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS209","n":"Aplikasi Komputer","s":2,"t":1,"p":0,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS210","n":"Praktik Aplikasi Komputer I","s":2,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"UNBL24006","n":"Pengantar Kearifan Lokal Kalimantan","s":3,"t":1,"p":0,"j":"MKWU","cpl":["CPL-03","CPL-05"]},{"id":"SARS301","n":"Sistem Informasi Manajemen Rumah Sakit","s":3,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS302","n":"Praktik Sistem Informasi Manajemen Rumah Sakit","s":3,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS303","n":"Akuntansi Biaya (Implementasi di RS)","s":3,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS304","n":"Praktik Akuntansi Biaya (Implementasi di RS)","s":3,"t":0,"p":1,"j":"Wajib","cpl":[]},{"id":"SARS305","n":"Praktik Aplikasi Komputer II","s":3,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS306","n":"Manajemen Rekam Medis","s":3,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS307","n":"Manajemen Logistik Medik & Non Medik","s":3,"t":3,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS308","n":"Penyuluhan Kesehatan Rumah Sakit","s":3,"t":1,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS309","n":"Praktik Penyuluhan Kesehatan Rumah Sakit","s":3,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS310","n":"Manajemen Sumber Daya Manusia (SDM) Kesehatan","s":3,"t":3,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS311","n":"Peraturan dan Kebijakan Kesehatan (AKRS)","s":3,"t":3,"p":0,"j":"Wajib","cpl":["CPL-05"]},{"id":"SARS401","n":"Manajemen Pelayanan Kesehatan dan Rumah Sakit","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS402","n":"Praktik Manajemen Pelayanan Kesehatan dan Rumah Sakit","s":4,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS403","n":"Manajemen Penunjang Medis","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS404","n":"Manajemen Keuangan","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS405","n":"Praktik Manajemen Keuangan","s":4,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS406","n":"Sistem Perencanaan Rumah Sakit (Fisik dan Operasional)","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS407","n":"Praktik Sistem Perencanaan Rumah Sakit (Fisik dan Operasional)","s":4,"t":0,"p":1,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS408","n":"Leadership","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS409","n":"Manajemen Aset dan Tata Ruang","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS410","n":"Manajemen Pelayanan Kesehatan UKM/UKP","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS411","n":"Manajemen Komplain dan Customer Service","s":4,"t":2,"p":0,"j":"Wajib","cpl":["CPL-04","CPL-06"]},{"id":"SARS412","n":"Pelayanan Publik","s":4,"t":2,"p":0,"j":"Pilihan 1","cpl":["CPL-06"]},{"id":"SARS413","n":"Manajemen Mitigasi Bencana","s":4,"t":2,"p":0,"j":"Pilihan 1","cpl":[]},{"id":"SARS501","n":"Manajemen Jaminan Mutu Kesehatan","s":5,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS502","n":"Praktik Manajemen Jaminan Mutu Kesehatan","s":5,"t":0,"p":1,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS503","n":"Anggaran dan Indikator Kinerja","s":5,"t":1,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS504","n":"Praktik Anggaran dan Indikator Kinerja","s":5,"t":0,"p":1,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS505","n":"Manajemen Kesehatan Lingkungan & Limbah Rumah Sakit","s":5,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS506","n":"Praktik Manajemen Kesehatan Lingkungan & Limbah Rumah Sakit","s":5,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS507","n":"Manajemen Pemasaran RS","s":5,"t":2,"p":0,"j":"Wajib","cpl":["CPL-04","CPL-06"]},{"id":"SARS508","n":"Kewirausahaan","s":5,"t":0,"p":3,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS509","n":"Manajemen Bisnis (RSB & RBA)","s":5,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS510","n":"Pengalaman Belajar Lapangan (PBL) I","s":5,"t":0,"p":3,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS511","n":"Sistem Asuransi Kesehatan","s":5,"t":2,"p":0,"j":"Pilihan 2","cpl":["CPL-06"]},{"id":"SARS512","n":"Manajemen Layanan Khusus","s":5,"t":2,"p":0,"j":"Pilihan 2","cpl":["CPL-06"]},{"id":"SARS513","n":"Perpajakan Rumah Sakit","s":5,"t":2,"p":0,"j":"Pilihan 2","cpl":["CPL-06"]},{"id":"SARS601","n":"Studi Kelayakan Proyek","s":6,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS602","n":"Praktik Studi Kelayakan Proyek","s":6,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS603","n":"Manajemen Keselamatan dan Kesehatan Kerja RS","s":6,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS604","n":"Praktik Manajemen Keselamatan dan Kesehatan Kerja RS","s":6,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS605","n":"Hospital Public Relation","s":6,"t":2,"p":0,"j":"Wajib","cpl":["CPL-05","CPL-06"]},{"id":"SARS606","n":"Praktik Hospital Public Relation","s":6,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS607","n":"Manajemen Produksi Rumah Sakit","s":6,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS608","n":"Praktik Manajemen Produksi Rumah Sakit","s":6,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS609","n":"Biostatistik & Statistika Kesehatan","s":6,"t":3,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS610","n":"Metodologi Riset","s":6,"t":2,"p":0,"j":"Wajib","cpl":["CPL-02","CPL-04","CPL-06"]},{"id":"SARS611","n":"Standar & Akreditasi RS","s":6,"t":2,"p":0,"j":"Pilihan 3","cpl":["CPL-06"]},{"id":"SARS612","n":"Program Pengendalian Infeksi","s":6,"t":2,"p":0,"j":"Pilihan 3","cpl":["CPL-06"]},{"id":"SARS613","n":"Corporate Governance","s":6,"t":2,"p":0,"j":"Pilihan 3","cpl":["CPL-06"]},{"id":"SARS614","n":"Hospital Engineering","s":6,"t":2,"p":0,"j":"Pilihan 3","cpl":["CPL-06"]},{"id":"UNBL24007","n":"Kuliah Kerja Nyata (KKN)","s":7,"t":0,"p":3,"j":"MKWU","cpl":["CPL-07"]},{"id":"SARS701","n":"Evaluasi Kinerja Rumah Sakit","s":7,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS702","n":"Praktik Evaluasi Kinerja Rumah Sakit","s":7,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS703","n":"Manajemen Risiko Rumah Sakit","s":7,"t":2,"p":0,"j":"Wajib","cpl":["CPL-06"]},{"id":"SARS704","n":"Praktik Manajemen Risiko Rumah Sakit","s":7,"t":0,"p":1,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS705","n":"Skripsi I (Final Project I)","s":7,"t":0,"p":2,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS706","n":"Sistem Casemix dan Remunerasi","s":7,"t":2,"p":0,"j":"Pilihan 4","cpl":["CPL-06"]},{"id":"SARS707","n":"e-Hospital","s":7,"t":2,"p":0,"j":"Pilihan 4","cpl":["CPL-06"]},{"id":"SARS708","n":"Layanan BPSP (Bio, Psiko, Sosio, Spiritual) di Rumah Sakit","s":7,"t":2,"p":0,"j":"Pilihan 4","cpl":["CPL-06"]},{"id":"SARS801","n":"Skripsi II (Final Project II)","s":8,"t":0,"p":4,"j":"Wajib","cpl":["CPL-07"]},{"id":"SARS802","n":"Pengalaman Belajar Lapangan (PBL) II","s":8,"t":0,"p":5,"j":"Wajib","cpl":["CPL-07"]}],"cpmk":[{"id":"UNBL24001-1","mk":"UNBL24001","no":1,"d":"Mampu mengenali karakter yang berintegritas dalam lingkungan profesional kesehatan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 2"},{"id":"UNBL24001-2","mk":"UNBL24001","no":2,"d":"Menyadari bahwa setiap kegiatan manusia harus bertanggung jawab kepada kelestarian alam","cpl":["CPL-05"],"sub":[],"src":"Excel baris 3"},{"id":"UNBL24004-1","mk":"UNBL24004","no":1,"d":"Mahasiswa mampu menjelaskan nilai-nilai dasar Pancasila sebagai dasar negara, ideologi terbuka, dan relevansinya dalam menghadapi tantangan teknologi dan globalisasi di sektor pelayanan kesehatan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 4"},{"id":"UNBL24004-2","mk":"UNBL24004","no":2,"d":"Mahasiswa mampu menunjukkan sikap tanggung jawab sosial, integritas, dan kesadaran akan keadilan serta keberlanjutan lingkungan dalam praktik profesi administrasi rumah sakit berdasarkan nilai-nilai Pancasila.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 5"},{"id":"UNBL24003-1","mk":"UNBL24003","no":1,"d":"Mampu memahami dan menggunakan kosakata serta ungkapan dasar Bahasa Inggris dalam konteks pelayanan kesehatan dasar di rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 24"},{"id":"UNBL24003-2","mk":"UNBL24003","no":2,"d":"mampu menyusun dan menyampaikan pesan tertulis dan lisan sederhana dalam Bahasa Inggris, serta mampu beradaptasi dalam situasi komunikasi digital dan layanan kesehatan berbasis teknologi.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 25"},{"id":"UNBL24002-1","mk":"UNBL24002","no":1,"d":"Mampu memahami dan menerapkan kaidah bahasa Indonesia yang baik dan benar dalam penulisan naskah resmi dan nonresmi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 31"},{"id":"UNBL24002-2","mk":"UNBL24002","no":2,"d":"Mampu menyusun dan menyajikan komunikasi tertulis dan lisan yang efektif, etis, dan profesional di era digital","cpl":["CPL-06"],"sub":[],"src":"Excel baris 32"},{"id":"SARS101-1","mk":"SARS101","no":1,"d":"Mampu memahami dan menjabarkan konsep dasar dan ruang lingkup efidemiologi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 28"},{"id":"SARS101-2","mk":"SARS101","no":2,"d":"Mampu menggambarkan pengamatan epidemiologi dan kejadian wabah","cpl":["CPL-06"],"sub":[],"src":"Excel baris 29"},{"id":"SARS101-3","mk":"SARS101","no":3,"d":"Mampu mengaplikasikan dan menganalisis ukuran-ukuran dalam epidemiologi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 30"},{"id":"SARS102-1","mk":"SARS102","no":1,"d":"Mampu berlogika dan berpikir kuantitatif tingkat lanjut","cpl":["CPL-06"],"sub":[],"src":"Excel baris 33"},{"id":"SARS102-2","mk":"SARS102","no":2,"d":"Mampu memahami dan mengelola data numerik","cpl":["CPL-06"],"sub":[],"src":"Excel baris 34"},{"id":"SARS103-1","mk":"SARS103","no":1,"d":"Mahasiswa menguasai konsep akuntansi organisasi kesehatan/rumah sakit.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menjelaskan akuntansi dan standar akuntansi keuangan.","Mahasiswa mampu menjelaskan siklus akuntansi perusahaan jasa."],"src":"Excel baris 42"},{"id":"SARS103-2","mk":"SARS103","no":2,"d":"Mahasiswa mampu memproses informasi keuangan untuk menyajikan laporan keuangan organisasi.","cpl":["CPL-06"],"sub":["Mahasiswa mampu mengidentifikasi aset, kewajiban/liabilitas, dan ekuitas.","Mahasiswa mampu mengimplementasikan model persamaan akuntansi ke dalam sistem pembukuan.","Mahasiswa mampu menggunakan teknik posting jurnal ke buku besar ."],"src":"Excel baris 44"},{"id":"SARS103-3","mk":"SARS103","no":3,"d":"Mahasiswa mampu menelaah informasi laporan keuangan secara logis, kritis, dan sistematis.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menggunakan teknik penyesuaian pembukuan.","Mahasiswa mampu melengkapi neraca lajur."],"src":"Excel baris 47"},{"id":"SARS103-4","mk":"SARS103","no":4,"d":"Mahasiswa mampu mengevaluasi kondisi keuangan perusahaan dan mengkomunikasikannya kepada pemangku kepentingan.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menyajikan laporan keuangan pokok organisasi.","Mahasiswa mampu mengimplementasikan perhitungan dalam akuntansi perusahaan dagang."],"src":"Excel baris 49"},{"id":"SARS104-1","mk":"SARS104","no":1,"d":"Mampu mengidentifikasi istilah dalam unit manajerial RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 35"},{"id":"SARS104-2","mk":"SARS104","no":2,"d":"Mampu mengidentifikasi istilah dalam unit klinis RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 36"},{"id":"SARS105-1","mk":"SARS105","no":1,"d":"Mampu menguasai konsep, teori dan prinsip-prinsip yang mendasari komunikasi antar manusia, termasuk tujuan berkomunikasi, sejarah ilmu komunikasi, proses mendengarkan dan penerimaan informasi, pesan verbal dan nonverbal, pentingnya kedudukan dan peranan persepsi sebagai inti proses komunikasi, komunikasi interpersonal, komunikasi kelompok, komunikasi organisasi, komunikasi antar budaya, berbicara di depan publik, media komunikasi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 37"},{"id":"SARS105-2","mk":"SARS105","no":2,"d":"Mampu dan terampil dalam merencanakan, menyusun dan menggorganisasikan pesan-pesan dan ide-ide secara kreatif dan inovatif dalam berbagai level baik lisan maupun tulisan, mulai dari komunikasi antarpribadi, komunikasi kelompok dan komunikasi publik.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 38"},{"id":"SARS105-3","mk":"SARS105","no":3,"d":"Mampu berinterkasi dan berkomunikasi lintas budaya dan memanfaatkan teknologi informasi untuk kebutuhan-kebutuhan membangun kerjasama dan jejaring yang luas.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 39"},{"id":"SARS106-1","mk":"SARS106","no":1,"d":"Mampu memahami konsep-konsep dasar ilmu sosial yang berhubungan dengan interaksi masyarakat dan implikasinya dalam pelayanan kesehatan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 40"},{"id":"SARS106-2","mk":"SARS106","no":2,"d":"Maampu mensintesis dan mengevaluasi konsep-konsep dasar ilmu sosial yang berhubungan dengan interaksi masyarakat dan implikasinya dalam pelayanan kesehatan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 41"},{"id":"UNBL24005-1","mk":"UNBL24005","no":1,"d":"Mahasiswa mampu menjelaskan nilai-nilai konstitusional, hak dan kewajiban warga negara, serta peran strategis warga negara dalam kehidupan demokratis dan multikultural.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 6"},{"id":"UNBL24005-2","mk":"UNBL24005","no":2,"d":"Mahasiswa mampu menunjukkan sikap tanggung jawab sosial dan profesional sebagai warga negara yang sadar akan etika digital, keadilan sosial, dan tantangan global dalam pelayanan kesehatan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 7"},{"id":"SARS201-1","mk":"SARS201","no":1,"d":"Mampu memahami dan menggunakan kosakata serta ungkapan dasar Bahasa Inggris dalam konteks pelayanan kesehatan dasar di rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 26"},{"id":"SARS201-2","mk":"SARS201","no":2,"d":"mampu menyusun dan menyampaikan pesan tertulis dan lisan sederhana dalam Bahasa Inggris, serta mampu beradaptasi dalam situasi komunikasi digital dan layanan kesehatan berbasis teknologi.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 27"},{"id":"SARS202-1","mk":"SARS202","no":1,"d":"Mampu mengidentifikasi dan menjelaskan praktik-praktik korupsi serta nilai-nilai dasar anti-korupsi dalam konteks pelayanan publik dan kesehatan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 10"},{"id":"SARS202-2","mk":"SARS202","no":2,"d":"Mampu menunjukkan sikap dan perilaku anti-korupsi secara kritis dan bertanggung jawab dalam kehidupan kampus, profesi, dan masyarakat.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 11"},{"id":"SARS203-1","mk":"SARS203","no":1,"d":"Mampu memahami dan menjelaskan konsep antropologi kesehatan dan hubungan antropologi dengan ekologi, determinan sosial, konsep sehat dan sakit","cpl":["CPL-05"],"sub":[],"src":"Excel baris 8"},{"id":"SARS203-2","mk":"SARS203","no":2,"d":"Mampu menganalisi perilaku masyarakat dalam pencarian pelayanan kesehatan dari aspek ekologi dan sosial budaya setempat maupun interaksi antar manusia","cpl":["CPL-05"],"sub":[],"src":"Excel baris 9"},{"id":"SARS204-1","mk":"SARS204","no":1,"d":"Mahasiswa mampu memahami peranan pembangunan kesehatan dan kaitannya dengan pertumbuhan ekonomi.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 51"},{"id":"SARS204-2","mk":"SARS204","no":2,"d":"Mahasiswa mampu mengidentifikasi masalah manajemen dalam ekonomi.","cpl":["CPL-06"],"sub":["Mahasiswa mampu memahami fungsi permintaan dan penawaran dalam konteks ekonomi kesehatan","Mahasiswa mampu menganalisis efektivitas dan efisiensi dalam konteks ekonomi kesehatan"],"src":"Excel baris 52"},{"id":"SARS204-3","mk":"SARS204","no":3,"d":"Mahasiswa mampu menganalisis kegiatan ekonomi dalam manajemen rumah sakit sebagai lembaga usaha.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menganalisis peran rumah sakit dalam ekonomi kesehatan.","Mahasiswa mampu mengkorelasikan konsep pembiayaan kesehatan terhadap kebijakan keuangan organisasi kesehatan","Mahasiswa mampu mensimulasikan metode evaluasi ekonomi dalam sektor kesehatan"],"src":"Excel baris 54"},{"id":"SARS204-4","mk":"SARS204","no":4,"d":"Mahasiswa mampu merumuskan strategi pelayanan kesehatan yang relevan dengan kondisi terkini.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menimbang faktor-faktor tantangan ekonomi kesehatan di Indonesia","Mahasiswa mampu merumuskan inovasi dalam mendukung pertumbuhan ekonomi di sektor kesehatan"],"src":"Excel baris 57"},{"id":"SARS205-1","mk":"SARS205","no":1,"d":"mampu mengetahui dan memahami tentang konsep kesehatan masyarakat, pilar keilmuan kesehatan masyarakat dan melakukan upaya pencegahan di masyarakat","cpl":["CPL-06"],"sub":[],"src":"Excel baris 59"},{"id":"SARS205-2","mk":"SARS205","no":2,"d":"Mampu memahami sistem kesehatan nasional beserta program yang ada di dalamnya","cpl":["CPL-06"],"sub":[],"src":"Excel baris 60"},{"id":"SARS205-3","mk":"SARS205","no":3,"d":"Mampu memahami rumah sakit sebagai upaya kesehatan masyarakat","cpl":["CPL-06"],"sub":[],"src":"Excel baris 61"},{"id":"SARS206-1","mk":"SARS206","no":1,"d":"Mampu menganalisis tupoksi-tupoksi manajerial RS sesuai PP 77 tahun 2015 & UU No 17 tahun 2023","cpl":["CPL-06"],"sub":[],"src":"Excel baris 62"},{"id":"SARS206-2","mk":"SARS206","no":2,"d":"Mampu menganalisis sinonim unit Perpres 77 tahun 2015 dengan karakteristik pekerjaan seorang administrator di RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 63"},{"id":"SARS207-1","mk":"SARS207","no":1,"d":"mampu menjelaskan pengertian dan pentingnya etika profesi dan hukum kesehatan dalam pelayanan","cpl":["CPL-05"],"sub":[],"src":"Excel baris 14"},{"id":"SARS207-2","mk":"SARS207","no":2,"d":"mampu menerapkan prinsip, nilai, konsep moral dan nilai dalam pelayanan","cpl":["CPL-05"],"sub":[],"src":"Excel baris 15"},{"id":"SARS208-1","mk":"SARS208","no":1,"d":"Mampu menganalisis perilaku individu dan kelompok dalam organisasi dengan keberagaman sikap, motivasi, persepsi dan kepuasan kerja serta pengaruhnya terhadap kinerja organisasi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 76"},{"id":"SARS208-2","mk":"SARS208","no":2,"d":"Mampu mengidentifikasi sumber-sumber konflik dan strategi pengelolaan konflik secara tepat dalam organisasi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 77"},{"id":"SARS208-3","mk":"SARS208","no":3,"d":"Mampu menerapkan gaya kepemimpinan efektif, mengelola perubahan organisasi serta melakukan pengambilan keputusan secara rasional dan kreatif berdasarkan data organisasi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 78"},{"id":"SARS209-1","mk":"SARS209","no":1,"d":"Mampu memahami fitur dalam aplikasi Ms. Word & Excel secara umum","cpl":["CPL-07"],"sub":[],"src":"Excel baris 151"},{"id":"SARS210-1","mk":"SARS210","no":1,"d":"Mampu menggunakan dan mempraktikkan fitur dalam aplikasi Ms. Word & Excel dengan lebih canggih/ advance","cpl":["CPL-07"],"sub":[],"src":"Excel baris 152"},{"id":"UNBL24006-1","mk":"UNBL24006","no":1,"d":"Mahasiswa mampu menjelaskan konsep dan fungsi kearifan lokal Kalimantan serta peranannya dalam membentuk karakter dan etika sosial masyarakat.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 12"},{"id":"UNBL24006-2","mk":"UNBL24006","no":2,"d":"Mahasiswa mampu menganalisis relevansi kearifan lokal Kalimantan dalam menjawab tantangan era digital dan kontribusinya terhadap pembangunan sosial dan pelayanan publik yang berkelanjutan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 13"},{"id":"SARS301-1","mk":"SARS301","no":1,"d":"Mampu menjelaskan konsep dasar, komponen, dan arsitektur Sistem Informasi Manajemen Rumah Sakit (SIMRS) serta Rekam Medis Elektronik (RME).","cpl":["CPL-06"],"sub":[],"src":"Excel baris 66"},{"id":"SARS301-2","mk":"SARS301","no":2,"d":"Mampu menganalisis alur data, integrasi sistem (interoperabilitas), serta keamanan dan privasi informasi kesehatan pasien.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 66"},{"id":"SARS301-3","mk":"SARS301","no":3,"d":"Mampu merancang alur kebutuhan sistem (business process flow) untuk mendukung pengembangan layanan digital di rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 66"},{"id":"SARS302-1","mk":"SARS302","no":1,"d":"Mampu mengoperasikan modul-modul utama alur kerja Aplikasi SIMRS (pendaftaran, rekam medis elektronik, farmasi, kasir, dan penunjang).","cpl":["CPL-07"],"sub":[],"src":"Excel baris 165"},{"id":"SARS302-2","mk":"SARS302","no":2,"d":"Mampu mensimulasikan tata kelola input data, validasi, dan penyusunan laporan operasional medis/manajerial secara akurat.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 165"},{"id":"SARS302-3","mk":"SARS302","no":3,"d":"Mampu mengidentifikasi dan memecahkan kendala teknis operasional (troubleshooting) tingkat dasar dalam penggunaan SIMRS.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 165"},{"id":"SARS303-1","mk":"SARS303","no":1,"d":"Mahasiswa mampu menggunakan teknik penentuan HPP dalam produksi jasa RS.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 67"},{"id":"SARS303-2","mk":"SARS303","no":2,"d":"Mahasiswa mampu menggunakan metode pembebanan biaya dalam produksi jasa RS.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 68"},{"id":"SARS303-3","mk":"SARS303","no":3,"d":"Mahasiswa mampu menyusun kembali anggaran biaya untuk unit-unit produksi RS.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 69"},{"id":"SARS303-4","mk":"SARS303","no":4,"d":"Mahasiswa mampu menerapkan prinsip pengendalian biaya dalam produksi RS.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 70"},{"id":"SARS303-5","mk":"SARS303","no":5,"d":"Mahasiswa mampu mengoperasikan penetapan tarif RS.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 71"},{"id":"SARS303-6","mk":"SARS303","no":6,"d":"Mahasiswa mampu memperagakan perhitungan laba rugi ABC.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 72"},{"id":"SARS303-7","mk":"SARS303","no":7,"d":"Mahasiswa mampu menguraikan strategic cost reduction & cost containtment.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 73"},{"id":"SARS303-8","mk":"SARS303","no":8,"d":"Mahasiswa mampu mengimplementasikan konsep akuntansi biaya dalam pengambilan keputusan dalam manajemen RS.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 74"},{"id":"SARS304-1","mk":"SARS304","no":1,"d":"Mampu memahami dan menerapkan konsep dasar akuntansi biaya dalam pengelolaan keuangan rumah sakit sesuai karakteristik layanan kesehatan.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 189"},{"id":"SARS304-2","mk":"SARS304","no":2,"d":"Mampu melakukan pencatatan, perhitungan, analisis, dan pelaporan biaya pelayanan rumah sakit sebagai dasar pengambilan keputusan manajerial di unit keuangan.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 190"},{"id":"SARS305-1","mk":"SARS305","no":1,"d":"Mampu menggunakan dan mempraktikkan fitur dalam aplikasi Ms. Word & Excel dengan lebih canggih/ advance","cpl":["CPL-07"],"sub":[],"src":"Excel baris 152"},{"id":"SARS306-1","mk":"SARS306","no":1,"d":"Mahasiswa Mampu memahami dan menjelaskan pengertian Rekam Medis","cpl":["CPL-06"],"sub":[],"src":"Excel baris 75"},{"id":"SARS306-2","mk":"SARS306","no":2,"d":"Mahasiswa Mampu mengetahui dan menjelaskan Manajemen informasi kesehatan di RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 75"},{"id":"SARS306-3","mk":"SARS306","no":3,"d":"Mahasiswa mampu memahami, menganalisis, dan menerapkan prinsip-prinsip manajemen unit Rekam Medis secara terpadu, meliputi penerapan fungsi manajemen (perencanaan, pengorganisasian, pelaksanaan, dan pengendalian) dalam konteks SIKNAS, perencanaan desain berkas rekam medis, sistem pelaporan, tata ruang fisik unit rekam medis, serta pengelolaan sistem antrian pasien untuk mendukung efisiensi dan kualitas pelayanan kesehatan.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 75"},{"id":"SARS307-1","mk":"SARS307","no":1,"d":"Mampu memahami konsep dasar manajemen logistik medis dan non-medis serta menerapkan prinsip-prinsip perencanaan, pengadaan, penyimpanan, dan distribusi logistik di rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 92"},{"id":"SARS307-2","mk":"SARS307","no":2,"d":"Mampu merancang strategi perencanaan dan pengadaan logistik medis dan non-medis yang efektif, efisien, serta sesuai dengan kebijakan dan regulasi yang berlaku","cpl":["CPL-06"],"sub":[],"src":"Excel baris 93"},{"id":"SARS307-3","mk":"SARS307","no":3,"d":"Mampu mengelola penyimpanan dan distribusi logistik medis dan non-medis untuk memastikan ketersediaan, keamanan, dan efisiensi operasional rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 94"},{"id":"SARS308-1","mk":"SARS308","no":1,"d":"mampu memahami gambaran umum penyuluhan kesehatan rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 79"},{"id":"SARS308-2","mk":"SARS308","no":2,"d":"mampu menjelaskan pelaksanaan penyuluhan kesehatan bagi pasien rumah sakit,klien rumah sakit, dan di luar gedung rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 80"},{"id":"SARS308-3","mk":"SARS308","no":3,"d":"mampu memahami langkah-langkah pengembangan PKRS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 81"},{"id":"SARS308-4","mk":"SARS308","no":4,"d":"mampu memahami indikator keberhasilan PKRS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 82"},{"id":"SARS309-1","mk":"SARS309","no":1,"d":"Mampu mengoperasikan modul-modul utama alur kerja Aplikasi SIMRS (pendaftaran, rekam medis elektronik, farmasi, kasir, dan penunjang).","cpl":["CPL-07"],"sub":[],"src":"Excel baris 166","flag":"Teks identik dengan CPMK Praktik SIMRS (SARS302) — kemungkinan salah salin di Excel"},{"id":"SARS309-2","mk":"SARS309","no":2,"d":"Mampu mensimulasikan tata kelola input data, validasi, dan penyusunan laporan operasional medis/manajerial secara akurat.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 167","flag":"Teks identik dengan CPMK Praktik SIMRS (SARS302) — kemungkinan salah salin di Excel"},{"id":"SARS309-3","mk":"SARS309","no":3,"d":"Mampu mengidentifikasi dan memecahkan kendala teknis operasional (troubleshooting) tingkat dasar dalam penggunaan SIMRS.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 168","flag":"Teks identik dengan CPMK Praktik SIMRS (SARS302) — kemungkinan salah salin di Excel"},{"id":"SARS309-4","mk":"SARS309","no":4,"d":"Mampu mengevaluasi pelaksanaan kegiatan penyuluhan kesehatan rumah sakit berdasarkan indikator keberhasilan.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 169"},{"id":"SARS310-1","mk":"SARS310","no":1,"d":"Mampu menguasai konsep dasar MSDM, peran MSDM, perencanaan MSDM, rekrutmen dan seleksi, pengembangan SDM, kepuasan kerja, disiplin kerja, produktivitas kerja, motivasi kerja, prestasi kerja, pengembangan karier, kompensasi, kompetensi, dan kepemimpinan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 83"},{"id":"SARS310-2","mk":"SARS310","no":2,"d":"Mampu untuk mengelola sumberdaya manusia di rumah sakit sehingga kinerja karyawan sesuai dengan harapan organisasi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 84"},{"id":"SARS310-3","mk":"SARS310","no":3,"d":"Mampu menganalisis isu-isu sumberdaya manusia","cpl":["CPL-06"],"sub":[],"src":"Excel baris 85"},{"id":"SARS311-1","mk":"SARS311","no":1,"d":"Menguasai konsep analisis di bidang hukum dan regulasi pada rumah sakit berdasarkan dimensi sosiokultural dan lingkungan kerja rumah sakit serta masyarakat.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 16"},{"id":"SARS401-1","mk":"SARS401","no":1,"d":"Mampu memahami dan menganalisis konsep dasar, organisasi, serta regulasi dalam manajemen pelayanan kesehatan dan rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 111"},{"id":"SARS401-2","mk":"SARS401","no":2,"d":"Mampu merencanakan dan mengelola fungsi-fungsi operasional, sumber daya, serta mutu pelayanan dan keselamatan pasien di rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 111"},{"id":"SARS401-3","mk":"SARS401","no":3,"d":"Mampu merumuskan solusi strategis berbasis data untuk memecahkan permasalahan tata kelola dan manajemen pelayanan kesehatan.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 111"},{"id":"SARS402-1","mk":"SARS402","no":1,"d":"Mampu menganalisis manajemen pelayanan rumah sakit, manajemen pelayanan medik, manajemen pelayanan keperawatan, manajemen pelayanan penunjang medik dan non medik di RS","cpl":["CPL-07"],"sub":[],"src":"Excel baris 174"},{"id":"SARS402-2","mk":"SARS402","no":2,"d":"Mampu menyusun Standar Pelayanan Minimal di RS (standar Infut, stndar proses, standar output dan standar mutu RS","cpl":["CPL-07"],"sub":[],"src":"Excel baris 175"},{"id":"SARS403-1","mk":"SARS403","no":1,"d":"Mampu mengidentifikasi manajemen penunjang medis, instalasi farmasi, instalasi gizi , rekam medik, instalasi laboratorium dan rehabilitasi medik","cpl":["CPL-06"],"sub":[],"src":"Excel baris 64"},{"id":"SARS403-2","mk":"SARS403","no":2,"d":"Mampu menganalisis kinerja dan sefety instalasi farmasi, instalasi laboratorium, istalasi gizi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 65"},{"id":"SARS404-1","mk":"SARS404","no":1,"d":"Mahasiswa mampu menganalisis data keuangan Rumah Sakit.","cpl":["CPL-06"],"sub":["Mahasiswa mampu memahami mengidentifikasi ruang lingkup keuangan rumah sakit."],"src":"Excel baris 95"},{"id":"SARS404-2","mk":"SARS404","no":2,"d":"Mahasiswa mampu mengolah data keuangan menjadi informasi keuangan Rumah Sakit.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menyusun anggaran pendapatan dan belanja rumah sakit.","Mahasiswa mampu menganalisis laporan keuangan rumah Sakit."],"src":"Excel baris 96"},{"id":"SARS404-3","mk":"SARS404","no":3,"d":"Mahasiswa mampu menginterpretasikan informasi keuangan dalam mempertimbangkan pengambilan keputusan.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 98"},{"id":"SARS404-4","mk":"SARS404","no":4,"d":"Mahasiswa mampu mereview artikel penelitian dengan topik manajemen keuangan.","cpl":["CPL-06"],"sub":["Mahasiswa mampu mereview artikel penelitian dengan topik manajemen keuangan rumah sakit."],"src":"Excel baris 99"},{"id":"SARS406-1","mk":"SARS406","no":1,"d":"Mampu menganalisis komponen isi Renstra RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 143"},{"id":"SARS406-2","mk":"SARS406","no":2,"d":"Mampu menganalisis lingkungan internal dan eksternal Rumah Sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 144"},{"id":"SARS407-1","mk":"SARS407","no":1,"d":"Mampu menerapkan dan mempraktikkan tupoksi pada unit perencanaan di RS pada kasus nyata di lapangan","cpl":["CPL-07"],"sub":[],"src":"Excel baris 170"},{"id":"SARS407-2","mk":"SARS407","no":2,"d":"Mampu menganalisis situasi saat ini menggunakan tools yang ada","cpl":["CPL-07"],"sub":[],"src":"Excel baris 171"},{"id":"SARS408-1","mk":"SARS408","no":1,"d":"Mampu membuat keputusan dengan objektif","cpl":["CPL-06"],"sub":["Mampu mensimulasikan metode pengambilan keputusan berdasarkan studi kasus"],"src":"Excel baris 86"},{"id":"SARS408-2","mk":"SARS408","no":2,"d":"Mampu mengarahkan tim sesuai dengan kelebihan dan kekurangan masing-masing","cpl":["CPL-06"],"sub":["Mampu mensimulasikan metode motivasi yang tepat sesuai tipe kepribadian berdasarkan studi kasus"],"src":"Excel baris 87"},{"id":"SARS408-3","mk":"SARS408","no":3,"d":"Mampu menjadi teladan bagi tim yang dipimpinnya","cpl":["CPL-06"],"sub":["Mampu mengidentifikasi baik / buruk suatu tindakan dan mampu memahami fenomena / nunchi dalam atmosfer publik / organisasi"],"src":"Excel baris 88"},{"id":"SARS409-1","mk":"SARS409","no":1,"d":"Mampu menjelaskan dan menerapkan tatalaksana administrasi aset rumah sakit serta menggambarkan pemetaan aset rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 117"},{"id":"SARS409-2","mk":"SARS409","no":2,"d":"Mampu memahami dan mengatur tata ruang ruang sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 118"},{"id":"SARS410-1","mk":"SARS410","no":1,"d":"Mampu memahami konsep dasar UKM dan UKP, Jenis2 layanan di Puskesmas dan Jenis2 Layanan di Rumah Sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 114"},{"id":"SARS410-2","mk":"SARS410","no":2,"d":"Mampu menjelaskan dan mengurutkan Sistem Rujukan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 115"},{"id":"SARS410-3","mk":"SARS410","no":3,"d":"Mampu memahami dan menelaah SPM Puskesmas dan SPM Rumah Sakit dan Indikator Kinerja Pelayanan Kesehatan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 116"},{"id":"SARS411-1","mk":"SARS411","no":1,"d":"Mampu menerapkan tupoksi pada unit komplain di RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 129"},{"id":"SARS411-2","mk":"SARS411","no":2,"d":"Mampu menganalisis kepuasan pelanggan intenal dan eksternal","cpl":["CPL-06"],"sub":[],"src":"Excel baris 130"},{"id":"SARS501-1","mk":"SARS501","no":1,"d":"Mampu menjelaskan dan menguraikan konsep jaminan mutu, indikator dan standarisasai mutu layanan mutu kesehatan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 100"},{"id":"SARS501-2","mk":"SARS501","no":2,"d":"Mampu menjelaskan ruang lingkup pelanggan dan melakukan pengukuran kepuasan pelanggan rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 101"},{"id":"SARS501-3","mk":"SARS501","no":3,"d":"Mampu menilai pengukuran dan penilaian mutu pelayanan kesehatan Rumah Sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 102"},{"id":"SARS503-1","mk":"SARS503","no":1,"d":"Mahasiswa menginternalisasi prinsip-prinsip manajemen kinerja.","cpl":["CPL-06"],"sub":["Mahasiswa mampu membandingkan konsep dan teori tata kelola terhadap implementasi tata kelola sektor publik saat ini.","Mahasiswa mampu menelaah implementasi manajemen kinerja pada organisasi sektor publik."],"src":"Excel baris 103"},{"id":"SARS503-2","mk":"SARS503","no":2,"d":"Mahasiswa mampu menganalisis kinerja melaui evaluasi anggaran.","cpl":["CPL-06"],"sub":["Mahasiswa mampu memperagakan sistem penganggaran berbasis kinerja.","Mahasiswa mampu menggunakan balance Scorecard."],"src":"Excel baris 105"},{"id":"SARS503-3","mk":"SARS503","no":3,"d":"Mahasiswa mampu mempertanggungjawabkan penggunaan anggaran.","cpl":["CPL-06"],"sub":["Mahasiswa mampu mengevaluasi kinerja keuangan organisasi sektor publik."],"src":"Excel baris 107"},{"id":"SARS503-4","mk":"SARS503","no":4,"d":"Mahasiswa mampu menyusun indikator kinerja.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menggunakan indikator kinerja untuk menganalisis kinerja."],"src":"Excel baris 108"},{"id":"SARS503-5","mk":"SARS503","no":5,"d":"Mahasiswa mampu mengevaluasi kinerja RS sesuai indikator kinerja yang ditetapkan.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menganalisis kinerja pelayanan rumah sakit.","Mahasiswa mampu merancang strategi peningkatan kinerja pelayanan sektor publik."],"src":"Excel baris 109"},{"id":"SARS504-1","mk":"SARS504","no":1,"d":"Mahasiswa mampu memahami dan mempraktikkan penyusunan anggaran sederhana unit rumah sakit.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 172"},{"id":"SARS504-2","mk":"SARS504","no":2,"d":"Mahasiswa mampu memahami dan menyusun indikator kinerja sederhana unit rumah sakit.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 173"},{"id":"SARS505-1","mk":"SARS505","no":1,"d":"Mampu mengidentifikasi dan mengklasifikasikan karakteristik limbah rumah sakit (B3/medis, padat, cair, gas) serta aspek saniter lingkungan rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 132"},{"id":"SARS505-2","mk":"SARS505","no":2,"d":"Mampu menganalisis prinsip, alur pengelolaan, dan regulasi teknis kesehatan lingkungan serta limbah B3 dari sumber hingga pengolahan akhir.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 132"},{"id":"SARS505-3","mk":"SARS505","no":3,"d":"Mampu merancang program pengawasan, evaluasi mutu lingkungan, dan tanggap darurat pencemaran limbah di rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 132"},{"id":"SARS506-1","mk":"SARS506","no":1,"d":"Mampu mempraktikkan pengelolaan kesehatan lingkungan dan limbah rumah sakit secara efektif, aman, dan sesuai standar serta regulasi.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 182"},{"id":"SARS507-1","mk":"SARS507","no":1,"d":"Mampu menyusun rencana kegiatan pemasaran untuk rumah sakit / klinik","cpl":["CPL-06"],"sub":["Mampu mengidentifikasi strategi-strategi pemasaran efektif untuk layanan kesehatan"],"src":"Excel baris 125"},{"id":"SARS507-2","mk":"SARS507","no":2,"d":"Mampu melakukan kajian STP pemasaran","cpl":["CPL-06"],"sub":["Mampu mensimulasikan solusi dari permasalahan / fenomena untuk kebutuhan STP","Mampu mengidentifiksi isu etik dan hukum pemasaran layanan kesehatan"],"src":"Excel baris 126"},{"id":"SARS508-1","mk":"SARS508","no":1,"d":"Mahasiswa mampu bekerjasama menerapkan pemikiran logis, kritis, dan sistematis dalam menyusun rencana bisnis inovatif yang terorganisir sesuai fungsi manajemen.","cpl":["CPL-06"],"sub":["Mahasiswa mampu merumuskan rencana bisnis inovatif secara tim."],"src":"Excel baris 119"},{"id":"SARS508-2","mk":"SARS508","no":2,"d":"Mahasiswa mampu mengimplementasikan konsep kepemimpinan dan cara berpikir sistem dalam menetapkan tujuan kelompok yang berada di bawah tanggung jawabnya.","cpl":["CPL-06"],"sub":["Mahasiswa mampu menunjukkan sikap kepemimpinan dalam tim proyek bisnis melalui sistematika berpikir seorang pemimpin.","Mahasiswa mampu mengimplementasikan pemikiran logis dalam merumuskan pengorganisasian tim pengelola bisnis.","Mahasiswa mampu merancang indikator evaluasi bisnis secara mandiri dalam tim."],"src":"Excel baris 120"},{"id":"SARS508-3","mk":"SARS508","no":3,"d":"Mahasiswa mampu menunjukkan kemandirian dalam mengelola proyek bisnis berdasarkan rencana bisnis yang telah disusun.","cpl":["CPL-06"],"sub":["Mahasiswa mampu mengelola proyek bisnis berdasarkan rencana bisnis yang telah disusun secara mandiri."],"src":"Excel baris 123"},{"id":"SARS508-4","mk":"SARS508","no":4,"d":"Mahasiswa mampu mengimplementasikan komunikasi yang efektif kepada rekan kelompok, pembimbing, dan mitra kerja sama dalam mengembangkan proyek, supply chain, kontrak kerjasama, dan proses evaluasi.","cpl":["CPL-06"],"sub":["Mahasiswa mampu mengkomunikasikan bahan koordinasi kerja sama dengan rekan kelompok dan pembimbing."],"src":"Excel baris 124"},{"id":"SARS509-1","mk":"SARS509","no":1,"d":"Memahami struktur dan isi RSB","cpl":["CPL-06"],"sub":[],"src":"Excel baris 133"},{"id":"SARS509-2","mk":"SARS509","no":2,"d":"Mampu menilai teknik analisa situasi saat ini yang digunakan rumah sakit pada dokumen RSB dan RBA","cpl":["CPL-06"],"sub":[],"src":"Excel baris 134"},{"id":"SARS510-1","mk":"SARS510","no":1,"d":"Mampu mengidentifikasi masalah unit dan memberikan ide / solusi berdasarkan evidenbase/ penelitian terkini yang sesuai malasah pada unit manajerial di RS","cpl":["CPL-07"],"sub":[],"src":"Excel baris 157"},{"id":"SARS510-2","mk":"SARS510","no":2,"d":"Mengidentifikasi dan menganalisis job description masing-masing unit manajerial rumah sakit","cpl":["CPL-07"],"sub":[],"src":"Excel baris 158"},{"id":"SARS512-1","mk":"SARS512","no":1,"d":"Mampu menjelaskan konsep, jenis, dan karakteristik layanan khusus di rumah sakit serta peranannya dalam meningkatkan mutu pelayanan kesehatan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 22"},{"id":"SARS512-2","mk":"SARS512","no":2,"d":"Mampu menganalisis strategi pengelolaan dan evaluasi kinerja layanan khusus di rumah sakit berdasarkan prinsip manajemen operasional dan pemasaran layanan kesehatan.","cpl":["CPL-05"],"sub":[],"src":"Excel baris 23"},{"id":"SARS601-1","mk":"SARS601","no":1,"d":"Mampu menghitung kelayakan finansial suatu proyek yang direncanakan akan dibuat","cpl":["CPL-06"],"sub":[],"src":"Excel baris 135"},{"id":"SARS601-2","mk":"SARS601","no":2,"d":"Mampu menghitung kelayakan non-finansial suatu proyek yang direncanakan akan dibuat","cpl":["CPL-06"],"sub":[],"src":"Excel baris 136"},{"id":"SARS602-1","mk":"SARS602","no":1,"d":"Mampu menerapkan dan mempraktikkan perhitungan kelayakan lapangan secara nyata di lapangan","cpl":["CPL-07"],"sub":[],"src":"Excel baris 187"},{"id":"SARS602-2","mk":"SARS602","no":2,"d":"Mampu menilai secara objektif dan kuntitatif aspek-aspek kelayakan proyek / bisnis","cpl":["CPL-07"],"sub":[],"src":"Excel baris 188"},{"id":"SARS603-1","mk":"SARS603","no":1,"d":"Mampu memahami dan menjelaskan konsep Manajemen Keselamatan dan kesehatan kerja rumah sakit termasuk jenis jenis risiko (bahaya) yang dapat mengancam keselamatan petugas dan pasien di RS dengan tepat","cpl":["CPL-06"],"sub":[],"src":"Excel baris 137"},{"id":"SARS603-2","mk":"SARS603","no":2,"d":"Mampu menyusun perencanaan untuk pengelolaan K3RS","cpl":["CPL-06"],"sub":[],"src":"Excel baris 138"},{"id":"SARS604-1","mk":"SARS604","no":1,"d":"Mampu mengidentifikasi dan mengkategorikan jenis-jenis risiko K3 di lingkungan rumah sakit melalui simulasi atau observasi lapangan","cpl":["CPL-07"],"sub":[],"src":"Excel baris 178"},{"id":"SARS604-2","mk":"SARS604","no":2,"d":"Mampu menyusun dokumen perencanaan pengelolaan K3RS berbasis hasil identifikasi risiko di rumah sakit secara sistematis dan aplikatif.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 179"},{"id":"SARS605-1","mk":"SARS605","no":1,"d":"Mampu menjalankan dan mempraktikkan tupoksi humas di RS","cpl":["CPL-05"],"sub":[],"src":"Excel baris 17"},{"id":"SARS605-2","mk":"SARS605","no":2,"d":"Mampu mengomunikasikan dan menghubungkan antara kepentingan organisasi RS dan pihak lain","cpl":["CPL-05"],"sub":[],"src":"Excel baris 18"},{"id":"SARS606-1","mk":"SARS606","no":1,"d":"Mahasiswa mampu merancang dan melaksanakan strategi Hospital Public Relations secara profesional untuk mendukung citra, kepercayaan publik, dan kinerja rumah sakit.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 191"},{"id":"SARS606-2","mk":"SARS606","no":2,"d":"Mahasiswa mampu mengelola komunikasi publik, media, dan isu rumah sakit secara mandiri dan bertanggung jawab sesuai etika dan kebijakan organisasi.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 192"},{"id":"SARS607-1","mk":"SARS607","no":1,"d":"Kemampuan mahasiswa dalam mendefinisikan masalah layanan kesehatan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 139"},{"id":"SARS607-2","mk":"SARS607","no":2,"d":"Kemampuan menggunakan alat analisis data (six sigma, wate analysis tools, kaizen, RCA, fish bone)","cpl":["CPL-06"],"sub":[],"src":"Excel baris 140"},{"id":"SARS608-1","mk":"SARS608","no":1,"d":"Mampu menganalisis proses produksi layanan rumah sakit (alur pelayanan, beban kerja, kapasitas, serta penggunaan sumber daya) dengan menggunakan pendekatan service blueprinting dan indikator mutu (efisiensi, efektivitas, patient safety, kepuasan).","cpl":["CPL-07"],"sub":[],"src":"Excel baris 183"},{"id":"SARS608-2","mk":"SARS608","no":2,"d":"Mampu merancang inovasi perbaikan produksi layanan rumah sakit untuk meningkatkan mutu layanan dan keselamatan pasien.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 184"},{"id":"SARS609-1","mk":"SARS609","no":1,"d":"Mampu mengalisis data-data penting untuk pengambilan keputusan strategis","cpl":["CPL-06"],"sub":[],"src":"Excel baris 89"},{"id":"SARS609-2","mk":"SARS609","no":2,"d":"Mampu menghimpun data penting untuk pengambilan keputusan strategis","cpl":["CPL-06"],"sub":[],"src":"Excel baris 90"},{"id":"SARS609-3","mk":"SARS609","no":3,"d":"Mampu mentransformasi data menjadi informasi dengan lebih mudah","cpl":["CPL-06"],"sub":[],"src":"Excel baris 91"},{"id":"SARS610-1","mk":"SARS610","no":1,"d":"Mampu menjelaskan prinsip-prinsip dasar metodologi riset dan desain penelitian yang sesuai dengan bidang administrasi rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 145"},{"id":"SARS610-2","mk":"SARS610","no":2,"d":"Mampu menyusun proposal penelitian secara sistematis dengan memperhatikan nilai-nilai etika dan kaidah ilmiah serta mampu mempresentasikan proposal tersebut secara komunikatif.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 146"},{"id":"SARS610-3","mk":"SARS610","no":3,"d":"Mampu mengevaluasi dan menginterpretasikan hasil penelitian serta menyusun laporan penelitian untuk pengambilan keputusan berbasis bukti (evidence-based decision).","cpl":["CPL-06"],"sub":[],"src":"Excel baris 147"},{"id":"UNBL24007-1","mk":"UNBL24007","no":1,"d":"Mampu menganalisis masalah lokal dan memberikan solusi sesuai kemampuan dan anggaran","cpl":["CPL-07"],"sub":[],"src":"Excel baris 155"},{"id":"UNBL24007-2","mk":"UNBL24007","no":2,"d":"Mampu mengidentifikasi potensi desa yang bersifat khas dan belum optimal dalam konteks global","cpl":["CPL-07"],"sub":[],"src":"Excel baris 156"},{"id":"SARS701-1","mk":"SARS701","no":1,"d":"Mampu menggunakan pengukuran BSC dilayanan kesehatan","cpl":["CPL-06"],"sub":[],"src":"Excel baris 141"},{"id":"SARS701-2","mk":"SARS701","no":2,"d":"Mampu mengevaluasi kinerja RS sesuai PMK 30 2022","cpl":["CPL-06"],"sub":[],"src":"Excel baris 142"},{"id":"SARS702-1","mk":"SARS702","no":1,"d":"Mampu menerapkan dan mempraktikkan tupoksi pada unit perencanaan di RS pada kasus nyata di lapangan","cpl":["CPL-07"],"sub":[],"src":"Excel baris 185"},{"id":"SARS702-2","mk":"SARS702","no":2,"d":"Mampu memberikan penilaian kinerja unit dan atau rumah sakit secara objektif dan terukur","cpl":["CPL-07"],"sub":[],"src":"Excel baris 186"},{"id":"SARS703-1","mk":"SARS703","no":1,"d":"Mampu menjelaskan konsep, prinsip, dan regulasi manajemen risiko di rumah sakit","cpl":["CPL-06"],"sub":[],"src":"Excel baris 112"},{"id":"SARS703-2","mk":"SARS703","no":2,"d":"Mampu menganalisis kategori risiko klinis dan non-klinis di rumah sakit (keselamatan pasien, keuangan, SDM, teknologi, bencana, hukum) dengan menggunakan pendekatan sistematis.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 113"},{"id":"SARS704-1","mk":"SARS704","no":1,"d":"Mampu mengidentifikasi, menganalisis, dan memetakan risiko klinis maupun non-klinis di rumah sakit menggunakan instrumen manajemen risiko","cpl":["CPL-07"],"sub":[],"src":"Excel baris 176"},{"id":"SARS704-2","mk":"SARS704","no":2,"d":"Mampu menyusun rencana mitigasi dan SOP manajemen risiko prioritas, serta melakukan monitoring dan evaluasi efektivitasnya untuk mendukung mutu layanan dan keselamatan pasien di rumah sakit.","cpl":["CPL-07"],"sub":[],"src":"Excel baris 177"},{"id":"SARS705-1","mk":"SARS705","no":1,"d":"Mampu berfikir sistematis, etis dan kritis pada permasalahan yang ditemukan dengan cara yang objektif","cpl":["CPL-07"],"sub":[],"src":"Excel baris 161"},{"id":"SARS705-2","mk":"SARS705","no":2,"d":"Mampu merancang proyek dan atau penelitian dengan logis dan sistematis","cpl":["CPL-07"],"sub":[],"src":"Excel baris 162"},{"id":"SARS706-1","mk":"SARS706","no":1,"d":"Mampu menyusun strategi optimalisasi remunerasi berbasis case mix untuk meningkatkan kinerja rumah sakit.","cpl":["CPL-06"],"sub":[],"src":"Excel baris 148"},{"id":"SARS706-2","mk":"SARS706","no":2,"d":"Mampu menganalisis biaya dalam sistem Casemix dan dampaknya pada remunerasi","cpl":["CPL-06"],"sub":[],"src":"Excel baris 149"},{"id":"SARS708-1","mk":"SARS708","no":1,"d":"Mampu mensintesis berbedaan layanan biologis, psikis, sosiologis dan spiritual yang ada di rumah sakit","cpl":["CPL-05"],"sub":[],"src":"Excel baris 20"},{"id":"SARS708-2","mk":"SARS708","no":2,"d":"Mampu menganalisis bentuk layanan sosiologis dan spiritual yang ada di rumah sakit dan memberikan gagasan untuk mengoptimalkan layanan tersebut agar mencapai apa yang disebut dengan layanan holistik khususnya di RS non keagamaan","cpl":["CPL-05"],"sub":[],"src":"Excel baris 21"},{"id":"SARS801-1","mk":"SARS801","no":1,"d":"Mampu berfikir sistematis, etis dan kritis pada permasalahan yang ditemukan dengan cara yang objektif","cpl":["CPL-07"],"sub":[],"src":"Excel baris 163"},{"id":"SARS801-2","mk":"SARS801","no":2,"d":"Mampu menerapkan teori ke dalam praktik nyata atau mampu membuktikan konsep yang telah ada","cpl":["CPL-07"],"sub":[],"src":"Excel baris 164"},{"id":"SARS802-1","mk":"SARS802","no":1,"d":"Mampu mengidentifikasi masalah unit dan memberikan ide / solusi berdasarkan evidenbase/ penelitian terkini yang sesuai malasah pada unit manajerial di RS","cpl":["CPL-07"],"sub":[],"src":"Excel baris 159"},{"id":"SARS802-2","mk":"SARS802","no":2,"d":"Mengidentifikasi dan menganalisis job description masing-masing unit manajerial rumah sakit","cpl":["CPL-07"],"sub":[],"src":"Excel baris 160"}]};
+</script>
+<script>
+"use strict";
+/* ---------- utilitas ---------- */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d = 1) => (v == null || isNaN(v)) ? "–" : Number(v).toFixed(d).replace(".", ",");
+const clone = o => JSON.parse(JSON.stringify(o));
+const uid = p => p + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+const isNum = v => v !== "" && v != null && !isNaN(v) && isFinite(v);
+const roman = n => ["","I","II","III","IV","V","VI","VII","VIII"][n] || n;
+function toast(msg, err) {
+  const t = $("#toast"); t.textContent = msg; t.className = "show" + (err ? " err" : "");
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.className = "", 3200);
+}
+
+/* ---------- penyimpanan: Google Apps Script atau mode demo ---------- */
+const COLLS = ["mk", "cpmk", "dosen", "mhs", "kelas", "asesmen", "nilai", "setting"];
+const HAS_GAS = typeof google !== "undefined" && google.script && google.script.run;
+const DEMO_KEY = "obe-ars-unbl-demo-v2";
+let DB = {};                         // coll -> Map(id -> record)
+let USER = { role: "admin", dosenId: null, email: "", nama: "" };
+const all = c => [...DB[c].values()];
+
+function gas(action, payload) {
+  return new Promise((res, rej) => google.script.run.withSuccessHandler(res).withFailureHandler(rej).api(action, payload));
+}
+const Store = {
+  async load() {
+    if (HAS_GAS) {
+      const r = await gas("bootstrap", {});
+      USER = r.user;
+      COLLS.forEach(c => DB[c] = new Map((r.data[c] || []).map(x => [x.id, x])));
+      if (!DB.mk.size) { SEED.mk.forEach(x => DB.mk.set(x.id, x)); DB._seedPending = true; }
+      if (!DB.cpmk.size) { SEED.cpmk.forEach(x => DB.cpmk.set(x.id, x)); DB._seedPending = true; }
+    } else {
+      let raw = null;
+      try { raw = localStorage.getItem(DEMO_KEY); } catch (e) {}
+      const data = raw ? JSON.parse(raw) : demoData();
+      COLLS.forEach(c => DB[c] = new Map((data[c] || []).map(x => [x.id, x])));
+      USER = data._user || { role: "admin", dosenId: null, email: "admin.ars@unbl.ac.id", nama: "Admin Prodi S1 ARS" };
+    }
+    if (!DB.setting.get("main")) DB.setting.set("main", clone(DEFAULT_SETTING));
+  },
+  persistDemo() {
+    if (HAS_GAS) return;
+    const out = { _user: USER };
+    COLLS.forEach(c => out[c] = all(c));
+    try { localStorage.setItem(DEMO_KEY, JSON.stringify(out)); } catch (e) {}
+  },
+  async save(coll, rec) {
+    if (HAS_GAS) await gas("save", { coll, rec });
+    DB[coll].set(rec.id, rec); CALC.clear(); this.persistDemo();
+  },
+  async saveMany(coll, recs) {
+    if (HAS_GAS) await gas("saveMany", { coll, recs });
+    recs.forEach(r => DB[coll].set(r.id, r)); CALC.clear(); this.persistDemo();
+  },
+  async remove(coll, id) {
+    if (HAS_GAS) await gas("remove", { coll, id });
+    DB[coll].delete(id); CALC.clear(); this.persistDemo();
+  }
+};
+async function guard(fn, okMsg) {
+  try { await fn(); if (okMsg) toast(okMsg); render(); }
+  catch (e) { console.error(e); toast("Gagal menyimpan: " + (e && e.message ? e.message : e), true); }
+}
+
+/* ---------- pengaturan penilaian ---------- */
+const DEFAULT_SETTING = {
+  id: "main",
+  ambangCPMK: 70,     // nilai minimal CPMK agar mahasiswa dinyatakan tuntas
+  targetKelas: 75,    // % mahasiswa tuntas agar CPMK kelas dinyatakan tercapai
+  targetCPL: 70,      // capaian minimal CPL mahasiswa / prodi
+  ta: "2026/2027", smt: "Ganjil",
+  // Pedoman Penilaian UNBL 2026 §2.5.1. Rentang 55,00–59,99 tidak tercantum di pedoman;
+  // di sini dimasukkan ke D (batas bawah D = 50) sampai ada ketetapan resmi.
+  skala: [
+    { h: "A", min: 80, b: 4 }, { h: "B+", min: 75, b: 3.5 }, { h: "B", min: 70, b: 3 },
+    { h: "C+", min: 65, b: 2.5 }, { h: "C", min: 60, b: 2 }, { h: "D", min: 50, b: 1 }, { h: "E", min: 0, b: 0 }
+  ]
+};
+const SET = () => DB.setting.get("main");
+const huruf = na => { if (na == null) return null; for (const g of SET().skala) if (na >= g.min) return g; return SET().skala.at(-1); };
+
+const BENTUK = ["Observasi/partisipasi", "Tugas individu", "Tugas kelompok", "Kuis", "Praktikum/proyek/laporan", "UTS", "UAS", "Rubrik PjBL", "Case method", "Portofolio/MBKM"];
+const PRESET = [ // contoh komponen Pedoman Penilaian UNBL 2026
+  { id: "P", nama: "Partisipasi", bentuk: "Observasi/partisipasi", w: 5, to: "all" },
+  { id: "TI", nama: "Tugas individu", bentuk: "Tugas individu", w: 10, to: "first" },
+  { id: "TK", nama: "Tugas kelompok", bentuk: "Tugas kelompok", w: 10, to: "second" },
+  { id: "K", nama: "Kuis", bentuk: "Kuis", w: 10, to: "firstHalf" },
+  { id: "PR", nama: "Praktikum/proyek", bentuk: "Praktikum/proyek/laporan", w: 20, to: "secondHalf" },
+  { id: "UTS", nama: "UTS", bentuk: "UTS", w: 20, to: "firstHalf" },
+  { id: "UAS", nama: "UAS", bentuk: "UAS", w: 25, to: "secondHalf" }
+];
+
+/* ---------- akses data kurikulum ---------- */
+const mkOf = k => DB.mk.get(k);
+const sks = mk => mk ? (+mk.t || 0) + (+mk.p || 0) : 0;
+const cpmkOf = k => all("cpmk").filter(c => c.mk === k).sort((a, b) => a.no - b.no);
+const cplList = () => SEED.cpl;
+const dosenName = id => (DB.dosen.get(id) || {}).nama || "–";
+const isAdmin = () => USER.role === "admin";
+const PER = () => ({ ta: UI.ta || SET().ta, smt: UI.smt || SET().smt });
+const inPeriod = (k, ta = PER().ta, smt = PER().smt) => k.ta === ta && k.smt === smt;
+function kelasVisible() {
+  return all("kelas").filter(k => isAdmin() || k.dosen === USER.dosenId);
+}
+
+/* ---------- mesin perhitungan OBE ----------
+   Rencana asesmen = matriks komponen × CPMK. Isi sel = bobot (% dari nilai akhir).
+   Jumlah seluruh sel = 100.
+     bobot komponen  = jumlah baris
+     bobot CPMK (W)  = jumlah kolom
+   Nilai akhir     NA   = Σ skor_komponen × bobot_komponen / 100
+   Capaian CPMK    NC_j = Σ skor_k × sel_kj / Σ sel_kj    (skala 0–100)
+   Konsistensi     NA   = Σ NC_j × W_j / 100  (sama dengan rumus Pedoman)
+   Capaian CPL     = Σ NC_j × W_j × sks / Σ W_j × sks   untuk semua CPMK yang dipetakan ke CPL itu
+   ------------------------------------------------ */
+const CALC = new Map();
+function plan(kelas) {
+  const a = DB.asesmen.get(kelas.id) || { id: kelas.id, komp: [], mat: {} };
+  return planFrom(a, cpmkOf(kelas.mk));
+}
+function planFrom(a, cp) {
+  const cell = (k, c) => +((a.mat[k] || {})[c]) || 0;
+  const rowSum = k => cp.reduce((s, c) => s + cell(k, c.id), 0);
+  const W = {}; cp.forEach(c => W[c.id] = a.komp.reduce((s, k) => s + cell(k.id, c.id), 0));
+  const total = cp.reduce((s, c) => s + W[c.id], 0);
+  const issues = [];
+  if (!cp.length) issues.push({ lv: "bad", t: "Mata kuliah ini belum punya CPMK. Tambahkan CPMK dulu di menu CPMK." });
+  if (!a.komp.length) issues.push({ lv: "bad", t: "Belum ada komponen penilaian." });
+  if (a.komp.length && Math.abs(total - 100) > 0.05) issues.push({ lv: "bad", t: `Total bobot ${fmt(total, 2)}%, harus 100%.` });
+  const unmeasured = cp.filter(c => !W[c.id]);
+  if (a.komp.length && unmeasured.length) issues.push({ lv: "warn", t: `CPMK tidak diukur komponen mana pun: ${unmeasured.map(c => "CPMK-" + c.no).join(", ")}. CPMK ini tidak akan menyumbang ke CPL.` });
+  const empty = a.komp.filter(k => !rowSum(k.id));
+  if (empty.length) issues.push({ lv: "bad", t: `Komponen tanpa bobot: ${empty.map(k => k.nama).join(", ")}.` });
+  const valid = cp.length > 0 && a.komp.length > 0 && Math.abs(total - 100) <= 0.05 && !empty.length;
+  return { a, cp, cell, rowSum, W, total, issues, valid };
+}
+function nilaiDoc(kelas) { return DB.nilai.get(kelas.id) || { id: kelas.id, scores: {}, status: "draft" }; }
+function calcKelas(kelas) {
+  if (CALC.has(kelas.id)) return CALC.get(kelas.id);
+  const P = plan(kelas), N = nilaiDoc(kelas), S = SET();
+  const rows = (kelas.peserta || []).map(nim => {
+    const sc = N.scores[nim] || {};
+    let filled = 0, na = 0;
+    P.a.komp.forEach(k => { if (isNum(sc[k.id])) { filled++; na += +sc[k.id] * P.rowSum(k.id) / 100; } });
+    const complete = P.a.komp.length > 0 && filled === P.a.komp.length;
+    const NC = {};
+    P.cp.forEach(c => {
+      let num = 0, den = 0, ok = true;
+      P.a.komp.forEach(k => { const m = P.cell(k.id, c.id); if (m > 0) { if (isNum(sc[k.id])) { num += +sc[k.id] * m; den += m; } else ok = false; } });
+      NC[c.id] = den > 0 && ok ? num / den : null;
+    });
+    const NA = complete && P.valid ? na : null;
+    return { nim, m: DB.mhs.get(nim) || { nama: "(tidak ditemukan)" }, sc, filled, complete, NA, H: huruf(NA), NC };
+  }).sort((a, b) => a.nim.localeCompare(b.nim));
+  const cls = {};
+  P.cp.forEach(c => {
+    const v = rows.map(r => r.NC[c.id]).filter(x => x != null);
+    const avg = v.length ? v.reduce((s, x) => s + x, 0) / v.length : null;
+    const tuntas = v.length ? v.filter(x => x >= S.ambangCPMK).length / v.length * 100 : null;
+    cls[c.id] = { n: v.length, avg, tuntas, ok: tuntas != null && tuntas >= S.targetKelas, W: P.W[c.id] };
+  });
+  const dist = {}; S.skala.forEach(g => dist[g.h] = 0);
+  rows.forEach(r => { if (r.H) dist[r.H.h]++; });
+  const done = rows.filter(r => r.complete).length;
+  const out = { P, N, rows, cls, dist, done, total: rows.length, final: N.status === "final" };
+  CALC.set(kelas.id, out);
+  return out;
+}
+function kelasStatus(k) {
+  const R = calcKelas(k);
+  if (!R.P.valid) return { lv: "bad", t: "Rencana asesmen belum valid", step: 0 };
+  if (R.final) return { lv: "ok", t: "Nilai final", step: 3 };
+  if (R.total && R.done === R.total) return { lv: "warn", t: "Nilai lengkap, belum final", step: 2 };
+  return { lv: "warn", t: `Input nilai ${R.done}/${R.total}`, step: 1 };
+}
+/* Capaian CPL satu mahasiswa. scope: {ta, smt} atau null (kumulatif). */
+function cplMahasiswa(nim, scope, includeDraft) {
+  const acc = {}; cplList().forEach(c => acc[c.id] = { num: 0, den: 0, trace: [] });
+  all("kelas").filter(k => (k.peserta || []).includes(nim) && (!scope || inPeriod(k, scope.ta, scope.smt))).forEach(k => {
+    const R = calcKelas(k);
+    if (!R.P.valid || (!R.final && !includeDraft)) return;
+    const row = R.rows.find(r => r.nim === nim); if (!row) return;
+    const mk = mkOf(k.mk), s = sks(mk) || 1;
+    R.P.cp.forEach(c => {
+      const W = R.P.W[c.id], v = row.NC[c.id];
+      if (!W || v == null) return;
+      const w = W / 100 * s;
+      (c.cpl || []).forEach(id => { if (!acc[id]) return; acc[id].num += v * w; acc[id].den += w; acc[id].trace.push({ k, mk, c, W, v, w, final: R.final }); });
+    });
+  });
+  return cplList().map(c => ({ ...c, val: acc[c.id].den ? acc[c.id].num / acc[c.id].den : null, skor: acc[c.id].num, maks: acc[c.id].den * 100, trace: acc[c.id].trace }));
+}
+
+/* ---------- state UI ---------- */
+const UI = { view: "ringkasan", p: {}, edit: null, navOpen: false, q: "", fsem: "", fjenis: "", mkSel: "SARS101", capNim: "", capScope: "kumulatif", repDraft: false };
+function go(view, p = {}) { UI.view = view; UI.p = p; UI.edit = null; UI.navOpen = false; render(); window.scrollTo(0, 0); }
+
+/* ---------- kerangka ---------- */
+const NAV = [
+  { g: null, items: [["ringkasan", "Ringkasan"]] },
+  { g: "Kurikulum 2024", items: [["cpl", "CPL & profil lulusan"], ["mk", "Mata kuliah"], ["cpmk", "CPMK & sub-CPMK"], ["audit", "Audit keselarasan", "admin"]] },
+  { g: "Perkuliahan semester", items: [["kelas", "Kelas & penilaian"], ["mhs", "Mahasiswa", "admin"], ["dosen", "Dosen & akun", "admin"]] },
+  { g: "Capaian & laporan", items: [["capaian", "Capaian CPL mahasiswa"], ["laporan", "Laporan semester", "admin"]] },
+  { g: null, items: [["pengaturan", "Pengaturan penilaian", "admin"]] }
+];
+function taOptions() {
+  const s = new Set(["2024/2025", "2025/2026", "2026/2027", "2027/2028", "2028/2029"]);
+  all("kelas").forEach(k => s.add(k.ta)); s.add(PER().ta);
+  return [...s].sort();
+}
+function renderShell(inner) {
+  const S = PER();
+  const nav = NAV.map(g => {
+    const items = g.items.filter(i => !i[2] || isAdmin());
+    if (!items.length) return "";
+    return (g.g ? `<h6>${g.g}</h6>` : "") + items.map(i =>
+      `<button data-act="nav" data-v="${i[0]}" ${UI.view === i[0] || (i[0] === "kelas" && UI.view === "ruang") ? 'aria-current="page"' : ""}>${esc(i[1])}</button>`).join("");
+  }).join("");
+  const who = HAS_GAS
+    ? `<strong>${esc(USER.nama || USER.email)}</strong><small>${isAdmin() ? "Admin prodi" : "Dosen pengampu"} – ${esc(USER.email)}</small>`
+    : `<label class="small muted" for="asUser">Mode demo, masuk sebagai</label>
+       <select id="asUser" data-in="asUser" style="width:100%;margin-top:4px">
+         <option value="admin" ${isAdmin() ? "selected" : ""}>Admin prodi</option>
+         ${all("dosen").filter(d => d.role !== "admin").map(d => `<option value="${esc(d.id)}" ${USER.dosenId === d.id ? "selected" : ""}>${esc(d.nama)}</option>`).join("")}
+       </select>`;
+  return `
+  <div class="app">
+    <aside class="rail ${UI.navOpen ? "open" : ""}" aria-label="Menu utama">
+      <div class="brand"><b>Evaluasi OBE</b><span>S1 Administrasi Rumah Sakit<br>Universitas Borneo Lestari</span></div>
+      <div class="period">
+        <label for="pTa">Periode akademik</label>
+        <select id="pTa" data-in="periodTa">${taOptions().map(t => `<option ${t === S.ta ? "selected" : ""}>${t}</option>`).join("")}</select>
+        <select aria-label="Semester" data-in="periodSmt">${["Ganjil", "Genap", "Antara"].map(t => `<option ${t === S.smt ? "selected" : ""}>${t}</option>`).join("")}</select>
+      </div>
+      <nav class="nav">${nav}</nav>
+      <div class="who">${who}</div>
+    </aside>
+    <div class="main">
+      <div class="topbar"><button class="btn sm" data-act="toggleNav" aria-label="Buka menu">Menu</button><b>Evaluasi OBE S1 ARS</b></div>
+      <div class="page">${inner}</div>
+    </div>
+  </div>`;
+}
+function render() {
+  const fn = VIEWS[UI.view] || VIEWS.ringkasan;
+  $("#app").className = "";
+  $("#app").innerHTML = renderShell(fn());
+  if (UI.after) { const f = UI.after; UI.after = null; f(); }
+}
+const head = (title, desc, actions = "") => `<div class="pagehead"><div><h1>${title}</h1>${desc ? `<p>${desc}</p>` : ""}</div><div class="actions">${actions}</div></div>`;
+const tagCpl = (ids, mk) => (ids || []).map(id => `<span class="tag ${mk && !mk.cpl.includes(id) ? "warn" : ""}" title="${mk && !mk.cpl.includes(id) ? "Tidak tercantum sebagai CPL mata kuliah ini di Buku Kurikulum" : ""}">${id}</span>`).join("");
+const statusTag = s => `<span class="tag ${s.lv}">${esc(s.t)}</span>`;
+function bar(v, target, label, right) {
+  if (v == null) return `<div class="barrow"><span class="lbl">${label}</span><div class="bar na" title="Belum terukur"></div><span class="num muted small">${right ?? "belum terukur"}</span></div>`;
+  return `<div class="barrow"><span class="lbl">${label}</span><div class="bar"><span class="${v < target ? "low" : ""}" style="width:${Math.max(0, Math.min(100, v))}%"></span><i style="left:${target}%" title="Target ${target}"></i></div><span class="num">${right ?? fmt(v)}</span></div>`;
+}
+function minibar(v, target) {
+  if (v == null) return '<span class="muted">–</span>';
+  return `<div class="minibar"><div class="bar"><span class="${v < target ? "low" : ""}" style="width:${Math.max(0, Math.min(100, v))}%"></span><i style="left:${target}%"></i></div><span class="num">${fmt(v)}</span></div>`;
+}
+function downloadCSV(name, rows) {
+  const csv = rows.map(r => r.map(x => { const s = String(x ?? ""); return /[";\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }).join(";")).join("\n");
+  const blob = new Blob(["\ufeff" + csv], { type: "text/csv;charset=utf-8" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+}
+
+/* ---------- dialog ---------- */
+function openDialog(title, body, onSave, saveLabel = "Simpan") {
+  const d = $("#dlg");
+  d.innerHTML = `<form method="dialog" id="dlgForm"><header><h3>${esc(title)}</h3></header><div class="dbody">${body}</div>
+    <footer><button type="button" class="btn" data-act="closeDlg">Batal</button>${onSave ? `<button class="btn primary" type="submit">${saveLabel}</button>` : ""}</footer></form>`;
+  $("#dlgForm").onsubmit = async e => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const ok = await onSave(fd, e.target);
+    if (ok !== false) d.close();
+  };
+  d.showModal();
+  const f = $("input,select,textarea", d); if (f) f.focus();
+}
+function confirmDlg(title, msg, label, fn) { openDialog(title, `<p style="margin:0">${msg}</p>`, async () => { await fn(); }, label); }
+
+/* =====================================================================
+   HALAMAN
+   ===================================================================== */
+const VIEWS = {};
+
+/* ---------- Ringkasan ---------- */
+VIEWS.ringkasan = () => {
+  const S = { ...SET(), ...PER() };
+  const ks = kelasVisible().filter(k => inPeriod(k));
+  const st = ks.map(k => ({ k, s: kelasStatus(k), R: calcKelas(k) }));
+  const nFinal = st.filter(x => x.s.lv === "ok").length;
+  const nBad = st.filter(x => x.s.lv === "bad").length;
+  const seedNote = DB._seedPending && isAdmin() ? `<div class="note bad">Data mata kuliah dan CPMK belum tersimpan di spreadsheet. Aplikasi sedang memakai data awal dari Buku Kurikulum dan Excel simulasi. <button class="btn sm primary" data-act="saveSeed">Simpan data kurikulum ke spreadsheet</button></div>` : "";
+  const demoNote = !HAS_GAS ? `<div class="note info">Ini mode demo dengan data mahasiswa dan nilai contoh. Setelah dideploy ke Google Apps Script, data dibaca dan disimpan ke spreadsheet.</div>` : "";
+  const table = st.length ? `<div class="scroll"><table>
+    <thead><tr><th>Mata kuliah</th><th>Kelas</th><th>Dosen</th><th class="n">Peserta</th><th>Status</th></tr></thead>
+    <tbody>${st.map(x => `<tr class="click" data-act="openKelas" data-id="${esc(x.k.id)}"><td><span class="code">${esc(x.k.mk)}</span> ${esc((mkOf(x.k.mk) || {}).n)}</td><td>${esc(x.k.nama)}</td><td>${esc(dosenName(x.k.dosen))}</td><td class="n">${x.R.total}</td><td>${statusTag(x.s)}</td></tr>`).join("")}</tbody></table></div>`
+    : `<div class="empty">Belum ada kelas di periode ${esc(S.smt)} ${esc(S.ta)}. ${isAdmin() ? `<button class="btn primary sm" data-act="nav" data-v="kelas">Buat kelas</button>` : "Hubungi admin prodi untuk penugasan kelas."}</div>`;
+  // CPL prodi periode ini (hanya kelas final)
+  const nims = new Set(); ks.forEach(k => (k.peserta || []).forEach(n => nims.add(n)));
+  const perM = [...nims].map(n => cplMahasiswa(n, S, false));
+  const cplRows = cplList().map((c, ci) => {
+    const vals = perM.map(r => r[ci].val).filter(v => v != null);
+    return { c, avg: vals.length ? vals.reduce((a, b) => a + b, 0) / vals.length : null, n: vals.length };
+  });
+  return head(`${isAdmin() ? "Ringkasan prodi" : "Kelas saya"}`, `Semester ${esc(S.smt)} ${esc(S.ta)}. ${st.length} kelas: ${nFinal} final, ${st.length - nFinal - nBad} dalam pengisian, ${nBad} rencana asesmen belum valid.`)
+    + seedNote + demoNote
+    + `<section class="panel"><header><div><h2>Alur penilaian per kelas</h2><p>Rencana asesmen → input nilai → finalisasi → evaluasi CPMK. Klik baris untuk membuka kelas.</p></div></header>${table}</section>`
+    + `<section class="panel"><header><div><h2>Capaian CPL periode ini</h2><p>${isAdmin() ? "Rata-rata capaian mahasiswa" : "Rata-rata capaian mahasiswa di kelas Anda, dihitung dari semua kelas final mereka"} pada periode ini. Garis kuning = target ${S.targetCPL}.</p></div>${isAdmin() ? `<button class="btn sm" data-act="nav" data-v="laporan">Buka laporan semester</button>` : ""}</header>
+       <div class="body bars">${cplRows.map(r => bar(r.avg, S.targetCPL, r.c.id, r.avg == null ? "belum terukur" : fmt(r.avg))).join("")}</div></section>`;
+};
+
+/* ---------- CPL ---------- */
+VIEWS.cpl = () => {
+  const mks = all("mk"), cps = all("cpmk");
+  const rows = cplList().map(c => {
+    const nMk = mks.filter(m => m.cpl.includes(c.id)).length;
+    const nCp = cps.filter(x => (x.cpl || []).includes(c.id)).length;
+    return `<tr><td class="code">${c.id}</td><td>${c.r ? `<span class="tag plain">${c.r}</span>` : '<span class="muted">–</span>'}</td>
+      <td><div class="${c.d.length > 260 ? "clamp" : ""}">${esc(c.d)}</div>${c.d.length > 260 ? `<details><summary>Selengkapnya</summary><p class="small">${esc(c.d)}</p></details>` : ""}</td>
+      <td class="n">${nMk}</td><td class="n">${nCp ? nCp : '<span class="tag bad">0</span>'}</td></tr>`;
+  }).join("");
+  return head("CPL & profil lulusan", "Tujuh CPL sesuai Buku Kurikulum Prodi S1 ARS 2024 (Tabel 2). Ranah taksonomi CPL-05 s.d. CPL-07 mengikuti sheet PL-CPL pada Excel simulasi.")
+    + (cps.length && cplList().some(c => !cps.some(x => (x.cpl || []).includes(c.id))) ? `<div class="note bad">Ada CPL yang tidak dipetakan ke CPMK mana pun, sehingga capaiannya tidak bisa diukur dari nilai. Buku Kurikulum membebankan CPL tersebut ke beberapa mata kuliah, tetapi CPMK di Excel hanya dipetakan ke CPL-05, CPL-06, dan CPL-07. Lihat <a href="#" data-act="nav" data-v="audit">Audit keselarasan</a>.</div>` : "")
+    + `<section class="panel"><div class="scroll"><table><thead><tr><th>Kode</th><th>Ranah</th><th>Deskripsi CPL</th><th class="n">MK (Buku)</th><th class="n">CPMK terpetakan</th></tr></thead><tbody>${rows}</tbody></table></div></section>`
+    + `<section class="panel"><header><h2>Profil lulusan</h2></header><div class="scroll"><table><thead><tr><th>Kode</th><th>Profil</th></tr></thead><tbody>${SEED.pl.map(p => `<tr><td class="code">${p[0]}</td><td>${p[1]}</td></tr>`).join("")}</tbody></table></div></section>`;
+};
+
+/* ---------- Mata kuliah ---------- */
+VIEWS.mk = () => {
+  const q = UI.q.toLowerCase();
+  let list = all("mk").sort((a, b) => a.s - b.s || a.id.localeCompare(b.id));
+  if (q) list = list.filter(m => (m.id + " " + m.n).toLowerCase().includes(q));
+  if (UI.fsem) list = list.filter(m => String(m.s) === UI.fsem);
+  if (UI.fjenis) list = list.filter(m => m.j.startsWith(UI.fjenis));
+  const wajib = all("mk").filter(m => !m.j.startsWith("Pilihan"));
+  const tot = wajib.reduce((s, m) => s + sks(m), 0);
+  return head("Mata kuliah", `${all("mk").length} mata kuliah sesuai Buku Kurikulum 2024 (Tabel 8, kode pilihan dari Tabel 7). Total ${tot} SKS wajib + MKWU, di luar ${all("mk").length - wajib.length} MK pilihan.`, isAdmin() ? `<button class="btn primary" data-act="editMk">Tambah mata kuliah</button>` : "")
+    + `<div class="toolbar">
+        <input type="text" placeholder="Cari kode atau nama" value="${esc(UI.q)}" data-in="q" aria-label="Cari mata kuliah">
+        <select data-in="fsem" aria-label="Semester"><option value="">Semua semester</option>${[1,2,3,4,5,6,7,8].map(s => `<option value="${s}" ${UI.fsem == s ? "selected" : ""}>Semester ${roman(s)}</option>`).join("")}</select>
+        <select data-in="fjenis" aria-label="Jenis"><option value="">Semua jenis</option>${["Wajib", "MKWU", "Pilihan"].map(s => `<option ${UI.fjenis === s ? "selected" : ""}>${s}</option>`).join("")}</select>
+        <span class="muted small">${list.length} ditampilkan</span></div>`
+    + `<section class="panel"><div class="scroll"><table><thead><tr><th>Kode</th><th>Nama mata kuliah</th><th class="n">Smt</th><th class="n">T</th><th class="n">P</th><th>Jenis</th><th>CPL (Buku)</th><th class="n">CPMK</th>${isAdmin() ? "<th></th>" : ""}</tr></thead>
+      <tbody>${list.map(m => { const n = cpmkOf(m.id).length; return `<tr><td class="code">${esc(m.id)}</td><td>${esc(m.n)}</td><td class="n">${roman(m.s)}</td><td class="n">${m.t}</td><td class="n">${m.p}</td><td>${esc(m.j)}</td><td>${m.cpl.length ? tagCpl(m.cpl) : '<span class="tag warn">tidak ada di Tabel 6</span>'}</td>
+        <td class="n"><button class="btn ghost" data-act="gotoCpmk" data-id="${esc(m.id)}">${n || '<span class="tag bad">0</span>'}</button></td>${isAdmin() ? `<td><button class="btn ghost" data-act="editMk" data-id="${esc(m.id)}">Ubah</button></td>` : ""}</tr>`; }).join("")}</tbody></table></div></section>`;
+};
+function editMk(id) {
+  const m = id ? DB.mk.get(id) : { id: "", n: "", s: 1, t: 2, p: 0, j: "Wajib", cpl: [] };
+  openDialog(id ? "Ubah mata kuliah" : "Tambah mata kuliah", `
+    <div class="grid2"><label class="field"><span>Kode</span><input type="text" name="id" value="${esc(m.id)}" ${id ? "readonly" : "required"}></label>
+    <label class="field"><span>Semester</span><select name="s">${[1,2,3,4,5,6,7,8].map(s => `<option ${m.s == s ? "selected" : ""}>${s}</option>`).join("")}</select></label></div>
+    <label class="field"><span>Nama mata kuliah</span><input type="text" name="n" value="${esc(m.n)}" required></label>
+    <div class="grid2"><label class="field"><span>SKS teori</span><input type="number" min="0" max="8" name="t" value="${m.t}"></label><label class="field"><span>SKS praktik/lapangan</span><input type="number" min="0" max="8" name="p" value="${m.p}"></label></div>
+    <label class="field"><span>Jenis</span><select name="j">${["Wajib", "MKWU", "Pilihan 1", "Pilihan 2", "Pilihan 3", "Pilihan 4"].map(s => `<option ${m.j === s ? "selected" : ""}>${s}</option>`).join("")}</select></label>
+    <div class="field"><span>CPL yang dibebankan (Buku Kurikulum Tabel 6)</span><div class="checks">${cplList().map(c => `<label><input type="checkbox" name="cpl" value="${c.id}" ${m.cpl.includes(c.id) ? "checked" : ""}>${c.id}</label>`).join("")}</div></div>`,
+    async fd => {
+      const rec = { id: (fd.get("id") || "").trim().toUpperCase(), n: fd.get("n").trim(), s: +fd.get("s"), t: +fd.get("t"), p: +fd.get("p"), j: fd.get("j"), cpl: fd.getAll("cpl") };
+      if (!id && DB.mk.has(rec.id)) { toast("Kode mata kuliah sudah ada.", true); return false; }
+      await guard(() => Store.save("mk", rec), "Mata kuliah disimpan.");
+    });
+}
+
+/* ---------- CPMK ---------- */
+VIEWS.cpmk = () => {
+  const mks = all("mk").sort((a, b) => a.s - b.s || a.id.localeCompare(b.id));
+  const mk = mkOf(UI.mkSel) || mks[0]; UI.mkSel = mk.id;
+  const cps = cpmkOf(mk.id);
+  const opts = [1,2,3,4,5,6,7,8].map(s => `<optgroup label="Semester ${roman(s)}">${mks.filter(m => m.s === s).map(m => `<option value="${esc(m.id)}" ${m.id === mk.id ? "selected" : ""}>${esc(m.id)} – ${esc(m.n)} (${cpmkOf(m.id).length})</option>`).join("")}</optgroup>`).join("");
+  const measured = new Set(cps.flatMap(c => c.cpl || []));
+  const missing = mk.cpl.filter(c => !measured.has(c));
+  const off = [...measured].filter(c => !mk.cpl.includes(c));
+  return head("CPMK & sub-CPMK", "CPMK per mata kuliah sesuai sheet CPL-CPMK pada Excel Simulasi Kurikulum 2024 Revisi 3.1. Pemetaan CPMK ke CPL menentukan ke CPL mana nilai mahasiswa dihitung.", isAdmin() ? `<button class="btn primary" data-act="editCpmk">Tambah CPMK</button>` : "")
+    + `<div class="toolbar"><select data-in="mkSel" aria-label="Pilih mata kuliah" style="max-width:100%">${opts}</select></div>`
+    + `<dl class="kv" style="margin:0 0 16px"><dt>Mata kuliah</dt><dd><b>${esc(mk.id)}</b> ${esc(mk.n)}, semester ${roman(mk.s)}, ${sks(mk)} SKS (${mk.t} T / ${mk.p} P)</dd><dt>CPL di Buku Kurikulum</dt><dd>${mk.cpl.length ? tagCpl(mk.cpl) : '<span class="tag warn">tidak tercantum</span>'}</dd></dl>`
+    + (missing.length && cps.length ? `<div class="note">CPL ${missing.join(", ")} dibebankan ke MK ini di Buku Kurikulum, tetapi tidak ada CPMK yang dipetakan ke sana.</div>` : "")
+    + (off.length ? `<div class="note">CPMK dipetakan ke ${off.join(", ")}, yang tidak tercantum sebagai CPL MK ini di Buku Kurikulum (Tabel 6). Tanda kuning pada tag CPL.</div>` : "")
+    + `<section class="panel">${cps.length ? `<div class="scroll"><table><thead><tr><th>Kode</th><th>Rumusan CPMK dan sub-CPMK</th><th>CPL</th>${isAdmin() ? "<th></th>" : ""}</tr></thead><tbody>
+      ${cps.map(c => `<tr><td class="code">CPMK-${c.no}</td><td>${esc(c.d)}${c.flag ? `<div><span class="tag bad">${esc(c.flag)}</span></div>` : ""}
+        ${(c.sub || []).length ? `<ol class="small muted" style="margin:6px 0 0;padding-left:18px">${c.sub.map((s, i) => `<li>Sub-CPMK ${c.no}.${i + 1}: ${esc(s)}</li>`).join("")}</ol>` : ""}
+        <div class="small muted">${esc(c.src || "")}</div></td>
+        <td>${tagCpl(c.cpl, mk)}</td>${isAdmin() ? `<td><button class="btn ghost" data-act="editCpmk" data-id="${esc(c.id)}">Ubah</button></td>` : ""}</tr>`).join("")}</tbody></table></div>`
+      : `<div class="empty">Mata kuliah ini belum punya CPMK di Excel simulasi. ${isAdmin() ? "Tambahkan CPMK sesuai RPS agar nilainya bisa dihitung ke CPL." : ""}</div>`}</section>`;
+};
+function editCpmk(id) {
+  const mk = mkOf(UI.mkSel);
+  const cps = cpmkOf(mk.id);
+  const c = id ? DB.cpmk.get(id) : { id: "", mk: mk.id, no: (cps.at(-1)?.no || 0) + 1, d: "", cpl: mk.cpl.slice(0, 1), sub: [] };
+  const used = id && all("asesmen").some(a => Object.values(a.mat || {}).some(r => +r[id] > 0));
+  openDialog(id ? `Ubah CPMK-${c.no} ${mk.id}` : `Tambah CPMK ${mk.id}`, `
+    <label class="field"><span>Nomor</span><input type="number" name="no" min="1" value="${c.no}" required></label>
+    <label class="field"><span>Rumusan CPMK</span><textarea name="d" required>${esc(c.d)}</textarea></label>
+    <div class="field"><span>Dipetakan ke CPL</span><div class="checks">${cplList().map(x => `<label><input type="checkbox" name="cpl" value="${x.id}" ${(c.cpl || []).includes(x.id) ? "checked" : ""}>${x.id}${mk.cpl.includes(x.id) ? "" : ' <span class="muted small">(bukan CPL MK)</span>'}</label>`).join("")}</div></div>
+    <label class="field"><span>Sub-CPMK, satu per baris</span><textarea name="sub">${esc((c.sub || []).join("\n"))}</textarea></label>
+    ${id ? `<p class="small muted">${used ? "CPMK ini dipakai di rencana asesmen kelas, jadi tidak bisa dihapus." : `<button type="button" class="btn danger sm" data-act="delCpmk" data-id="${esc(id)}">Hapus CPMK</button>`}</p>` : ""}`,
+    async fd => {
+      const cpl = fd.getAll("cpl");
+      if (!cpl.length) { toast("Pilih minimal satu CPL.", true); return false; }
+      const rec = { ...c, id: c.id || mk.id + "-" + uid("c"), no: +fd.get("no"), d: fd.get("d").trim(), cpl, sub: fd.get("sub").split("\n").map(s => s.trim()).filter(Boolean) };
+      delete rec.flag;
+      await guard(() => Store.save("cpmk", rec), "CPMK disimpan.");
+    });
+}
+
+/* ---------- Audit keselarasan ---------- */
+const STATIC_NOTES = [
+  ["Excel", "Tiga CPMK pertama Praktik Penyuluhan Kesehatan RS (SARS309) identik dengan CPMK Praktik SIMRS (SARS302). Perlu dirumuskan ulang."],
+  ["Excel", "Excel memuat CPMK untuk \"Praktik Manajemen Pemasaran RS\" dan \"Praktik Manajemen Komplain dan Customer Service\", tetapi kedua MK itu tidak ada di Buku Kurikulum. CPMK-nya tidak diimpor."],
+  ["Excel", "\"Praktik Aplikasi Komputer I & II\" ditulis dalam satu baris. CPMK yang sama dipasang ke SARS210 dan SARS305; sebaiknya dibedakan jenjangnya."],
+  ["Excel", "CPMK Bahasa Inggris (UNBL24003) dan Bahasa Inggris Profesi (SARS201) identik, begitu juga PBL I dan PBL II, serta Final Project I dan II (sebagian)."],
+  ["Nama", "Excel memakai nama lama: Statistika Rumah Sakit → Biostatistik & Statistika Kesehatan (SARS609); Final Project I/II → Skripsi I/II (SARS705/SARS801); Casemix dan Remunerasi → Sistem Casemix dan Remunerasi (SARS706)."],
+  ["Excel", "Sheet Distribusi MK di Excel memakai kode dan semester versi lama (mis. SARS209 = Manajemen Logistik). Aplikasi mengikuti kode Buku Kurikulum Tabel 8."],
+  ["Buku", "Pengantar Kearifan Lokal Kalimantan tertulis 1 SKS di Tabel 8 dan Tabel 12, tetapi 2 SKS di Tabel 9. Aplikasi memakai 1 SKS."],
+  ["Buku", "Praktik Akuntansi Biaya (SARS304) tidak tercantum di Tabel 6 (matriks CPL–MK). Manajemen Mitigasi Bencana (SARS413) di Tabel 6 kosong, sedangkan Tabel 7 menulis CPL-05; CPL-06."],
+  ["Buku", "Jumlah SKS Semester VI di Tabel 15 tertulis 117 (salah ketik)."],
+  ["Pedoman", "Skala huruf mutu di Pedoman Penilaian melompat dari D (50–54,99) ke C (60–64,99); rentang 55,00–59,99 tidak diatur. Aplikasi sementara memasukkannya ke D."],
+  ["Pedoman", "Kolom \"Persentase\" pada contoh tabel CPL di Pedoman adalah proporsi skor terhadap total semua CPL (mis. 560/6480 = 8,64%), bukan tingkat capaian. Tingkat capaian = skor diperoleh ÷ skor maksimal (560/600 = 93,3%). Aplikasi menampilkan keduanya secara terpisah."],
+  ["Pedoman", "Contoh tabel CPL di Pedoman memakai kode MK Farmasi (VFAR) dan 11 CPL. Front end lama menyalin contoh ini apa adanya."]
+];
+VIEWS.audit = () => {
+  const mks = all("mk"), rows = [];
+  mks.forEach(m => {
+    const cps = cpmkOf(m.id);
+    if (!cps.length) { rows.push(["bad", m, "Belum ada CPMK", "Nilai MK ini tidak bisa dihitung ke CPL."]); return; }
+    const meas = new Set(cps.flatMap(c => c.cpl || []));
+    const off = [...meas].filter(c => !m.cpl.includes(c));
+    const miss = m.cpl.filter(c => !meas.has(c));
+    if (off.length && m.cpl.length) rows.push(["warn", m, `CPMK → ${off.join(", ")}`, `Buku Kurikulum membebankan ${m.cpl.join(", ")}.`]);
+    if (miss.length) rows.push(["warn", m, `${miss.join(", ")} tidak diukur`, "CPL tercantum di Buku Kurikulum, tetapi tidak ada CPMK yang dipetakan."]);
+  });
+  const txt = new Map(); all("cpmk").forEach(c => { const k = c.d.toLowerCase().replace(/\s+/g, " ").trim(); if (!txt.has(k)) txt.set(k, []); txt.get(k).push(c); });
+  const dup = [...txt.values()].filter(v => new Set(v.map(c => c.mk)).size > 1);
+  const cps = all("cpmk");
+  const cplCount = cplList().map(c => [c.id, cps.filter(x => (x.cpl || []).includes(c.id)).length]);
+  return head("Audit keselarasan kurikulum", "Pemeriksaan otomatis antara Buku Kurikulum 2024, CPMK dari Excel, dan data yang tersimpan di aplikasi. Daftar ini ikut berubah setiap kali data MK atau CPMK diubah.")
+    + `<section class="panel"><header><div><h2>Sebaran CPMK per CPL</h2><p>CPL tanpa CPMK tidak bisa dilaporkan capaiannya.</p></div></header><div class="body"><div class="checks">${cplCount.map(([id, n]) => `<span class="tag ${n ? "ok" : "bad"}">${id}: ${n} CPMK</span>`).join("")}</div></div></section>`
+    + `<section class="panel"><header><div><h2>Mata kuliah bermasalah</h2><p>${rows.length} temuan dari ${mks.length} mata kuliah.</p></div><button class="btn sm" data-act="csvAudit">Unduh CSV</button></header>
+      <div class="scroll"><table><thead><tr><th>Kode</th><th>Mata kuliah</th><th>Temuan</th><th>Keterangan</th></tr></thead><tbody>
+      ${rows.map(r => `<tr class="click" data-act="gotoCpmk" data-id="${esc(r[1].id)}"><td class="code">${esc(r[1].id)}</td><td>${esc(r[1].n)}</td><td><span class="tag ${r[0]}">${esc(r[2])}</span></td><td class="small">${esc(r[3])}</td></tr>`).join("")}</tbody></table></div></section>`
+    + `<section class="panel"><header><div><h2>CPMK dengan rumusan identik di MK berbeda</h2><p>${dup.length} kelompok.</p></div></header><div class="scroll"><table><thead><tr><th>Mata kuliah</th><th>Rumusan</th></tr></thead><tbody>
+      ${dup.map(v => `<tr><td>${v.map(c => `<span class="tag plain">${c.mk} CPMK-${c.no}</span>`).join("")}</td><td class="small">${esc(v[0].d)}</td></tr>`).join("") || `<tr><td colspan="2" class="muted">Tidak ada.</td></tr>`}</tbody></table></div></section>`
+    + `<section class="panel"><header><div><h2>Catatan sumber dokumen</h2><p>Ditemukan saat menyusun data awal; perlu keputusan prodi.</p></div></header><div class="scroll"><table><thead><tr><th>Sumber</th><th>Catatan</th></tr></thead><tbody>
+      ${STATIC_NOTES.map(n => `<tr><td><span class="tag plain">${n[0]}</span></td><td class="small">${esc(n[1])}</td></tr>`).join("")}</tbody></table></div></section>`;
+};
+
+/* ---------- Mahasiswa ---------- */
+VIEWS.mhs = () => {
+  const q = UI.q.toLowerCase();
+  let list = all("mhs").sort((a, b) => a.id.localeCompare(b.id));
+  if (q) list = list.filter(m => (m.id + " " + m.nama).toLowerCase().includes(q));
+  return head("Mahasiswa", `${all("mhs").length} mahasiswa terdaftar.`, `<button class="btn" data-act="importMhs">Tempel dari Excel</button><button class="btn primary" data-act="editMhs">Tambah mahasiswa</button>`)
+    + `<div class="toolbar"><input type="text" placeholder="Cari NIM atau nama" value="${esc(UI.q)}" data-in="q" aria-label="Cari mahasiswa"></div>`
+    + `<section class="panel"><div class="scroll"><table><thead><tr><th>NIM</th><th>Nama</th><th class="n">Angkatan</th><th>Status</th><th></th></tr></thead><tbody>
+      ${list.map(m => `<tr><td class="code">${esc(m.id)}</td><td>${esc(m.nama)}</td><td class="n">${esc(m.angkatan)}</td><td><span class="tag ${m.status === "Aktif" ? "ok" : "plain"}">${esc(m.status)}</span></td><td><button class="btn ghost" data-act="editMhs" data-id="${esc(m.id)}">Ubah</button></td></tr>`).join("") || `<tr><td colspan="5" class="empty">Belum ada data mahasiswa.</td></tr>`}</tbody></table></div></section>`;
+};
+function editMhs(id) {
+  const m = id ? DB.mhs.get(id) : { id: "", nama: "", angkatan: new Date().getFullYear(), status: "Aktif" };
+  openDialog(id ? "Ubah mahasiswa" : "Tambah mahasiswa", `
+    <label class="field"><span>NIM</span><input type="text" name="id" value="${esc(m.id)}" ${id ? "readonly" : "required"}></label>
+    <label class="field"><span>Nama lengkap</span><input type="text" name="nama" value="${esc(m.nama)}" required></label>
+    <div class="grid2"><label class="field"><span>Angkatan</span><input type="number" name="angkatan" value="${esc(m.angkatan)}" required></label>
+    <label class="field"><span>Status</span><select name="status">${["Aktif", "Cuti", "Lulus", "Non-aktif"].map(s => `<option ${m.status === s ? "selected" : ""}>${s}</option>`).join("")}</select></label></div>`,
+    async fd => {
+      const rec = { id: fd.get("id").trim(), nama: fd.get("nama").trim(), angkatan: +fd.get("angkatan"), status: fd.get("status") };
+      if (!id && DB.mhs.has(rec.id)) { toast("NIM sudah terdaftar.", true); return false; }
+      await guard(() => Store.save("mhs", rec), "Data mahasiswa disimpan.");
+    });
+}
+function importMhs() {
+  openDialog("Tempel data mahasiswa", `<p class="small muted" style="margin-top:0">Salin tiga kolom dari Excel: NIM, Nama, Angkatan. Satu mahasiswa per baris. NIM yang sudah ada akan diperbarui.</p><textarea name="raw" style="min-height:200px" placeholder="2026110001&#9;Nama Mahasiswa&#9;2026"></textarea>`,
+    async fd => {
+      const recs = fd.get("raw").split(/\r?\n/).map(l => l.split(/\t|;/).map(s => s.trim())).filter(r => r[0] && r[1])
+        .map(r => ({ id: r[0], nama: r[1], angkatan: +r[2] || new Date().getFullYear(), status: "Aktif" }));
+      if (!recs.length) { toast("Tidak ada baris yang terbaca.", true); return false; }
+      await guard(() => Store.saveMany("mhs", recs), `${recs.length} mahasiswa disimpan.`);
+    }, "Impor");
+}
+
+/* ---------- Dosen ---------- */
+VIEWS.dosen = () => head("Dosen & akun", "Email di sini dipakai untuk mengenali pengguna saat membuka aplikasi Apps Script. Dosen hanya melihat dan mengisi nilai kelas yang ia ampu.", `<button class="btn primary" data-act="editDosen">Tambah dosen</button>`)
+  + `<section class="panel"><div class="scroll"><table><thead><tr><th>NIDN</th><th>Nama & gelar</th><th>Email login</th><th>Peran</th><th class="n">Kelas ${esc(PER().smt)} ${esc(PER().ta)}</th><th></th></tr></thead><tbody>
+    ${all("dosen").map(d => `<tr><td>${esc(d.nidn || "–")}</td><td>${esc(d.nama)}</td><td class="muted">${esc(d.email)}</td><td><span class="tag ${d.role === "admin" ? "" : "plain"}">${d.role === "admin" ? "Admin prodi" : "Dosen"}</span></td><td class="n">${all("kelas").filter(k => k.dosen === d.id && inPeriod(k)).length}</td><td><button class="btn ghost" data-act="editDosen" data-id="${esc(d.id)}">Ubah</button></td></tr>`).join("")}</tbody></table></div></section>`;
+function editDosen(id) {
+  const d = id ? DB.dosen.get(id) : { id: "", nidn: "", nama: "", email: "", role: "dosen" };
+  openDialog(id ? "Ubah dosen" : "Tambah dosen", `
+    <label class="field"><span>Nama & gelar</span><input type="text" name="nama" value="${esc(d.nama)}" required></label>
+    <div class="grid2"><label class="field"><span>NIDN/NUPTK</span><input type="text" name="nidn" value="${esc(d.nidn)}"></label>
+    <label class="field"><span>Peran</span><select name="role"><option value="dosen" ${d.role === "dosen" ? "selected" : ""}>Dosen</option><option value="admin" ${d.role === "admin" ? "selected" : ""}>Admin prodi</option></select></label></div>
+    <label class="field"><span>Email login (akun Google)</span><input type="email" name="email" value="${esc(d.email)}" required></label>`,
+    async fd => {
+      const rec = { id: d.id || uid("D"), nama: fd.get("nama").trim(), nidn: fd.get("nidn").trim(), email: fd.get("email").trim().toLowerCase(), role: fd.get("role") };
+      if (all("dosen").some(x => x.email === rec.email && x.id !== rec.id)) { toast("Email sudah dipakai dosen lain.", true); return false; }
+      await guard(() => Store.save("dosen", rec), "Data dosen disimpan.");
+    });
+}
+
+/* ---------- Kelas ---------- */
+VIEWS.kelas = () => {
+  const S = PER();
+  const ks = kelasVisible().filter(k => inPeriod(k)).sort((a, b) => a.mk.localeCompare(b.mk) || a.nama.localeCompare(b.nama));
+  return head(isAdmin() ? "Kelas & penilaian" : "Kelas saya", `Semester ${esc(S.smt)} ${esc(S.ta)}. Ganti periode di menu kiri.`, isAdmin() ? `<button class="btn primary" data-act="editKelas">Buat kelas</button>` : "")
+    + `<section class="panel">${ks.length ? `<div class="scroll"><table><thead><tr><th>Mata kuliah</th><th>Kelas</th><th>Dosen pengampu</th><th class="n">SKS</th><th class="n">Peserta</th><th>Status</th>${isAdmin() ? "<th></th>" : ""}</tr></thead><tbody>
+      ${ks.map(k => { const m = mkOf(k.mk) || {}; return `<tr class="click" data-act="openKelas" data-id="${esc(k.id)}"><td><span class="code">${esc(k.mk)}</span> ${esc(m.n)}</td><td>${esc(k.nama)}</td><td>${esc(dosenName(k.dosen))}</td><td class="n">${sks(m)}</td><td class="n">${(k.peserta || []).length}</td><td>${statusTag(kelasStatus(k))}</td>${isAdmin() ? `<td><button class="btn ghost" data-act="editKelas" data-id="${esc(k.id)}">Ubah</button></td>` : ""}</tr>`; }).join("")}</tbody></table></div>`
+      : `<div class="empty">Belum ada kelas di periode ini.</div>`}</section>`;
+};
+function editKelas(id) {
+  const S = PER();
+  const k = id ? DB.kelas.get(id) : { id: "", mk: "", nama: "A", dosen: "", ta: S.ta, smt: S.smt, peserta: [] };
+  const mks = all("mk").sort((a, b) => a.s - b.s || a.id.localeCompare(b.id));
+  const angk = [...new Set(all("mhs").map(m => m.angkatan))].sort().reverse();
+  const hasNilai = id && Object.keys(nilaiDoc(k).scores || {}).length;
+  openDialog(id ? "Ubah kelas" : `Buat kelas ${S.smt} ${S.ta}`, `
+    <label class="field"><span>Mata kuliah</span><select name="mk" required ${hasNilai ? "disabled" : ""}><option value="">Pilih mata kuliah</option>${mks.map(m => `<option value="${esc(m.id)}" ${k.mk === m.id ? "selected" : ""}>Smt ${roman(m.s)} – ${esc(m.id)} ${esc(m.n)}</option>`).join("")}</select>${hasNilai ? '<small class="muted">Mata kuliah tidak bisa diganti karena nilai sudah diisi.</small>' : ""}</label>
+    <div class="grid2"><label class="field"><span>Nama kelas</span><input type="text" name="nama" value="${esc(k.nama)}" required></label>
+    <label class="field"><span>Dosen pengampu</span><select name="dosen" required><option value="">Pilih dosen</option>${all("dosen").map(d => `<option value="${esc(d.id)}" ${k.dosen === d.id ? "selected" : ""}>${esc(d.nama)}</option>`).join("")}</select></label></div>
+    <div class="field"><span>Peserta</span>
+      <div class="toolbar" style="margin:0">${angk.map(a => `<button type="button" class="btn sm" data-act="pickAngkatan" data-a="${a}">Pilih angkatan ${a}</button>`).join("")}<button type="button" class="btn sm" data-act="pickNone">Kosongkan</button></div>
+      <div class="checks" style="max-height:220px;overflow:auto;border:1px solid var(--line-2);padding:8px;border-radius:5px">
+      ${all("mhs").sort((a, b) => a.id.localeCompare(b.id)).map(m => `<label style="width:100%"><input type="checkbox" name="peserta" value="${esc(m.id)}" data-angk="${m.angkatan}" ${(k.peserta || []).includes(m.id) ? "checked" : ""}> ${esc(m.id)} ${esc(m.nama)} <span class="muted small">(${m.angkatan})</span></label>`).join("")}</div></div>
+    ${id && !hasNilai ? `<button type="button" class="btn danger sm" data-act="delKelas" data-id="${esc(id)}">Hapus kelas</button>` : ""}`,
+    async fd => {
+      const rec = { ...k, id: k.id || uid("K"), mk: hasNilai ? k.mk : fd.get("mk"), nama: fd.get("nama").trim(), dosen: fd.get("dosen"), peserta: fd.getAll("peserta") };
+      if (!rec.mk) { toast("Pilih mata kuliah.", true); return false; }
+      if (all("kelas").some(x => x.id !== rec.id && x.mk === rec.mk && x.nama === rec.nama && x.ta === rec.ta && x.smt === rec.smt)) { toast("Kelas dengan MK dan nama yang sama sudah ada di periode ini.", true); return false; }
+      await guard(() => Store.save("kelas", rec), "Kelas disimpan.");
+    });
+}
+
+/* ---------- Ruang kelas: rencana asesmen, nilai, evaluasi, rekap ---------- */
+function canEditKelas(k) { return isAdmin() || k.dosen === USER.dosenId; }
+VIEWS.ruang = () => {
+  const k = DB.kelas.get(UI.p.id);
+  if (!k) return head("Kelas tidak ditemukan", "") + `<button class="btn" data-act="nav" data-v="kelas">Kembali ke daftar kelas</button>`;
+  const mk = mkOf(k.mk) || { n: "?", cpl: [] }, R = calcKelas(k), tab = UI.p.tab || (R.P.valid ? (R.final ? "evaluasi" : "nilai") : "rencana");
+  UI.p.tab = tab;
+  const st = kelasStatus(k);
+  const steps = [
+    ["rencana", "Rencana asesmen", R.P.valid ? "done" : "bad", R.P.valid ? `${R.P.a.komp.length} komponen, total 100%` : "Belum valid"],
+    ["nilai", "Input nilai", R.total && R.done === R.total ? "done" : (R.done ? "warn" : ""), `${R.done} dari ${R.total} lengkap`],
+    ["rekap", "Finalisasi", R.final ? "done" : "", R.final ? "Terkunci" : "Belum final"],
+    ["evaluasi", "Evaluasi CPMK", R.final ? "done" : (R.done ? "warn" : ""), R.final ? "Siap dilaporkan" : "Sementara"]
+  ];
+  const body = { rencana: tabRencana, nilai: tabNilai, evaluasi: tabEvaluasi, rekap: tabRekap }[tab](k, mk, R);
+  return `<p class="small" style="margin:0 0 6px"><a href="#" data-act="nav" data-v="kelas">Kelas</a> / ${esc(k.mk)}</p>`
+    + head(`${esc(mk.n)}`, `${esc(k.mk)} kelas ${esc(k.nama)}, ${sks(mk)} SKS, ${esc(k.smt)} ${esc(k.ta)}<br>Dosen pengampu: ${esc(dosenName(k.dosen))}<br>CPL mata kuliah (Buku Kurikulum): ${mk.cpl.join(", ") || "–"}`, statusTag(st))
+    + `<nav class="pipe" aria-label="Tahapan penilaian">${steps.map((s, i) => `<button data-act="tab" data-t="${s[0]}" class="${s[2]}" ${tab === s[0] ? 'aria-current="step"' : ""}><b><span class="dot">${s[2] === "done" ? "✓" : i + 1}</span>${s[1]}</b><small>${s[3]}</small></button>`).join("")}</nav>`
+    + body;
+};
+
+function tabRencana(k, mk, R) {
+  const locked = R.final || !canEditKelas(k);
+  if (!UI.edit || UI.edit.kind !== "asesmen" || UI.edit.id !== k.id) UI.edit = { kind: "asesmen", id: k.id, a: clone(R.P.a) };
+  const a = UI.edit.a, cp = cpmkOf(k.mk), P = planFrom(a, cp);
+  const issues = P.issues.map(i => `<div class="note ${i.lv === "bad" ? "bad" : ""}">${esc(i.t)}</div>`).join("");
+  const dis = locked ? "disabled" : "";
+  return (R.final ? `<div class="note info">Nilai kelas ini sudah final, sehingga rencana asesmen terkunci.${isAdmin() ? " Admin dapat membuka kunci di tab Finalisasi." : ""}</div>` : "")
+    + `<p class="lead">Isi tiap sel dengan bobot komponen penilaian untuk CPMK tersebut, dalam persen dari nilai akhir. Total semua sel harus 100. Jumlah kolom menjadi bobot CPMK, yang dipakai untuk menghitung capaian CPMK dan CPL.</p>`
+    + `<div id="planIssues">${issues}</div>`
+    + `<section class="panel"><header><div><h2>Matriks komponen penilaian × CPMK</h2><p>Arahkan kursor ke kode CPMK untuk melihat rumusannya.</p></div>
+       <div class="actions">${locked ? "" : `<button class="btn sm" data-act="presetPlan">Isi contoh Pedoman UNBL</button><button class="btn sm" data-act="addKomp">Tambah komponen</button><button class="btn primary sm" data-act="savePlan">Simpan rencana</button>`}</div></header>
+       <div class="scroll"><table class="matrix"><thead><tr><th>Komponen</th><th>Bentuk asesmen</th>${cp.map(c => `<th title="${esc(c.d)}">CPMK-${c.no}<div class="small muted" style="font-weight:400">${(c.cpl || []).join(", ")}</div></th>`).join("")}<th>Bobot komponen</th>${locked ? "" : "<th></th>"}</tr></thead>
+       <tbody>${a.komp.map((kp, i) => `<tr><td><input type="text" value="${esc(kp.nama)}" data-in="kompNama" data-i="${i}" ${dis} style="width:150px" aria-label="Nama komponen"></td>
+         <td><select data-in="kompBentuk" data-i="${i}" ${dis} aria-label="Bentuk asesmen">${BENTUK.map(b => `<option ${kp.bentuk === b ? "selected" : ""}>${b}</option>`).join("")}</select></td>
+         ${cp.map(c => `<td><input class="matin" type="number" min="0" max="100" step="0.01" value="${P.cell(kp.id, c.id) || ""}" data-in="mat" data-k="${esc(kp.id)}" data-c="${esc(c.id)}" ${dis} aria-label="${esc(kp.nama)} CPMK-${c.no}"></td>`).join("")}
+         <td class="num sum" data-rowsum="${esc(kp.id)}">${fmt(P.rowSum(kp.id), 2)}</td>${locked ? "" : `<td><button class="btn ghost" data-act="delKomp" data-i="${i}" aria-label="Hapus komponen">Hapus</button></td>`}</tr>`).join("")
+         || `<tr><td colspan="${cp.length + 4}" class="empty">Belum ada komponen. Mulai dari contoh Pedoman atau tambah komponen sendiri.</td></tr>`}</tbody>
+       <tfoot><tr><th>Bobot CPMK</th><th></th>${cp.map(c => `<th class="num sum" data-colsum="${esc(c.id)}">${fmt(P.W[c.id], 2)}</th>`).join("")}<th class="num sum ${Math.abs(P.total - 100) <= .05 ? "ok" : "bad"}" id="planTotal">${fmt(P.total, 2)}</th>${locked ? "" : "<th></th>"}</tr></tfoot></table></div></section>`
+    + `<section class="panel"><header><h2>CPMK mata kuliah ini</h2></header><div class="scroll"><table><tbody>${cp.map(c => `<tr><td class="code">CPMK-${c.no}</td><td class="small">${esc(c.d)}</td><td>${tagCpl(c.cpl, mk)}</td></tr>`).join("") || `<tr><td class="empty">Belum ada CPMK.</td></tr>`}</tbody></table></div></section>`;
+}
+function refreshPlanTotals() {
+  const k = DB.kelas.get(UI.p.id), P = planFrom(UI.edit.a, cpmkOf(k.mk));
+  $$("[data-rowsum]").forEach(el => el.textContent = fmt(P.rowSum(el.dataset.rowsum), 2));
+  $$("[data-colsum]").forEach(el => el.textContent = fmt(P.W[el.dataset.colsum], 2));
+  const t = $("#planTotal"); if (t) { t.textContent = fmt(P.total, 2); t.className = "num sum " + (Math.abs(P.total - 100) <= .05 ? "ok" : "bad"); }
+  const iss = $("#planIssues"); if (iss) iss.innerHTML = P.issues.map(i => `<div class="note ${i.lv === "bad" ? "bad" : ""}">${esc(i.t)}</div>`).join("");
+}
+function presetPlan(k) {
+  const cp = cpmkOf(k.mk), n = cp.length; if (!n) return;
+  const idx = { all: [...Array(n).keys()], first: [0], second: [Math.min(1, n - 1)], firstHalf: [...Array(Math.ceil(n / 2)).keys()], secondHalf: [...Array(n).keys()].slice(Math.floor(n / 2)) };
+  const a = { id: k.id, komp: [], mat: {} };
+  PRESET.forEach(p => {
+    a.komp.push({ id: p.id, nama: p.nama, bentuk: p.bentuk });
+    const t = idx[p.to].length ? idx[p.to] : [0];
+    let left = p.w; a.mat[p.id] = {};
+    t.forEach((i, j) => { const v = j === t.length - 1 ? Math.round(left * 100) / 100 : Math.round(p.w / t.length * 100) / 100; a.mat[p.id][cp[i].id] = v; left -= v; });
+  });
+  UI.edit.a = a;
+}
+
+function tabNilai(k, mk, R) {
+  const locked = R.final || !canEditKelas(k) || !R.P.valid;
+  const komp = R.P.a.komp;
+  if (!R.P.valid) return `<div class="note bad">Lengkapi rencana asesmen dulu (total bobot 100%). Kolom nilai mengikuti komponen di rencana asesmen.</div><button class="btn primary" data-act="tab" data-t="rencana">Buka rencana asesmen</button>`;
+  if (!UI.edit || UI.edit.kind !== "nilai" || UI.edit.id !== k.id) UI.edit = { kind: "nilai", id: k.id, scores: clone(R.N.scores || {}), dirty: false };
+  const sc = UI.edit.scores;
+  const rows = (k.peserta || []).slice().sort();
+  UI.after = () => rows.forEach(refreshNilaiRow);
+  return (R.final ? `<div class="note info">Nilai sudah final dan terkunci.</div>` : `<p class="lead">Masukkan skor 0–100 per komponen. Nilai akhir dan huruf mutu dihitung otomatis. Anda bisa menyalin blok nilai dari Excel lalu menempelkannya di sel pertama.</p>`)
+    + `<section class="panel"><header><div><h2>Nilai ${rows.length} mahasiswa</h2><p>Bobot komponen: ${komp.map(kp => `${esc(kp.nama)} ${fmt(R.P.rowSum(kp.id), 0)}%`).join(", ")}.</p></div>
+       <div class="actions">${locked ? "" : `<span class="small muted" id="dirtyMark">${UI.edit.dirty ? "Ada perubahan belum disimpan" : ""}</span><button class="btn primary sm" data-act="saveNilai">Simpan draft</button>`}</div></header>
+       <div class="scroll"><table><thead><tr><th class="sticky1">Mahasiswa</th>${komp.map(kp => `<th class="n">${esc(kp.nama)}<div class="small muted" style="font-weight:400">${fmt(R.P.rowSum(kp.id), 0)}%</div></th>`).join("")}<th class="n">Nilai akhir</th><th>Huruf</th></tr></thead>
+       <tbody>${rows.map((nim, ri) => { const s = sc[nim] || {}; const m = DB.mhs.get(nim) || { nama: "?" };
+         return `<tr><td class="sticky1"><b>${esc(nim)}</b><div class="small">${esc(m.nama)}</div></td>
+         ${komp.map((kp, ci) => `<td class="n"><input class="gridin" inputmode="decimal" type="text" value="${isNum(s[kp.id]) ? s[kp.id] : ""}" data-in="score" data-nim="${esc(nim)}" data-k="${esc(kp.id)}" data-r="${ri}" data-c="${ci}" ${locked ? "disabled" : ""} aria-label="${esc(kp.nama)} ${esc(m.nama)}"></td>`).join("")}
+         <td class="num sum" data-na="${esc(nim)}">–</td><td data-h="${esc(nim)}">–</td></tr>`; }).join("") || `<tr><td colspan="${komp.length + 3}" class="empty">Kelas ini belum punya peserta.</td></tr>`}</tbody></table></div></section>`;
+}
+function refreshNilaiRow(nim) {
+  const k = DB.kelas.get(UI.p.id), P = plan(k), s = UI.edit.scores[nim] || {};
+  let na = 0, n = 0;
+  P.a.komp.forEach(kp => { if (isNum(s[kp.id])) { n++; na += +s[kp.id] * P.rowSum(kp.id) / 100; } });
+  const done = n === P.a.komp.length, h = done ? huruf(na) : null;
+  const naEl = $(`[data-na="${CSS.escape(nim)}"]`), hEl = $(`[data-h="${CSS.escape(nim)}"]`);
+  if (naEl) naEl.textContent = done ? fmt(na, 2) : (n ? `${n}/${P.a.komp.length}` : "–");
+  if (hEl) hEl.innerHTML = h ? `<span class="tag ${h.b >= 2 ? "ok" : "bad"}">${h.h}</span>` : "–";
+}
+
+function tabEvaluasi(k, mk, R) {
+  const S = SET();
+  if (!R.P.valid) return `<div class="note bad">Evaluasi CPMK memerlukan rencana asesmen yang valid.</div>`;
+  const below = R.P.cp.filter(c => R.cls[c.id].n && !R.cls[c.id].ok);
+  const check = R.rows.filter(r => r.NA != null).slice(0, 1).map(r => {
+    const s = R.P.cp.reduce((t, c) => t + (r.NC[c.id] ?? 0) * R.P.W[c.id] / 100, 0);
+    return `Pemeriksaan: ${esc(r.m.nama)} NA = ${fmt(r.NA, 2)}; Σ(NC × bobot CPMK) = ${fmt(s, 2)}.`;
+  }).join("");
+  return (R.final ? "" : `<div class="note">Nilai belum final. Angka di bawah bersifat sementara dan belum masuk ke capaian CPL maupun laporan semester.</div>`)
+    + `<p class="lead">Mahasiswa dinyatakan tuntas pada suatu CPMK bila nilainya ≥ ${S.ambangCPMK}. CPMK kelas tercapai bila ≥ ${S.targetKelas}% mahasiswa tuntas.</p>`
+    + `<section class="panel"><header><div><h2>Capaian CPMK kelas</h2><p>${R.done} dari ${R.total} mahasiswa bernilai lengkap.</p></div></header>
+       <div class="scroll"><table><thead><tr><th>CPMK</th><th>CPL</th><th class="n">Bobot</th><th style="min-width:200px">Rata-rata</th><th class="n">Tuntas</th><th>Status</th></tr></thead><tbody>
+       ${R.P.cp.map(c => { const x = R.cls[c.id]; return `<tr><td><b>CPMK-${c.no}</b><div class="small muted clamp" title="${esc(c.d)}">${esc(c.d)}</div></td><td>${tagCpl(c.cpl, mk)}</td><td class="num">${fmt(x.W, 1)}%</td>
+         <td>${x.W ? minibar(x.avg, S.ambangCPMK) : '<span class="tag warn">tidak diukur</span>'}</td><td class="num">${x.n ? fmt(x.tuntas, 0) + "%" : "–"}</td>
+         <td>${!x.W ? "" : !x.n ? '<span class="tag plain">belum ada nilai</span>' : x.ok ? '<span class="tag ok">Tercapai</span>' : '<span class="tag bad">Belum tercapai</span>'}</td></tr>`; }).join("")}</tbody></table></div>
+       <div class="body small muted">${check}</div></section>`
+    + (below.length ? `<section class="panel"><header><h2>Catatan tindak lanjut</h2></header><div class="body"><ul style="margin:0;padding-left:18px">${below.map(c => `<li>CPMK-${c.no} (${(c.cpl || []).join(", ")}): hanya ${fmt(R.cls[c.id].tuntas, 0)}% mahasiswa tuntas, rata-rata ${fmt(R.cls[c.id].avg)}. Tinjau metode pembelajaran dan instrumen ${R.P.a.komp.filter(kp => R.P.cell(kp.id, c.id) > 0).map(kp => kp.nama).join(", ")}; pertimbangkan remedial terarah untuk ${R.rows.filter(r => r.NC[c.id] != null && r.NC[c.id] < S.ambangCPMK).length} mahasiswa.</li>`).join("")}</ul></div></section>` : "")
+    + `<section class="panel"><header><div><h2>Capaian CPMK per mahasiswa</h2><p>Merah = di bawah ambang ${S.ambangCPMK}.</p></div><button class="btn sm" data-act="csvCpmk">Unduh CSV</button></header>
+       <div class="scroll"><table><thead><tr><th class="sticky1">Mahasiswa</th>${R.P.cp.map(c => `<th class="n">CPMK-${c.no}</th>`).join("")}<th class="n">NA</th><th>Huruf</th></tr></thead><tbody>
+       ${R.rows.map(r => `<tr><td class="sticky1"><b>${esc(r.nim)}</b> <span class="small">${esc(r.m.nama)}</span></td>${R.P.cp.map(c => { const v = r.NC[c.id]; return `<td class="num" style="${v != null && v < S.ambangCPMK ? "color:var(--bad);font-weight:600" : ""}">${fmt(v)}</td>`; }).join("")}<td class="num sum">${fmt(r.NA, 2)}</td><td>${r.H ? r.H.h : "–"}</td></tr>`).join("")}</tbody></table></div></section>`;
+}
+
+function tabRekap(k, mk, R) {
+  const komp = R.P.a.komp;
+  const incomplete = R.total - R.done;
+  const canFinal = canEditKelas(k) && R.P.valid && R.total > 0 && !incomplete && !R.final;
+  return `<section class="panel"><header><div><h2>Finalisasi nilai</h2><p>${R.final ? `Final pada ${esc(R.N.finalAt || "")} oleh ${esc(R.N.finalBy || "")}.` : incomplete ? `${incomplete} mahasiswa belum bernilai lengkap.` : "Semua nilai lengkap."}</p></div>
+      <div class="actions">${canFinal ? `<button class="btn primary" data-act="finalize">Finalkan nilai</button>` : ""}${R.final && isAdmin() ? `<button class="btn danger" data-act="unlock">Buka kunci</button>` : ""}<button class="btn" data-act="print">Cetak</button><button class="btn" data-act="csvRekap">Unduh CSV</button></div></header>
+      <div class="body small">Setelah final, nilai dan rencana asesmen terkunci, lalu nilai kelas dihitung ke capaian CPL mahasiswa dan laporan semester. Hanya admin prodi yang dapat membuka kunci.</div></section>`
+    + `<section class="panel"><header><div><h2>Rekapitulasi nilai mata kuliah</h2><p>Format Lampiran 4 Pedoman Penilaian UNBL. ${esc(k.mk)} ${esc(mk.n)}, kelas ${esc(k.nama)}, ${esc(k.smt)} ${esc(k.ta)}, dosen ${esc(dosenName(k.dosen))}.</p></div></header>
+      <div class="scroll"><table><thead><tr><th class="n">No</th><th>NIM</th><th>Nama</th>${komp.map(kp => `<th class="n">${esc(kp.nama)}</th>`).join("")}<th class="n">Nilai akhir</th><th>Huruf</th></tr></thead><tbody>
+      ${R.rows.map((r, i) => `<tr><td class="n">${i + 1}</td><td>${esc(r.nim)}</td><td>${esc(r.m.nama)}</td>${komp.map(kp => `<td class="num">${isNum(r.sc[kp.id]) ? fmt(+r.sc[kp.id], 1) : "–"}</td>`).join("")}<td class="num sum">${fmt(r.NA, 2)}</td><td>${r.H ? r.H.h : "–"}</td></tr>`).join("")}</tbody></table></div></section>`
+    + `<section class="panel"><header><h2>Distribusi huruf mutu</h2></header><div class="scroll"><table><thead><tr>${SET().skala.map(g => `<th class="n">${g.h}</th>`).join("")}<th class="n">Belum</th></tr></thead><tbody><tr>${SET().skala.map(g => `<td class="num">${R.dist[g.h]}</td>`).join("")}<td class="num">${incomplete}</td></tr></tbody></table></div></section>`;
+}
+
+/* ---------- Capaian CPL mahasiswa ---------- */
+function radar(items, target) {
+  const n = items.length, cx = 160, cy = 150, rad = 110;
+  const pt = (i, v) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n; return [cx + Math.cos(a) * rad * v / 100, cy + Math.sin(a) * rad * v / 100]; };
+  const ring = v => items.map((_, i) => pt(i, v).join(",")).join(" ");
+  const meas = items.map((it, i) => [it, i]).filter(x => x[0].val != null);
+  const poly = meas.map(([it, i]) => pt(i, it.val).join(",")).join(" ");
+  return `<svg viewBox="0 0 320 300" width="100%" role="img" aria-label="Radar capaian CPL">
+    ${[25, 50, 75, 100].map(v => `<polygon points="${ring(v)}" fill="none" stroke="#d9dee6" stroke-width="1"/>`).join("")}
+    <polygon points="${ring(target)}" fill="none" stroke="#d99a1e" stroke-width="1.5" stroke-dasharray="4 3"/>
+    ${items.map((_, i) => { const [x, y] = pt(i, 100); return `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#e9edf2"/>`; }).join("")}
+    ${meas.length > 2 ? `<polygon points="${poly}" fill="rgba(39,64,107,.18)" stroke="#27406b" stroke-width="2"/>` : meas.length === 2 ? `<polyline points="${poly}" fill="none" stroke="#27406b" stroke-width="2"/>` : ""}
+    ${meas.map(([it, i]) => { const [x, y] = pt(i, it.val); return `<circle cx="${x}" cy="${y}" r="3.5" fill="#27406b"><title>${it.id}: ${fmt(it.val)}</title></circle>`; }).join("")}
+    ${items.map((it, i) => { const [x, y] = pt(i, 118); return `<text x="${x}" y="${y + 4}" text-anchor="middle" font-size="11" font-weight="600" fill="${it.val == null ? "#9aa3af" : "#1c2433"}">${it.id.replace("CPL-", "CPL ")}</text>`; }).join("")}
+  </svg>`;
+}
+VIEWS.capaian = () => {
+  const S = { ...SET(), ...PER() };
+  const pool = isAdmin() ? all("mhs") : all("mhs").filter(m => kelasVisible().some(k => (k.peserta || []).includes(m.id)));
+  pool.sort((a, b) => a.id.localeCompare(b.id));
+  if (!pool.find(m => m.id === UI.capNim)) UI.capNim = pool[0]?.id || "";
+  const m = DB.mhs.get(UI.capNim);
+  const scope = UI.capScope === "periode" ? S : null;
+  const res = m ? cplMahasiswa(m.id, scope, false) : [];
+  const grand = res.reduce((s, r) => s + r.skor, 0);
+  const matrixBtn = isAdmin() ? `<button class="btn" data-act="csvCplAll">Unduh matriks semua mahasiswa</button>` : "";
+  return head("Capaian CPL mahasiswa", "Akumulasi capaian CPMK dari kelas yang sudah final, dibobot bobot CPMK dan SKS mata kuliah.", matrixBtn)
+    + `<div class="toolbar"><select data-in="capNim" aria-label="Pilih mahasiswa" style="min-width:280px">${pool.map(x => `<option value="${esc(x.id)}" ${x.id === UI.capNim ? "selected" : ""}>${esc(x.id)} – ${esc(x.nama)}</option>`).join("")}</select>
+       <select data-in="capScope" aria-label="Cakupan"><option value="periode" ${UI.capScope === "periode" ? "selected" : ""}>Periode ${esc(S.smt)} ${esc(S.ta)}</option><option value="kumulatif" ${UI.capScope === "kumulatif" ? "selected" : ""}>Kumulatif semua semester</option></select></div>`
+    + (!m ? `<div class="empty">Belum ada mahasiswa.</div>` :
+      `<div class="twocol"><section class="panel"><header><h2>${esc(m.nama)}</h2></header><div class="body">${radar(res, S.targetCPL)}<p class="small muted" style="margin:0">Garis putus kuning = target ${S.targetCPL}. Poligon hanya menghubungkan CPL yang sudah terukur; label abu-abu berarti belum ada nilai.</p></div></section>
+      <section class="panel"><header><div><h2>Rincian capaian</h2><p>Capaian = skor diperoleh ÷ skor maksimal. Proporsi = porsi skor CPL terhadap total semua CPL (kolom "persentase" di Pedoman).</p></div></header>
+      <div class="scroll"><table><thead><tr><th>CPL</th><th class="n">Skor diperoleh</th><th class="n">Skor maks</th><th class="n">Capaian</th><th class="n">Proporsi</th><th>Status</th></tr></thead><tbody>
+      ${res.map(r => `<tr><td class="code">${r.id}</td><td class="num">${r.val == null ? "–" : fmt(r.skor, 1)}</td><td class="num">${r.val == null ? "–" : fmt(r.maks, 1)}</td><td class="num sum">${fmt(r.val)}</td><td class="num">${r.val == null || !grand ? "–" : fmt(r.skor / grand * 100, 2) + "%"}</td>
+        <td>${r.val == null ? '<span class="tag plain">belum terukur</span>' : r.val >= S.targetCPL ? '<span class="tag ok">Tercapai</span>' : '<span class="tag bad">Belum tercapai</span>'}</td></tr>`).join("")}</tbody></table></div>
+      <div class="body"><details><summary>Lihat asal nilai (MK dan CPMK penyumbang)</summary>
+      <table class="small" style="margin-top:8px"><thead><tr><th>CPL</th><th>MK</th><th>CPMK</th><th class="n">Nilai CPMK</th><th class="n">Bobot CPMK</th><th class="n">SKS</th></tr></thead><tbody>
+      ${res.flatMap(r => r.trace.map(t => `<tr><td>${r.id}</td><td>${esc(t.mk.id)} ${esc(t.mk.n)}</td><td>CPMK-${t.c.no}</td><td class="num">${fmt(t.v)}</td><td class="num">${fmt(t.W, 1)}%</td><td class="num">${sks(t.mk)}</td></tr>`)).join("") || `<tr><td colspan="6" class="muted">Belum ada kelas final untuk mahasiswa ini pada cakupan yang dipilih.</td></tr>`}</tbody></table></details></div></section></div>`);
+};
+
+/* ---------- Laporan semester ---------- */
+function semesterData(includeDraft) {
+  const S = { ...SET(), ...PER() };
+  const ks = all("kelas").filter(k => inPeriod(k)).sort((a, b) => a.mk.localeCompare(b.mk));
+  const used = ks.filter(k => { const R = calcKelas(k); return R.P.valid && (R.final || includeDraft); });
+  const nims = [...new Set(used.flatMap(k => k.peserta || []))].sort();
+  const mhs = nims.map(n => {
+    const cpl = cplMahasiswa(n, S, includeDraft);
+    let num = 0, den = 0;
+    used.filter(k => k.peserta.includes(n)).forEach(k => { const r = calcKelas(k).rows.find(x => x.nim === n); if (r && r.H) { const s = sks(mkOf(k.mk)); num += r.H.b * s; den += s; } });
+    return { nim: n, m: DB.mhs.get(n) || { nama: "?" }, cpl, ips: den ? num / den : null, sks: den };
+  });
+  const cplProdi = cplList().map(c => {
+    const v = mhs.map(x => x.cpl.find(y => y.id === c.id).val).filter(x => x != null);
+    return { c, n: v.length, avg: v.length ? v.reduce((a, b) => a + b, 0) / v.length : null, pct: v.length ? v.filter(x => x >= S.targetCPL).length / v.length * 100 : null };
+  });
+  return { S, ks, used, mhs, cplProdi };
+}
+VIEWS.laporan = () => {
+  const D = semesterData(UI.repDraft), S = D.S;
+  const cpmkRows = D.used.flatMap(k => { const R = calcKelas(k), mk = mkOf(k.mk); return R.P.cp.map(c => ({ k, mk, c, x: R.cls[c.id] })); });
+  const low = cpmkRows.filter(r => r.x.n && r.x.W && !r.x.ok);
+  const notReady = D.ks.filter(k => !D.used.includes(k));
+  return head("Laporan akademik semester", `Program Studi S1 Administrasi Rumah Sakit, semester ${esc(S.smt)} ${esc(S.ta)}.`,
+      `<label class="small" style="display:flex;gap:6px;align-items:center"><input type="checkbox" data-in="repDraft" ${UI.repDraft ? "checked" : ""}> Sertakan nilai draft</label><button class="btn" data-act="csvLaporan">Unduh CSV</button><button class="btn primary" data-act="print">Cetak laporan</button>`)
+    + `<div class="report">`
+    + (UI.repDraft ? `<div class="note">Laporan ini memuat nilai yang belum final. Jangan dipakai sebagai laporan resmi.</div>` : "")
+    + `<section class="panel"><header><h2>1. Ringkasan pelaksanaan penilaian</h2></header><div class="body">
+       <p style="margin-top:0">${D.ks.length} kelas dibuka; ${D.used.length} kelas masuk laporan${UI.repDraft ? " (termasuk draft)" : " (nilai final)"}; ${D.mhs.length} mahasiswa dinilai. Ambang tuntas CPMK ${S.ambangCPMK}, target kelas ${S.targetKelas}% mahasiswa tuntas, target CPL ${S.targetCPL}.</p>
+       ${notReady.length ? `<p class="small" style="margin-bottom:0"><b>Belum masuk laporan:</b> ${notReady.map(k => `${esc(k.mk)} ${esc(k.nama)} (${esc(kelasStatus(k).t)}, ${esc(dosenName(k.dosen))})`).join("; ")}.</p>` : ""}</div></section>`
+    + `<section class="panel"><header><div><h2>2. Capaian CPL program studi</h2><p>Rata-rata capaian CPL mahasiswa dan persentase mahasiswa yang mencapai target.</p></div></header>
+       <div class="body bars">${D.cplProdi.map(r => bar(r.avg, S.targetCPL, r.c.id, r.avg == null ? "belum terukur" : fmt(r.avg))).join("")}</div>
+       <div class="scroll"><table><thead><tr><th>CPL</th><th class="n">Mahasiswa terukur</th><th class="n">Rata-rata</th><th class="n">Mencapai target</th><th>Kesimpulan</th></tr></thead><tbody>
+       ${D.cplProdi.map(r => `<tr><td class="code">${r.c.id}</td><td class="num">${r.n}</td><td class="num">${fmt(r.avg)}</td><td class="num">${r.pct == null ? "–" : fmt(r.pct, 0) + "%"}</td><td>${r.avg == null ? '<span class="tag plain">Tidak ada CPMK/nilai yang mengukur CPL ini</span>' : r.avg >= S.targetCPL ? '<span class="tag ok">Tercapai</span>' : '<span class="tag bad">Belum tercapai</span>'}</td></tr>`).join("")}</tbody></table></div></section>`
+    + `<section class="panel"><header><div><h2>3. Evaluasi CPMK per mata kuliah</h2><p>${cpmkRows.length} CPMK dari ${D.used.length} kelas; ${low.length} belum mencapai target kelas.</p></div></header>
+       <div class="scroll"><table><thead><tr><th>MK / kelas</th><th>CPMK</th><th>CPL</th><th class="n">Bobot</th><th class="n">Rata-rata</th><th class="n">Tuntas</th><th>Status</th></tr></thead><tbody>
+       ${cpmkRows.map(r => `<tr><td><b>${esc(r.mk.id)}</b> ${esc(r.k.nama)}<div class="small muted">${esc(r.mk.n)}</div></td><td>CPMK-${r.c.no}</td><td>${(r.c.cpl || []).join(", ")}</td><td class="num">${fmt(r.x.W, 1)}%</td><td class="num">${fmt(r.x.avg)}</td><td class="num">${r.x.n ? fmt(r.x.tuntas, 0) + "%" : "–"}</td>
+         <td>${!r.x.W ? '<span class="tag warn">tidak diukur</span>' : !r.x.n ? "–" : r.x.ok ? '<span class="tag ok">Tercapai</span>' : '<span class="tag bad">Belum</span>'}</td></tr>`).join("") || `<tr><td colspan="7" class="empty">Belum ada kelas yang masuk laporan.</td></tr>`}</tbody></table></div></section>`
+    + `<section class="panel"><header><h2>4. Distribusi nilai mata kuliah</h2></header><div class="scroll"><table><thead><tr><th>MK / kelas</th><th>Dosen</th><th class="n">Peserta</th>${S.skala.map(g => `<th class="n">${g.h}</th>`).join("")}<th class="n">Rata-rata NA</th></tr></thead><tbody>
+       ${D.used.map(k => { const R = calcKelas(k); const na = R.rows.map(r => r.NA).filter(v => v != null); return `<tr><td><b>${esc(k.mk)}</b> ${esc(k.nama)}</td><td>${esc(dosenName(k.dosen))}</td><td class="num">${R.total}</td>${S.skala.map(g => `<td class="num">${R.dist[g.h] || ""}</td>`).join("")}<td class="num">${fmt(na.length ? na.reduce((a, b) => a + b, 0) / na.length : null, 2)}</td></tr>`; }).join("")}</tbody></table></div></section>`
+    + `<section class="panel"><header><h2>5. Capaian CPL dan IPS per mahasiswa</h2></header><div class="scroll"><table><thead><tr><th>NIM</th><th>Nama</th>${cplList().map(c => `<th class="n">${c.id.replace("CPL-", "CPL ")}</th>`).join("")}<th class="n">SKS</th><th class="n">IPS</th></tr></thead><tbody>
+       ${D.mhs.map(x => `<tr><td>${esc(x.nim)}</td><td>${esc(x.m.nama)}</td>${x.cpl.map(c => `<td class="num" style="${c.val != null && c.val < S.targetCPL ? "color:var(--bad);font-weight:600" : ""}">${fmt(c.val)}</td>`).join("")}<td class="num">${x.sks}</td><td class="num sum">${fmt(x.ips, 2)}</td></tr>`).join("")}</tbody></table></div>
+       <div class="body small muted">IPS dihitung hanya dari kelas yang tercatat di aplikasi pada periode ini.</div></section>`
+    + `<section class="panel"><header><h2>6. Rekomendasi tindak lanjut</h2></header><div class="body"><ul style="margin:0;padding-left:18px">
+       ${D.cplProdi.filter(r => r.avg == null).length ? `<li>${D.cplProdi.filter(r => r.avg == null).map(r => r.c.id).join(", ")} belum terukur. Petakan CPMK mata kuliah yang dibebankan CPL tersebut di Buku Kurikulum, lalu gunakan di rencana asesmen.</li>` : ""}
+       ${D.cplProdi.filter(r => r.avg != null && r.avg < S.targetCPL).map(r => `<li>${r.c.id} rata-rata ${fmt(r.avg)} di bawah target ${S.targetCPL}. Evaluasi MK penyumbang CPL ini pada rapat evaluasi semester.</li>`).join("")}
+       ${low.slice(0, 12).map(r => `<li>${esc(r.mk.id)} ${esc(r.k.nama)} CPMK-${r.c.no}: ${fmt(r.x.tuntas, 0)}% tuntas. Dosen ${esc(dosenName(r.k.dosen))} menyusun rencana perbaikan pembelajaran.</li>`).join("")}
+       ${notReady.length ? `<li>${notReady.length} kelas belum final; batas finalisasi mengikuti kalender akademik.</li>` : ""}
+       ${!D.cplProdi.some(r => r.avg == null || r.avg < S.targetCPL) && !low.length && !notReady.length ? "<li>Semua CPL dan CPMK yang terukur mencapai target.</li>" : ""}
+       </ul></div></section></div>`;
+};
+
+/* ---------- Pengaturan ---------- */
+VIEWS.pengaturan = () => {
+  const S = SET();
+  return head("Pengaturan penilaian", "Berlaku untuk seluruh perhitungan di aplikasi. Perubahan langsung memengaruhi evaluasi dan laporan.")
+    + `<div class="twocol"><section class="panel"><header><h2>Ambang capaian</h2></header><div class="body">
+       <form id="setForm">
+       <label class="field"><span>Nilai minimal CPMK agar mahasiswa tuntas</span><input type="number" name="ambangCPMK" min="0" max="100" value="${S.ambangCPMK}"></label>
+       <label class="field"><span>Target kelas: % mahasiswa tuntas</span><input type="number" name="targetKelas" min="0" max="100" value="${S.targetKelas}"></label>
+       <label class="field"><span>Target capaian CPL</span><input type="number" name="targetCPL" min="0" max="100" value="${S.targetCPL}"></label>
+       <div class="grid2"><label class="field"><span>Periode awal saat aplikasi dibuka</span><select name="ta">${taOptions().map(t => `<option ${t === S.ta ? "selected" : ""}>${t}</option>`).join("")}</select></label><label class="field"><span>Semester</span><select name="smt">${["Ganjil", "Genap", "Antara"].map(t => `<option ${t === S.smt ? "selected" : ""}>${t}</option>`).join("")}</select></label></div>
+       <p class="small muted">Pedoman Penilaian UNBL 2026 belum menetapkan angka ambang ini. Nilai awal 70 / 75% / 70 adalah usulan; sesuaikan dengan keputusan prodi atau GKM.</p>
+       <h3 style="font-size:15px;margin:18px 0 8px">Skala huruf mutu</h3>
+       <table><thead><tr><th>Huruf</th><th class="n">Batas bawah</th><th class="n">Bobot</th></tr></thead><tbody>
+       ${S.skala.map((g, i) => `<tr><td class="code">${g.h}</td><td class="n"><input type="number" step="0.01" name="min${i}" value="${g.min}" style="width:80px"></td><td class="num">${fmt(g.b, 2)}</td></tr>`).join("")}</tbody></table>
+       <div class="note" style="margin-top:12px">Pedoman tidak mengatur rentang 55,00–59,99. Dengan batas bawah D = 50, rentang itu mendapat D.</div>
+       <button class="btn primary" type="submit">Simpan pengaturan</button></form></div></section>
+       <section class="panel"><header><h2>Data</h2></header><div class="body">
+       ${HAS_GAS ? `<p>Data tersimpan di spreadsheet Google yang terhubung dengan skrip.</p>${DB._seedPending ? `<button class="btn primary" data-act="saveSeed">Simpan data kurikulum awal ke spreadsheet</button>` : ""}`
+         : `<p>Mode demo menyimpan perubahan di peramban ini saja.</p><button class="btn danger" data-act="resetDemo">Kembalikan data demo</button>`}
+       <h3 style="font-size:15px;margin:18px 0 8px">Cara hitung</h3>
+       <dl class="kv"><dt>Nilai akhir</dt><dd>Σ skor komponen × bobot komponen</dd><dt>Capaian CPMK</dt><dd>Σ skor × bobot sel ÷ Σ bobot sel pada kolom CPMK</dd><dt>Capaian CPL</dt><dd>Σ (capaian CPMK × bobot CPMK × SKS) ÷ Σ (bobot CPMK × SKS), untuk CPMK yang dipetakan ke CPL itu, dari kelas final</dd><dt>IPS</dt><dd>Σ (SKS × bobot mutu) ÷ Σ SKS</dd></dl>
+       </div></section></div>`;
+};
+
+/* =====================================================================
+   AKSI & EVENT
+   ===================================================================== */
+const ACT = {
+  nav: b => go(b.dataset.v),
+  toggleNav: () => { UI.navOpen = !UI.navOpen; render(); },
+  closeDlg: () => $("#dlg").close(),
+  openKelas: b => go("ruang", { id: b.dataset.id }),
+  gotoCpmk: b => { UI.mkSel = b.dataset.id; go("cpmk"); },
+  tab: b => { if (UI.edit && UI.edit.dirty && !confirm("Perubahan nilai belum disimpan. Tinggalkan tab ini?")) return; UI.p.tab = b.dataset.t; UI.edit = null; render(); },
+  editMk: b => editMk(b.dataset.id), editCpmk: b => editCpmk(b.dataset.id), editMhs: b => editMhs(b.dataset.id),
+  importMhs: () => importMhs(), editDosen: b => editDosen(b.dataset.id), editKelas: b => editKelas(b.dataset.id),
+  delCpmk: b => { $("#dlg").close(); confirmDlg("Hapus CPMK", "CPMK akan dihapus dari mata kuliah ini.", "Hapus", () => guard(() => Store.remove("cpmk", b.dataset.id), "CPMK dihapus.")); },
+  delKelas: b => { $("#dlg").close(); confirmDlg("Hapus kelas", "Kelas beserta rencana asesmennya akan dihapus.", "Hapus", () => guard(async () => { await Store.remove("kelas", b.dataset.id); if (DB.asesmen.has(b.dataset.id)) await Store.remove("asesmen", b.dataset.id); }, "Kelas dihapus.")); },
+  pickAngkatan: b => $$('#dlg input[name="peserta"]').forEach(c => { if (c.dataset.angk === b.dataset.a) c.checked = true; }),
+  pickNone: () => $$('#dlg input[name="peserta"]').forEach(c => c.checked = false),
+  presetPlan: () => { const k = DB.kelas.get(UI.p.id); if (UI.edit.a.komp.length && !confirm("Ganti matriks yang ada dengan contoh Pedoman?")) return; presetPlan(k); render(); },
+  addKomp: () => { UI.edit.a.komp.push({ id: uid("k"), nama: "Komponen baru", bentuk: BENTUK[1] }); render(); },
+  delKomp: b => { const kp = UI.edit.a.komp.splice(+b.dataset.i, 1)[0]; delete UI.edit.a.mat[kp.id]; render(); },
+  savePlan: () => {
+    const k = DB.kelas.get(UI.p.id), a = UI.edit.a, P = planFrom(a, cpmkOf(k.mk));
+    const doSave = () => guard(async () => { await Store.save("asesmen", clone(a)); UI.edit = null; }, P.valid ? "Rencana asesmen disimpan." : "Disimpan, tetapi rencana belum valid.");
+    const hasScores = Object.keys(nilaiDoc(k).scores || {}).length;
+    const removed = hasScores && (R => R.P.a.komp.filter(x => !a.komp.some(y => y.id === x.id)))(calcKelas(k));
+    if (removed && removed.length) confirmDlg("Komponen dihapus", `Nilai yang sudah diisi untuk ${removed.map(x => esc(x.nama)).join(", ")} tidak akan dipakai lagi. Lanjutkan?`, "Simpan", doSave);
+    else doSave();
+  },
+  saveNilai: () => {
+    const k = DB.kelas.get(UI.p.id), cur = nilaiDoc(k);
+    guard(async () => { await Store.save("nilai", { ...cur, id: k.id, scores: clone(UI.edit.scores), status: "draft", updatedAt: new Date().toISOString() }); UI.edit = null; }, "Nilai disimpan sebagai draft.");
+  },
+  finalize: () => {
+    const k = DB.kelas.get(UI.p.id);
+    confirmDlg("Finalkan nilai", "Setelah final, nilai dan rencana asesmen terkunci dan masuk ke perhitungan CPL serta laporan semester. Lanjutkan?", "Finalkan", () =>
+      guard(() => Store.save("nilai", { ...nilaiDoc(k), id: k.id, status: "final", finalAt: new Date().toLocaleString("id-ID"), finalBy: USER.nama || USER.email }), "Nilai sudah final."));
+  },
+  unlock: () => {
+    const k = DB.kelas.get(UI.p.id);
+    confirmDlg("Buka kunci nilai", "Nilai kembali ke status draft dan keluar dari laporan resmi sampai difinalkan ulang.", "Buka kunci", () =>
+      guard(() => Store.save("nilai", { ...nilaiDoc(k), status: "draft", unlockedBy: USER.nama || USER.email, unlockedAt: new Date().toLocaleString("id-ID") }), "Kunci dibuka."));
+  },
+  print: () => window.print(),
+  saveSeed: () => guard(async () => { await Store.saveMany("mk", SEED.mk); await Store.saveMany("cpmk", SEED.cpmk); DB._seedPending = false; }, "Data kurikulum tersimpan di spreadsheet."),
+  resetDemo: () => confirmDlg("Kembalikan data demo", "Semua perubahan di mode demo akan hilang.", "Kembalikan", async () => { try { localStorage.removeItem(DEMO_KEY); } catch (e) {} await Store.load(); CALC.clear(); go("ringkasan"); }),
+  csvRekap: () => { const k = DB.kelas.get(UI.p.id), R = calcKelas(k); downloadCSV(`rekap_${k.mk}_${k.nama}.csv`, [["No", "NIM", "Nama", ...R.P.a.komp.map(x => x.nama), "Nilai akhir", "Huruf"], ...R.rows.map((r, i) => [i + 1, r.nim, r.m.nama, ...R.P.a.komp.map(x => r.sc[x.id] ?? ""), r.NA == null ? "" : r.NA.toFixed(2).replace(".", ","), r.H ? r.H.h : ""])]); },
+  csvCpmk: () => { const k = DB.kelas.get(UI.p.id), R = calcKelas(k); downloadCSV(`cpmk_${k.mk}_${k.nama}.csv`, [["NIM", "Nama", ...R.P.cp.map(c => `CPMK-${c.no} (${(c.cpl || []).join("/")})`), "NA"], ...R.rows.map(r => [r.nim, r.m.nama, ...R.P.cp.map(c => r.NC[c.id] == null ? "" : r.NC[c.id].toFixed(2).replace(".", ",")), r.NA == null ? "" : r.NA.toFixed(2).replace(".", ",")])]); },
+  csvCplAll: () => { const S = PER(), sc = UI.capScope === "periode" ? S : null; downloadCSV(`capaian_cpl_${UI.capScope}.csv`, [["NIM", "Nama", ...cplList().map(c => c.id)], ...all("mhs").map(m => [m.id, m.nama, ...cplMahasiswa(m.id, sc, false).map(r => r.val == null ? "" : r.val.toFixed(2).replace(".", ","))])]); },
+  csvLaporan: () => { const D = semesterData(UI.repDraft); downloadCSV(`laporan_${D.S.ta.replace("/", "-")}_${D.S.smt}.csv`, [["NIM", "Nama", ...cplList().map(c => c.id), "SKS", "IPS"], ...D.mhs.map(x => [x.nim, x.m.nama, ...x.cpl.map(c => c.val == null ? "" : c.val.toFixed(2).replace(".", ",")), x.sks, x.ips == null ? "" : x.ips.toFixed(2).replace(".", ",")]), [], ["CPL", "Rata-rata", "% mencapai target"], ...D.cplProdi.map(r => [r.c.id, r.avg == null ? "" : r.avg.toFixed(2).replace(".", ","), r.pct == null ? "" : r.pct.toFixed(0)])]); },
+  csvAudit: () => { const rows = []; all("mk").forEach(m => { const cps = cpmkOf(m.id); const meas = new Set(cps.flatMap(c => c.cpl || [])); rows.push([m.id, m.n, m.cpl.join(" "), [...meas].join(" "), cps.length, m.cpl.filter(c => !meas.has(c)).join(" ")]); }); downloadCSV("audit_keselarasan.csv", [["Kode", "Mata kuliah", "CPL Buku", "CPL dari CPMK", "Jumlah CPMK", "CPL tidak terukur"], ...rows]); }
+};
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  if (b.tagName === "A") e.preventDefault();
+  const f = ACT[b.dataset.act]; if (f) f(b, e);
+});
+document.addEventListener("submit", e => {
+  if (e.target.id !== "setForm") return;
+  e.preventDefault();
+  const fd = new FormData(e.target), S = clone(SET());
+  ["ambangCPMK", "targetKelas", "targetCPL"].forEach(n => S[n] = Math.max(0, Math.min(100, +fd.get(n))));
+  S.skala.forEach((g, i) => g.min = +fd.get("min" + i));
+  S.ta = fd.get("ta"); S.smt = fd.get("smt");
+  for (let i = 1; i < S.skala.length; i++) if (S.skala[i].min >= S.skala[i - 1].min) { toast("Batas bawah huruf mutu harus menurun dari A ke E.", true); return; }
+  guard(() => Store.save("setting", S), "Pengaturan disimpan.");
+});
+const IN = {
+  q: el => { UI.q = el.value; const pos = el.selectionStart; render(); const n = $('[data-in="q"]'); if (n) { n.focus(); n.setSelectionRange(pos, pos); } },
+  fsem: el => { UI.fsem = el.value; render(); }, fjenis: el => { UI.fjenis = el.value; render(); },
+  mkSel: el => { UI.mkSel = el.value; render(); },
+  capNim: el => { UI.capNim = el.value; render(); }, capScope: el => { UI.capScope = el.value; render(); },
+  repDraft: el => { UI.repDraft = el.checked; render(); },
+  periodTa: el => { UI.ta = el.value; UI.edit = null; render(); },
+  periodSmt: el => { UI.smt = el.value; UI.edit = null; render(); },
+  asUser: el => { if (el.value === "admin") USER = { role: "admin", dosenId: null, email: "admin.ars@unbl.ac.id", nama: "Admin Prodi S1 ARS" }; else { const d = DB.dosen.get(el.value); USER = { role: "dosen", dosenId: d.id, email: d.email, nama: d.nama }; } Store.persistDemo(); go("ringkasan"); },
+  kompNama: el => { UI.edit.a.komp[+el.dataset.i].nama = el.value; },
+  kompBentuk: el => { UI.edit.a.komp[+el.dataset.i].bentuk = el.value; },
+  mat: el => { const m = UI.edit.a.mat; (m[el.dataset.k] = m[el.dataset.k] || {})[el.dataset.c] = el.value === "" ? 0 : Math.max(0, +el.value); refreshPlanTotals(); },
+  score: el => {
+    const v = el.value.trim().replace(",", "."), bad = v !== "" && (!isNum(v) || +v < 0 || +v > 100);
+    el.classList.toggle("err", bad);
+    const s = UI.edit.scores[el.dataset.nim] = UI.edit.scores[el.dataset.nim] || {};
+    if (v === "" || bad) delete s[el.dataset.k]; else s[el.dataset.k] = +v;
+    UI.edit.dirty = true; const d = $("#dirtyMark"); if (d) d.textContent = "Ada perubahan belum disimpan";
+    refreshNilaiRow(el.dataset.nim);
+  }
+};
+const LIVE = new Set(["q", "kompNama", "mat", "score"]);
+document.addEventListener("input", e => { const el = e.target.closest("[data-in]"); if (el && LIVE.has(el.dataset.in)) IN[el.dataset.in](el); });
+document.addEventListener("change", e => { const el = e.target.closest("[data-in]"); if (el && !LIVE.has(el.dataset.in)) IN[el.dataset.in](el); });
+/* tempel blok nilai dari Excel & navigasi Enter */
+document.addEventListener("paste", e => {
+  const el = e.target.closest('[data-in="score"]'); if (!el) return;
+  const txt = (e.clipboardData || window.clipboardData).getData("text");
+  if (!/[\t\n]/.test(txt)) return;
+  e.preventDefault();
+  const r0 = +el.dataset.r, c0 = +el.dataset.c;
+  txt.replace(/\r/g, "").replace(/\n$/, "").split("\n").forEach((line, i) => line.split("\t").forEach((val, j) => {
+    const t = $(`[data-in="score"][data-r="${r0 + i}"][data-c="${c0 + j}"]`);
+    if (t && !t.disabled) { t.value = val.trim(); IN.score(t); }
+  }));
+});
+document.addEventListener("keydown", e => {
+  const el = e.target.closest('[data-in="score"]'); if (!el || e.key !== "Enter") return;
+  e.preventDefault();
+  const t = $(`[data-in="score"][data-r="${+el.dataset.r + (e.shiftKey ? -1 : 1)}"][data-c="${el.dataset.c}"]`);
+  if (t) { t.focus(); t.select(); }
+});
+window.addEventListener("beforeunload", e => { if (UI.edit && UI.edit.dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+/* =====================================================================
+   DATA DEMO (hanya dipakai bila tidak berjalan di Apps Script)
+   ===================================================================== */
+function demoData() {
+  let seed = 20260917; const rnd = () => (seed = (seed * 1664525 + 1013904223) % 4294967296) / 4294967296;
+  const dosen = [
+    { id: "D01", nidn: "1101019001", nama: "Nurul Hidayah, S.KM., M.Kes.", email: "nurul.hidayah@unbl.ac.id", role: "dosen" },
+    { id: "D02", nidn: "1101019002", nama: "Rahmat Fauzi, S.E., M.M.", email: "rahmat.fauzi@unbl.ac.id", role: "dosen" },
+    { id: "D03", nidn: "1101019003", nama: "Maulida Sari, S.Kom., M.Kom.", email: "maulida.sari@unbl.ac.id", role: "dosen" },
+    { id: "A01", nidn: "", nama: "Admin Prodi S1 ARS", email: "admin.ars@unbl.ac.id", role: "admin" }
+  ];
+  const n26 = ["Muhammad Rizky Ananda", "Nor Aulia Rahmah", "Ahmad Fadillah", "Dina Maharani", "Rizal Firmansyah", "Aulia Safitri", "Gusti Rahman Hakim", "Fitri Amelia"];
+  const n25 = ["Nabila Zahra", "Hendra Saputra", "Laila Husna", "Yusuf Alfarizi", "Maya Dewi Lestari", "Rahmi Annisa", "Bayu Pratama", "Salsabila Putri"];
+  const mhs = [...n26.map((n, i) => ({ id: "26112" + String(i + 1).padStart(5, "0"), nama: n, angkatan: 2026, status: "Aktif" })),
+               ...n25.map((n, i) => ({ id: "25112" + String(i + 1).padStart(5, "0"), nama: n, angkatan: 2025, status: "Aktif" }))];
+  const ability = {}; mhs.forEach(m => ability[m.id] = 63 + rnd() * 31);
+  const c26 = mhs.filter(m => m.angkatan === 2026).map(m => m.id), c25 = mhs.filter(m => m.angkatan === 2025).map(m => m.id);
+  const kelas = [
+    { id: "K01", mk: "SARS101", nama: "A", dosen: "D01", ta: "2026/2027", smt: "Ganjil", peserta: c26 },
+    { id: "K02", mk: "SARS105", nama: "A", dosen: "D03", ta: "2026/2027", smt: "Ganjil", peserta: c26 },
+    { id: "K03", mk: "SARS301", nama: "A", dosen: "D03", ta: "2026/2027", smt: "Ganjil", peserta: c25 },
+    { id: "K04", mk: "UNBL24006", nama: "A", dosen: "D02", ta: "2026/2027", smt: "Ganjil", peserta: c25 },
+    { id: "K05", mk: "SARS303", nama: "A", dosen: "D02", ta: "2026/2027", smt: "Ganjil", peserta: c25 },
+    { id: "K06", mk: "UNBL24001", nama: "A", dosen: "D01", ta: "2026/2027", smt: "Ganjil", peserta: c26 },
+    { id: "K07", mk: "SARS302", nama: "A", dosen: "D03", ta: "2026/2027", smt: "Ganjil", peserta: c25 },
+    { id: "K00", mk: "SARS206", nama: "A", dosen: "D01", ta: "2025/2026", smt: "Genap", peserta: c25 },
+    { id: "K08", mk: "SARS210", nama: "A", dosen: "D03", ta: "2025/2026", smt: "Genap", peserta: c25 },
+    { id: "K09", mk: "UNBL24005", nama: "A", dosen: "D02", ta: "2025/2026", smt: "Genap", peserta: c25 }
+  ];
+  // bangun DB sementara agar presetPlan dapat dipakai
+  DB = {}; COLLS.forEach(c => DB[c] = new Map());
+  SEED.mk.forEach(x => DB.mk.set(x.id, x)); SEED.cpmk.forEach(x => DB.cpmk.set(x.id, x));
+  const asesmen = [], nilai = [];
+  const plans = { K00: 1, K01: 1, K02: 1, K03: 1, K04: 1, K06: 1, K07: 1, K08: 1, K09: 1 };
+  kelas.filter(k => plans[k.id]).forEach(k => { UI.edit = { a: null }; presetPlan(k); asesmen.push(UI.edit.a); });
+  UI.edit = null;
+  const fill = (k, count, status, bias = 0) => {
+    const a = asesmen.find(x => x.id === k.id), scores = {};
+    k.peserta.slice(0, count).forEach(nim => { scores[nim] = {}; a.komp.forEach(kp => { scores[nim][kp.id] = Math.round(Math.max(30, Math.min(100, ability[nim] + bias + (rnd() - .5) * 22))); }); });
+    nilai.push({ id: k.id, scores, status, finalAt: status === "final" ? "12/1/2027 10.15.00" : "", finalBy: status === "final" ? dosenName(k.dosen) : "" });
+  };
+  const byId = id => kelas.find(k => k.id === id);
+  DB.dosen = new Map(dosen.map(d => [d.id, d]));
+  fill(byId("K00"), 8, "final", 4); fill(byId("K01"), 8, "final"); fill(byId("K02"), 8, "final", -6); fill(byId("K03"), 8, "draft", 2); fill(byId("K04"), 5, "draft"); fill(byId("K06"), 8, "final", 5); fill(byId("K07"), 8, "final", -3); fill(byId("K08"), 8, "final", 6); fill(byId("K09"), 8, "final", 2);
+  return { mk: SEED.mk, cpmk: SEED.cpmk, dosen, mhs, kelas, asesmen, nilai, setting: [clone(DEFAULT_SETTING)] };
+}
+
+/* ---------- mulai ---------- */
+Store.load().then(() => { CALC.clear(); render(); }).catch(e => {
+  console.error(e);
+  $("#app").innerHTML = `<div class="page"><h1 style="font-family:var(--serif)">Aplikasi tidak dapat dimuat</h1><p>${esc(e && e.message ? e.message : e)}</p><p>Pastikan akun Anda terdaftar di menu Dosen & akun, atau hubungi admin prodi.</p></div>`;
+});
+</script>
+
+
+</body></html>
